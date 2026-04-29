@@ -1,0 +1,3362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Omni-Strategic Nexus v33.0 - Global Bank</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+    @page { size:A4; margin:11mm 10mm 14mm; }
+    @media print { @page { margin: 0; } body { margin: 1.6cm; } }
+    
+          :root {
+            --accent: #0f172a;
+            --neon: #0ea5e9;
+            --slate: #334155;
+            --bg: #ffffff;
+          }
+          * { box-sizing: border-box; }
+body { color: var(--slate); background: var(--bg); font-family: 'Inter', -apple-system, sans-serif; font-size: 8.5pt; line-height: 1.6; margin: 0; }
+main { max-width: 1010px; margin: 0 auto; padding: 10px; }
+
+h1, h2, h3, h4 { color: var(--accent); letter-spacing: -0.02em; margin-top: 15px; margin-bottom: 5px; }
+h1 { font-size: 24pt; font-weight: 900; }
+h2 { font-size: 16pt; font-weight: 700; border-bottom: 2px solid var(--accent); padding-bottom: 4px; }
+h3 { font-size: 11pt; color: var(--slate); font-weight: 600; }
+p { margin: 4px 0 10px; color: #475569; }
+
+/* Premium Cover Page */
+.cover-v33 { min-height: 275mm; padding: 50mm 40mm; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(135deg, var(--bg) 0%, #f8fafc 100%); color: var(--accent); position: relative; overflow: hidden; border-left: 16px solid var(--accent); box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.02); }
+.cover-v33::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image: radial-gradient(var(--slate) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.03; pointer-events: none; }
+.v33-top { display: flex; justify-content: space-between; font-size: 9pt; font-weight: 600; letter-spacing: 4px; color: #64748b; text-transform: uppercase; z-index: 1; }
+.v33-box { width: 60px; height: 8px; background: var(--neon); margin-bottom: 40px; border-radius: 2px; }
+.v33-center h1 { font-size: 58pt; font-weight: 900; line-height: 1; margin: 0; letter-spacing: -2px; border: none; }
+.v33-center h1 span { color: var(--neon); }
+.v33-kicker { font-size: 11pt; letter-spacing: 6px; text-transform: uppercase; font-weight: 700; color: #64748b; margin-bottom: 10px; }
+.v33-footer { display: flex; gap: 60px; border-top: 1px solid #e2e8f0; padding-top: 40px; z-index: 1; }
+.v33-m span { display: block; font-size: 7pt; color: #94a3b8; text-transform: uppercase; margin-bottom: 5px; }
+.v33-m strong { font-size: 12pt; font-weight: 600; color: var(--accent); }
+
+/* Score Cards & Layouts */
+.v33-score-card { display: flex; gap: 40px; align-items: center; background: #f8fafc; color: var(--accent); padding: 40px; border-radius: 8px; margin: 30px 0; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); page-break-inside: avoid; }
+.v33-score-val { font-size: 48pt; font-weight: 900; color: var(--neon); line-height: 1; }
+.v33-score-lbl { font-size: 8pt; font-weight: 700; letter-spacing: 2px; color: #64748b; }
+
+/* Status Badges */
+.v33-v { color: #166534; font-weight: 600; background: #dcfce7; padding: 2px 8px; border-radius: 12px; font-size: 0.8em; }
+.v33-x { color: #991b1b; font-weight: 600; background: #fee2e2; padding: 2px 8px; border-radius: 12px; font-size: 0.8em; }
+
+/* Premium Tables */
+.v33-table, table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 15px 0 25px; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.02); page-break-inside: avoid; }
+.v33-table th, table th { background: #f8fafc; color: #334155; text-transform: uppercase; font-size: 6.5pt; font-weight: 800; letter-spacing: 1px; padding: 8px 10px; border-bottom: 2px solid #cbd5e1; border-right: 1px solid #e2e8f0; }
+.v33-table td, table td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; border-right: 1px solid #e2e8f0; font-size: 8pt; line-height: 1.4; color: #475569; }
+.v33-table th:last-child, table th:last-child, .v33-table td:last-child, table td:last-child { border-right: none; }
+.v33-table tr:nth-child(even) td, table tr:nth-child(even) td { background: #fafafa; }
+.v33-table tr:last-child td, table tr:last-child td { border-bottom: none; }
+
+/* Workstreams */
+.v33-ws { margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden; page-break-inside: avoid; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.v33-ws-h { background: #f8fafc; color: var(--accent); padding: 10px 14px; font-weight: 700; display: flex; justify-content: space-between; font-size: 9pt; border-bottom: 1px solid #e2e8f0; }
+.v33-ws-h span { color: var(--neon); }
+.v33-ws-b { padding: 14px; font-size: 8pt; background: #ffffff; }
+.v33-ws-f { margin-top: 10px; font-weight: 700; color: #64748b; text-align: right; border-top: 1px dashed #e2e8f0; padding-top: 10px; }
+
+/* Sections & Typography details */
+.md-section { margin-bottom: 20px; padding-bottom: 10px; page-break-inside: avoid; }
+.section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-bottom: 10px; page-break-after: avoid; }
+.section-head h2 { margin: 0; border: none; }
+.kicker { display: inline-block; padding: 4px 8px; border: 1px solid var(--accent); color: var(--accent); background: #f8fafc; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; white-space: nowrap; border-radius: 4px; }
+
+/* Sign-off & Auth */
+.v33-auth { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 60px; page-break-inside: avoid; background: #f8fafc; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; }
+.v33-seal-box { width: 60px; height: 60px; border: 2px solid var(--accent); margin-bottom: 10px; border-radius: 50%; opacity: 0.8; }
+.v33-seal-wrap { text-align: center; color: var(--accent); font-size: 6pt; font-weight: 700; letter-spacing: 1px; }
+.v33-sigs { display: flex; gap: 50px; }
+.v33-sig { text-align: center; font-weight: 600; font-size: 9pt; color: #64748b; }
+.v33-sig .l { border-bottom: 1px solid #cbd5e1; margin: 40px 0 10px; width: 200px; }
+.v33-fp { text-align: center; font-size: 7pt; color: #cbd5e1; margin-top: 30px; }
+
+.signoff-box { border: 1px solid #e2e8f0; padding: 25px; margin-top: 30px; background: #f8fafc; border-radius: 8px; page-break-inside: avoid; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
+.signoff-box h3 { margin-top: 0; }
+.signoff-line { border-bottom: 1px solid #cbd5e1; display: inline-block; width: 280px; margin-left: 10px; }
+
+        
+  </style>
+</head>
+<body>
+  <main>
+    <!-- Premium V33 Cover Injected via Generator -->
+
+    <!-- Inject the Dynamic Data (Omni Matrices, Framework Mappings, etc.) -->
+    <div class="cover-v33">
+          <div class="v33-lines"></div>
+          <div class="v33-top">
+            <span class="v33-id">FINGERPRINT // 5D59595AF66E5E88</span>
+            <span class="v33-cl">// CONFIDENTIAL STRATEGY //</span>
+          </div>
+          <div class="v33-center">
+            <div class="v33-box"></div>
+            <div class="v33-kicker">Omnipotence Engagement Architecture</div>
+            <h1>Strategic<br/><span>Nexus</span></h1>
+            <p>Strategic Security Scoping v33.0 Omni-Review</p>
+          </div>
+          <div class="v33-footer">
+            <div class="v33-m"><span>ENTITY</span><strong>Global Bank</strong></div>
+            <div class="v33-m"><span>NEXUS SCORE</span><strong>70%</strong></div>
+          </div>
+        </div><div class="md-section">
+            <div class="section-head">
+                <h2>Nexus Strategic Analysis</h2>
+                <div class="kicker">PART I: STRATEGY</div>
+            </div>
+            <div class="v33-score-card">
+            <div class="v33-score-main">
+                <div class="v33-score-val">70</div>
+                <div class="v33-score-lbl">NEXUS INDEX</div>
+            </div>
+            <div class="v33-score-text">
+                <h3>1.1 Engagement Coverage Index</h3>
+                <p>This score reflects the breadth of technical validation across core governance pillars.</p>
+            </div>
+        </div><table class="v33-table">
+            <thead><tr><th>Pillar</th><th>Status</th><th>Priority</th></tr></thead>
+            <tbody><tr><td>GOV</td><td><span class="v33-v">VALIDATED</span></td><td>Strategic</td></tr><tr><td>RES</td><td><span class="v33-v">VALIDATED</span></td><td>Strategic</td></tr><tr><td>INT</td><td><span class="v33-v">VALIDATED</span></td><td>Strategic</td></tr><tr><td>PRI</td><td><span class="v33-x">GAP</span></td><td>Strategic</td></tr><tr><td>SOV</td><td><span class="v33-v">VALIDATED</span></td><td>Strategic</td></tr><tr><td>ID</td><td><span class="v33-x">GAP</span></td><td>Strategic</td></tr></tbody>
+        </table>
+        </div><div class="md-section">
+            <div class="section-head">
+                <h2>Regulatory Framework Analysis</h2>
+                <div class="kicker">PART I.b: COMPLIANCE</div>
+            </div>
+            <h3>1.5 Regulatory Alignment: Global Regulated Enterprise (DORA, FRB, HKMA, PRA)</h3>
+            <p><strong>Narrative:</strong> A unified global compliance scoping document consolidating DORA, FRB, HKMA, and PRA requirements.</p><div class="v33-ws" style="margin-top: 20px;">
+                        <div class="v33-ws-h"><span>FRAMEWORK</span> DORA</div>
+                        <div class="v33-ws-b"><h4>ICT Asset Criticality Mapping</h4><p>Under DORA, scoping must start with the ICT Asset Register. Every asset in scope must be mapped to a 'Critical or Important Function' (CIF). If an asset supports a CIF, it is subject to more rigorous testing and reporting requirements.</p><h4>Third-Party ICT Risk</h4><p>DORA requires that testing includes third-party ICT service providers where they support critical or important functions. This scoping pack must include a list of involved third parties and confirmation of their authorization to test.</p><h4>Threat Intelligence Requirements</h4><p>For TLPT (Threat-Led Penetration Testing), the scope must be driven by current, relevant threat intelligence. The scenarios defined in this pack should match the TTPs of actors targeting the financial sector.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
+                        <div class="v33-ws-h"><span>FRAMEWORK</span> FRB</div>
+                        <div class="v33-ws-b"><h4>SR 13-1 / Vendor Risk</h4><p>The scoping must encompass critical third-party vendors and external facing infrastructure in alignment with FRB supervision expectations.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
+                        <div class="v33-ws-h"><span>FRAMEWORK</span> HKMA</div>
+                        <div class="v33-ws-b"><h4>iCAST Execution</h4><p>Simulations must cover the 'Assume Breach' methodology to assess the detection and response capabilities of the institution's Security Operations Center (SOC).</p></div></div><div class="v33-ws" style="margin-top: 20px;">
+                        <div class="v33-ws-h"><span>FRAMEWORK</span> PRA</div>
+                        <div class="v33-ws-b"><h4>CBEST Intelligence-Led Testing</h4><p>Testing must be driven by bespoke threat intelligence targeting the specific critical business services (CBS) of the UK financial institution.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
+                        <div class="v33-ws-h"><span>FRAMEWORK</span> MITRE</div>
+                        <div class="v33-ws-b"><h4>T1190 - Exploit Public-Facing Application</h4><p>Adversaries may attempt to take advantage of a weakness in an Internet-facing computer or program using software, data, or commands in order to cause unintended or unanticipated behavior.</p><h4>T1078 - Valid Accounts</h4><p>Adversaries may obtain and abuse credentials of existing accounts as a means of gaining Initial Access, Persistence, Privilege Escalation, or Defense Evasion.</p><h4>T1566 - Phishing</h4><p>Adversaries may send phishing messages to gain access to victim systems. All forms of phishing are electronically delivered social engineering.</p><h4>T1059 - Command and Scripting Interpreter</h4><p>Adversaries may abuse command and script interpreters to execute commands, scripts, or binaries.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
+                        <div class="v33-ws-h"><span>FRAMEWORK</span> OWASP</div>
+                        <div class="v33-ws-b"><h4>A01:2021-Broken Access Control</h4><p>Testing must validate that users cannot act outside of their intended permissions. Failures typically lead to unauthorized information disclosure, modification, or destruction of all data.</p><h4>A02:2021-Cryptographic Failures</h4><p>Testing must verify the protection of sensitive data in transit and at rest. This includes passwords, credit card numbers, health records, personal information, and business secrets.</p><h4>A03:2021-Injection</h4><p>Testing must validate that user-supplied data is not interpreted as commands or queries (e.g., SQL, NoSQL, OS command, ORM, LDAP, and EL expression or OGNL injection).</p><h4>A04:2021-Insecure Design</h4><p>Testing must evaluate the architectural design for missing or ineffective control design. Insecure design cannot be fixed by a perfect implementation.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
+                        <div class="v33-ws-h"><span>FRAMEWORK</span> CIS</div>
+                        <div class="v33-ws-b"><h4>Control 1: Inventory and Control of Enterprise Assets</h4><p>Actively manage (inventory, track, and correct) all enterprise assets connected to the infrastructure physically, virtually, remotely, and those within cloud environments.</p><h4>Control 4: Secure Configuration of Enterprise Assets and Software</h4><p>Establish and maintain the secure configuration of enterprise assets and software.</p><h4>Control 12: Network Infrastructure Management</h4><p>Establish, implement, and actively manage network devices, in order to prevent attackers from exploiting vulnerable network services and access points.</p></div></div>
+        </div><div class="md-section">
+            <div class="section-head">
+                <h2>Technical Data Governance</h2>
+                <div class="kicker">PART II: GOVERNANCE</div>
+            </div>
+            <h3>2.1 Digital Chain of Evidence</h3>
+          <p>Artifacts produced during this engagement follow a cryptographically-verifiable lifecycle.</p><table class="v33-table">
+            <thead><tr><th>Lifecycle Phase</th><th>Validation Method</th></tr></thead>
+            <tbody><tr><td>Acquisition</td><td>SHA-256 Verified Capture</td></tr><tr><td>Processing</td><td>Air-Gapped Analysis Environment</td></tr><tr><td>Destruction</td><td>NIST 800-88 Compliant Wipe</td></tr></tbody>
+        </table>
+        </div><div class="md-section">
+            <div class="section-head">
+                <h2>Technical Scope of Work</h2>
+                <div class="kicker">PART III: EXECUTION</div>
+            </div>
+            <div class="v33-ws-grid"><div class="v33-ws">
+                <div class="v33-ws-h"><span>PT-NET-EXT</span> External Network Penetration Test</div>
+                <div class="v33-ws-b">
+                    <p>A structured assessment of internet-facing infrastructure including firewalls, VPNs, mail gateways, and publicly reachable hosts. Testers simulate real-world attackers attempting to gain unauthorised access from outside the perimeter. Findings are rated by exploitability and business impact.</p>
+                    <div class="v33-ws-f">2 Days | €3,500 Budgetary ALLOC</div>
+                </div>
+            </div><div class="v33-ws">
+                <div class="v33-ws-h"><span>PT-APP-WEB</span> Web Application Penetration Test</div>
+                <div class="v33-ws-b">
+                    <p>Manual-led security testing of web applications aligned to the OWASP Top 10 and WSTG, covering injection flaws, broken authentication, sensitive data exposure, XML external entities, broken access control, security misconfigurations, XSS, insecure deserialisation, and business logic vulnerabilities.</p>
+                    <div class="v33-ws-f">3 Days | €4,000 Budgetary ALLOC</div>
+                </div>
+            </div><div class="v33-ws">
+                <div class="v33-ws-h"><span>PT-APP-API</span> REST/GraphQL API Security Testing</div>
+                <div class="v33-ws-b">
+                    <p>Targeted assessment of REST, SOAP, and GraphQL APIs using the OWASP API Security Top 10 framework. Covers broken object-level authorisation, excessive data exposure, lack of rate limiting, broken function-level authorisation, mass assignment, security misconfiguration, and injection flaws.</p>
+                    <div class="v33-ws-f">2 Days | €3,500 Budgetary ALLOC</div>
+                </div>
+            </div><div class="v33-ws">
+                <div class="v33-ws-h"><span>RT-FULL</span> Full Red Team Engagement</div>
+                <div class="v33-ws-b">
+                    <p>An adversary simulation engagement where a dedicated red team uses realistic threat actor TTPs to attack the organisation across all vectors — digital, physical, and human — without prior disclosure to defenders. Measures the organisation's detection, response, and containment capabilities.</p>
+                    <div class="v33-ws-f">17 Days | €25,000 Budgetary ALLOC</div>
+                </div>
+            </div><div class="v33-ws">
+                <div class="v33-ws-h"><span>PT-CLD-INF</span> Cloud Infrastructure Penetration Test</div>
+                <div class="v33-ws-b">
+                    <p>Assessment of cloud-native infrastructure, IAM, and resource configurations.</p>
+                    <div class="v33-ws-f">3 Days | €5,000 Budgetary ALLOC</div>
+                </div>
+            </div></div>
+        </div><div class="md-section">
+            <div class="section-head">
+                <h2>Omni Control Matrix</h2>
+                <div class="kicker">PART III.b: OMNI MATRIX</div>
+            </div>
+            <h3>3.1 Omni Control Mapping</h3>
+            <p>The following granular controls are in scope for the selected execution modules.</p>
+            <table class="v33-table">
+            <thead><tr><th>Control ID</th><th>Domain</th><th>Description</th></tr></thead>
+            <tbody><tr><td><strong>AC_01</strong></td><td>None</td><td>None</td></tr><tr><td><strong>IA_02</strong></td><td>None</td><td>None</td></tr><tr><td><strong>SI_04</strong></td><td>None</td><td>None</td></tr></tbody></table>
+        </div><div class="md-section">
+            <div class="section-head">
+                <h2>RACI Governance</h2>
+                <div class="kicker">PART III.c: RACI MATRIX</div>
+            </div>
+            <h3>3.2 RACI Governance Matrix</h3>
+            <p>Responsibility Assignment Matrix for engagement activities.</p>
+            <table class="v33-table">
+            <thead><tr><th>Activity</th><th>Provider</th><th>Client Sec Lead</th><th>Client IT</th><th>Client Exec</th></tr></thead>
+            <tbody><tr><td>Project Kick-off</td><td><strong>R</strong></td><td><strong>A</strong></td><td><strong>C</strong></td><td><strong>I</strong></td></tr><tr><td>Access Provisioning</td><td><strong>C</strong></td><td><strong>I</strong></td><td><strong>R</strong></td><td><strong>A</strong></td></tr><tr><td>Technical Testing</td><td><strong>R</strong></td><td><strong>A</strong></td><td><strong>I</strong></td><td><strong>C</strong></td></tr><tr><td>Report Delivery</td><td><strong>R</strong></td><td><strong>A</strong></td><td><strong>C</strong></td><td><strong>I</strong></td></tr><tr><td>Remediation Sign-off</td><td><strong>C</strong></td><td><strong>I</strong></td><td><strong>R</strong></td><td><strong>A</strong></td></tr></tbody></table>
+        </div><div class="md-section">
+            <div class="section-head">
+                <h2>Verification & Sign-off</h2>
+                <div class="kicker">PART IV: AUTHORIZATION</div>
+            </div>
+            <div class="v33-auth">
+          <div class="v33-seal-wrap">
+            <div class="v33-seal-box"></div>
+            <span>NEXUS SEAL</span>
+          </div>
+          <div class="v33-sigs">
+            <div class="v33-sig">Executive Sponsor Approval<div class="l"></div></div>
+            <div class="v33-sig">Lead Strategic Provider<div class="l"></div></div>
+          </div>
+        </div>
+        <div class="v33-fp">FINGERPRINT // 5D59595AF66E5E88F02600D36FFEF289D467A9E849BB259A13F821382623506F</div>
+        </div>
+
+    <!-- Inject the Markdown Forms -->
+    <h1>Compliance Coverage Scope Template</h1>
+<p><strong>Document Type</strong>: Compliance Scope Definition<br />
+<strong>Version</strong>: 1.0<br />
+<strong>Date</strong>: [DATE]<br />
+<strong>Classification</strong>: Confidential  </p>
+<hr />
+<div class="md-section"><div class="section-head"><h2>1. Organization Overview</h2><div class="kicker">PART V: REGULATORY EXECUTION</div></div><div class="md-content">
+<table class="v33-table">
+<thead>
+<tr>
+<th>Field</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Organization Name</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Industry</strong></td>
+<td>Financial Services / Banking</td>
+</tr>
+<tr>
+<td><strong>Annual Revenue</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Number of Employees</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Primary Locations</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Data Centers/Cloud Regions</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>2. Applicable Compliance Frameworks</h2><div class="kicker">PART V: REGULATORY EXECUTION</div></div><div class="md-content">
+<h3>2.1 Regulatory Compliance Requirements</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Framework</th>
+<th>Applicable</th>
+<th>Version</th>
+<th>Assessment Date</th>
+<th>Next Due Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> DORA</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> FRB Supervision</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> HKMA iCAST</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> PRA CBEST</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 Supervisory/Regulatory Authorities</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Authority</th>
+<th>Jurisdiction</th>
+<th>Reporting Frequency</th>
+<th>Last Engagement</th>
+<th>Next Due</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>3. Data Classification Summary</h2><div class="kicker">PART V: REGULATORY EXECUTION</div></div><div class="md-content">
+<table class="v33-table">
+<thead>
+<tr>
+<th>Classification</th>
+<th>Description</th>
+<th>Systems</th>
+<th>Volume (Est.)</th>
+<th>Compliance Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trading Data</strong></td>
+<td>Market execution, order books</td>
+<td></td>
+<td></td>
+<td>FRB, PRA, HKMA</td>
+</tr>
+<tr>
+<td><strong>Customer Financial</strong></td>
+<td>Account balances, transactions</td>
+<td></td>
+<td></td>
+<td>DORA, FRB</td>
+</tr>
+<tr>
+<td><strong>SWIFT Messages</strong></td>
+<td>Cross-border transaction records</td>
+<td></td>
+<td></td>
+<td>Systemic Risk</td>
+</tr>
+<tr>
+<td><strong>Confidential</strong></td>
+<td>Business sensitive strategy</td>
+<td></td>
+<td></td>
+<td>Internal policy</td>
+</tr>
+<tr>
+<td><strong>Public</strong></td>
+<td>Publicly available data</td>
+<td></td>
+<td></td>
+<td>Minimal</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>4. System Inventory by Compliance Domain</h2><div class="kicker">PART V: REGULATORY EXECUTION</div></div><div class="md-content">
+<h3>4.1 DORA Scope (EU Financial)</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Function Category</th>
+<th>Classification</th>
+<th>ICT Systems</th>
+<th>Outsourced?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Critical Functions</strong></td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Critical <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Important</td>
+<td></td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+<tr>
+<td><strong>Financial Services</strong></td>
+<td></td>
+<td></td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+<tr>
+<td><strong>Payment Services</strong></td>
+<td></td>
+<td></td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Supervisory Authority</strong>:<br />
+<strong>Last TLPT</strong>: <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Scheduled:  </p>
+<hr />
+<h3>4.2 FRB Supervision Scope (US)</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Component Type</th>
+<th>System Name</th>
+<th>Criticality</th>
+<th>Service Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Core Banking</strong></td>
+<td></td>
+<td></td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> On-Prem <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Cloud</td>
+</tr>
+<tr>
+<td><strong>Payment Gateways</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Third-Party Risk</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Current Assessment Status</strong>: <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Satisfactory <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Needs Improvement <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Planning</p>
+<hr />
+<h3>4.3 HKMA iCAST Scope (Hong Kong)</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Domain</th>
+<th>In Scope</th>
+<th>Primary Systems</th>
+<th>Dependency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CFI Requirements</strong></td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Critical Internet Facing</strong></td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Core Financial Systems</strong></td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Intelligence-Led Phase Complete</strong>: <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</p>
+<hr />
+<h3>4.4 PRA CBEST Scope (UK)</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Threat Scenario</th>
+<th>Primary Target</th>
+<th>Critical Business Service</th>
+<th>White Cell Contact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Phase</strong>: <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Intelligence <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Execution <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Remediation</p>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>5. Network Architecture Overview</h2><div class="kicker">PART V: REGULATORY EXECUTION</div></div><div class="md-content">
+<h3>5.1 Network Zones and Segmentation</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Zone</th>
+<th>Purpose</th>
+<th>IP Range</th>
+<th>Controls</th>
+<th>Compliance Boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Core Banking</strong></td>
+<td>Ledger and balances</td>
+<td></td>
+<td>Firewall, MFA, VLAN</td>
+<td>FRB / PRA</td>
+</tr>
+<tr>
+<td><strong>Trading DMZ</strong></td>
+<td>Low latency execution</td>
+<td></td>
+<td>WAF, IDS/IPS</td>
+<td>HKMA / FRB</td>
+</tr>
+<tr>
+<td><strong>Payment Gateways</strong></td>
+<td>SWIFT/SEPA integration</td>
+<td></td>
+<td>Network isolation</td>
+<td>DORA / Systemic</td>
+</tr>
+<tr>
+<td><strong>Internal Corp</strong></td>
+<td>General business</td>
+<td></td>
+<td>Standard controls</td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>Cloud VPC</strong></td>
+<td>Cloud workloads</td>
+<td></td>
+<td>Security groups</td>
+<td>Framework-specific</td>
+</tr>
+</tbody>
+</table>
+<h3>5.2 Third-Party ICT Provider Connections</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Provider</th>
+<th>Service Type</th>
+<th>Data Shared</th>
+<th>Compliance Coverage</th>
+<th>Contract Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>6. Testing Requirements by Framework</h2><div class="kicker">PART V: REGULATORY EXECUTION</div></div><div class="md-content">
+<h3>6.1 Summary Matrix</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Framework</th>
+<th>External Test</th>
+<th>Internal Test</th>
+<th>App Test</th>
+<th>Cloud Test</th>
+<th>Segmentation Test</th>
+<th>Social Eng</th>
+<th>Threat-Led / RT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DORA</strong></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td>TLPT</td>
+</tr>
+<tr>
+<td><strong>FRB</strong></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td>Optional</td>
+<td>Expected</td>
+</tr>
+<tr>
+<td><strong>HKMA</strong></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td>-</td>
+<td>Optional</td>
+<td>iCAST</td>
+</tr>
+<tr>
+<td><strong>PRA</strong></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td>Optional</td>
+<td>CBEST</td>
+</tr>
+</tbody>
+</table>
+<h3>6.2 Frequency Requirements</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Framework</th>
+<th>Minimum Frequency</th>
+<th>Additional Triggers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DORA Basic</strong></td>
+<td>Annual</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>DORA TLPT</strong></td>
+<td>Every 3 years</td>
+<td>Competent authority may adjust</td>
+</tr>
+<tr>
+<td><strong>FRB Supervision</strong></td>
+<td>Annual</td>
+<td>Significant changes</td>
+</tr>
+<tr>
+<td><strong>HKMA iCAST</strong></td>
+<td>Defined by CFI tier</td>
+<td>Significant changes</td>
+</tr>
+<tr>
+<td><strong>PRA CBEST</strong></td>
+<td>Every 2-3 years</td>
+<td>Competent authority guidance</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>7. Tester Qualification Requirements</h2><div class="kicker">PART V: REGULATORY EXECUTION</div></div><div class="md-content">
+<table class="v33-table">
+<thead>
+<tr>
+<th>Framework</th>
+<th>Independence Required</th>
+<th>Certification Required</th>
+<th>Specific Certification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DORA TLPT</strong></td>
+<td>Required (external)</td>
+<td>Required</td>
+<td>Qualified tester standards</td>
+</tr>
+<tr>
+<td><strong>FRB</strong></td>
+<td>Required</td>
+<td>Recommended</td>
+<td>Threat-Intel/Red Team verified</td>
+</tr>
+<tr>
+<td><strong>HKMA iCAST</strong></td>
+<td>Required</td>
+<td>Required</td>
+<td>CREST / Relevant provider</td>
+</tr>
+<tr>
+<td><strong>PRA CBEST</strong></td>
+<td>Required</td>
+<td>Required</td>
+<td>CREST / CSCS</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>8. Deliverables Mapping</h2><div class="kicker">PART V: REGULATORY EXECUTION</div></div><div class="md-content">
+<h3>8.1 Required Deliverables by Framework</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Deliverable</th>
+<th>DORA</th>
+<th>FRB</th>
+<th>HKMA</th>
+<th>PRA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Executive Summary</td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+</tr>
+<tr>
+<td>Technical Report</td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+</tr>
+<tr>
+<td>Finding Details with CVSS</td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+</tr>
+<tr>
+<td>Threat Intelligence Report</td>
+<td>TLPT</td>
+<td>Optional</td>
+<td>iCAST</td>
+<td>CBEST</td>
+</tr>
+<tr>
+<td>Finding-to-Control Mapping</td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+</tr>
+<tr>
+<td>Retest Evidence</td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+<td><span style="color:#22c55e; font-weight:bold;">✓</span></td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>9. Risk Prioritization</h2><div class="kicker">PART V: REGULATORY EXECUTION</div></div><div class="md-content">
+<h3>9.1 Severity Classification</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Rating</th>
+<th>CVSS Range</th>
+<th>Definition</th>
+<th>Generic SLA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Critical</strong></td>
+<td>9.0-10.0</td>
+<td>Exploitable, wide impact</td>
+<td>Immediate</td>
+</tr>
+<tr>
+<td><strong>High</strong></td>
+<td>7.0-8.9</td>
+<td>Exploitable, significant impact</td>
+<td>7 days</td>
+</tr>
+<tr>
+<td><strong>Medium</strong></td>
+<td>4.0-6.9</td>
+<td>Potentially exploitable</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td><strong>Low</strong></td>
+<td>0.1-3.9</td>
+<td>Difficult to exploit</td>
+<td>90 days</td>
+</tr>
+<tr>
+<td><strong>Informational</strong></td>
+<td>N/A</td>
+<td>Observation</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3>9.2 Framework-Specific Adjustments</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Framework</th>
+<th>Critical Definition</th>
+<th>High Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DORA</strong></td>
+<td>Threat to critical functions</td>
+<td>Significant security weakness</td>
+</tr>
+<tr>
+<td><strong>FRB</strong></td>
+<td>Systemic risk to core banking</td>
+<td>Major risk to availability/integrity</td>
+</tr>
+<tr>
+<td><strong>HKMA</strong></td>
+<td>Compromise of critical systems</td>
+<td>Substantial access breach</td>
+</tr>
+<tr>
+<td><strong>PRA</strong></td>
+<td>Successful CBEST scenario</td>
+<td>High impact on CBS</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>10. Sign-Off</h2><div class="kicker">PART V: REGULATORY EXECUTION</div></div><div class="md-content">
+<h3>Client Certification</h3>
+<p>I certify that the compliance scope described in this document is accurate and complete.</p>
+<p><strong>Name</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Title</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Signature</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Date</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<h3>Testing Provider Acceptance</h3>
+<p><strong>Name</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Title</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Signature</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Date</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>Document History</h2><div class="kicker">PART V: REGULATORY EXECUTION</div></div><div class="md-content">
+<table class="v33-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>[Date]</td>
+<td>[Author]</td>
+<td>Initial version</td>
+</tr>
+</tbody>
+</table></div></div><h1>Penetration Testing Scope Statement Template</h1>
+<p><strong>Document Type</strong>: Scope Definition<br />
+<strong>Version</strong>: 2.0<br />
+<strong>Date</strong>: [DATE]<br />
+<strong>Classification</strong>: Confidential<br />
+<strong>Industry</strong>: [Investment Management / Financial Services / Government Contracting]</p>
+<hr />
+<div class="md-section"><div class="section-head"><h2>1. Executive Information</h2><div class="kicker">PART VI: SCOPE DEFINITION</div></div><div class="md-content">
+<table class="v33-table">
+<thead>
+<tr>
+<th>Field</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Project Name</strong></td>
+<td>[Project/Engagement Name]</td>
+</tr>
+<tr>
+<td><strong>Client Organization</strong></td>
+<td>[Company Name]</td>
+</tr>
+<tr>
+<td><strong>Client Contact</strong></td>
+<td>[Name, Title, Email, Phone]</td>
+</tr>
+<tr>
+<td><strong>Testing Provider</strong></td>
+<td>[Company Name]</td>
+</tr>
+<tr>
+<td><strong>Tester Lead</strong></td>
+<td>[Name, Email, Phone]</td>
+</tr>
+<tr>
+<td><strong>Engagement Manager</strong></td>
+<td>[Name, Email, Phone]</td>
+</tr>
+<tr>
+<td><strong>Scope Effective Date</strong></td>
+<td>[Start Date]</td>
+</tr>
+<tr>
+<td><strong>Scope Expiration Date</strong></td>
+<td>[End Date]</td>
+</tr>
+<tr>
+<td><strong>Assessment Tier</strong></td>
+<td>[Tier 1 (Critical) / Tier 2 (High) / Tier 3 (Medium) / Tier 4 (Low)]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>2. Business Context</h2><div class="kicker">PART VI: SCOPE DEFINITION</div></div><div class="md-content">
+<h3>2.1 Purpose of Assessment</h3>
+<p>```
+[Describe why this penetration test is being conducted]</p>
+<p>Example:
+Annual security assessment required for DORA TLPT compliance and SOC 2 Type II 
+certification. The assessment will evaluate the security posture of customer-facing 
+applications, core banking systems, and internal network infrastructure to 
+identify vulnerabilities before they can be exploited by threat actors.
+```</p>
+<h3>2.2 Applicable Regulations</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Regulation</th>
+<th>Jurisdiction</th>
+<th>Testing Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[DORA]</td>
+<td>[EU]</td>
+<td>[Threat-Led PT / Annual PT]</td>
+</tr>
+<tr>
+<td>[PCI DSS]</td>
+<td>[Global]</td>
+<td>[Annual / After Changes]</td>
+</tr>
+<tr>
+<td>[SWIFT CSP]</td>
+<td>[Global]</td>
+<td>[Annual]</td>
+</tr>
+<tr>
+<td>[MAS TRM]</td>
+<td>[Singapore]</td>
+<td>[Annual]</td>
+</tr>
+<tr>
+<td>[SEC/FINRA]</td>
+<td>[US]</td>
+<td>[Annual (Recommended)]</td>
+</tr>
+<tr>
+<td>[SAMA]</td>
+<td>[Saudi Arabia]</td>
+<td>[Annual]</td>
+</tr>
+<tr>
+<td>[Other]</td>
+<td>[Other]</td>
+<td>[Other]</td>
+</tr>
+</tbody>
+</table>
+<h3>2.3 Business Objectives</h3>
+<ul>
+<li>[ ] Identify critical vulnerabilities before exploitation</li>
+<li>[ ] Meet compliance requirements ([DORA / PCI DSS / SWIFT CSP / MAS / Other])</li>
+<li>[ ] Validate effectiveness of existing security controls</li>
+<li>[ ] Assess readiness for new system deployment</li>
+<li>[ ] Support security awareness program</li>
+<li>[ ] Other: <strong><em>_</em></strong><strong><em>_</em></strong>_</li>
+</ul>
+<h3>2.4 Success Criteria</h3>
+<p>```
+[Define what constitutes a successful assessment]</p>
+<p>Example:
+- All critical and high-severity vulnerabilities identified and documented
+- Testing completed within agreed timeline
+- Comprehensive report delivered within 2 weeks of testing completion
+- Client able to use findings to remediate vulnerabilities within SLA
+- Regulatory compliance evidence documented
+```</p>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>3. Technical Scope</h2><div class="kicker">PART VI: SCOPE DEFINITION</div></div><div class="md-content">
+<h3>3.1 In-Scope Assets - Core Banking &amp; Financial Systems</h3>
+<h4>Core Banking Systems</h4>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Asset ID</th>
+<th>Name/Description</th>
+<th>Type</th>
+<th>Owner</th>
+<th>Data Sensitivity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CORE-001</td>
+<td>[Core Banking Platform]</td>
+<td>[Temenos/FLEXCUBE/Other]</td>
+<td>[Owner]</td>
+<td>[Critical - Financial Data]</td>
+</tr>
+<tr>
+<td>CORE-002</td>
+<td>[Payment Processing]</td>
+<td>[Type]</td>
+<td>[Owner]</td>
+<td>[Critical - Transaction Data]</td>
+</tr>
+</tbody>
+</table>
+<h4>Trading &amp; Treasury Systems</h4>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Asset ID</th>
+<th>Name/Description</th>
+<th>Type</th>
+<th>Owner</th>
+<th>Data Sensitivity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRAD-001</td>
+<td>[Trading Platform]</td>
+<td>[Type]</td>
+<td>[Owner]</td>
+<td>[Critical - Market Data]</td>
+</tr>
+<tr>
+<td>TRAD-002</td>
+<td>[Treasury System]</td>
+<td>[Type]</td>
+<td>[Owner]</td>
+<td>[Critical - Financial Data]</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 In-Scope Assets - Digital Channels</h3>
+<h4>Internet &amp; Mobile Banking</h4>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Asset ID</th>
+<th>Name/Description</th>
+<th>Platform</th>
+<th>URL/Endpoint</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DIG-001</td>
+<td>[Internet Banking]</td>
+<td>Web</td>
+<td>[URL]</td>
+<td>[Owner]</td>
+</tr>
+<tr>
+<td>DIG-002</td>
+<td>[Mobile Banking - iOS]</td>
+<td>iOS</td>
+<td>[Bundle ID]</td>
+<td>[Owner]</td>
+</tr>
+<tr>
+<td>DIG-003</td>
+<td>[Mobile Banking - Android]</td>
+<td>Android</td>
+<td>[Package]</td>
+<td>[Owner]</td>
+</tr>
+</tbody>
+</table>
+<h4>ATM/POS Network</h4>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Asset ID</th>
+<th>Name/Description</th>
+<th>Type</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ATM-001</td>
+<td>[ATM Network]</td>
+<td>ATM</td>
+<td>[Owner]</td>
+</tr>
+<tr>
+<td>POS-001</td>
+<td>[POS Network]</td>
+<td>POS</td>
+<td>[Owner]</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 In-Scope Assets - Network Infrastructure</h3>
+<h4>External Assets (Internet-Facing)</h4>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Asset ID</th>
+<th>Name/Description</th>
+<th>IP Address/URL</th>
+<th>Owner</th>
+<th>Data Sensitivity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EXT-001</td>
+<td>[Name]</td>
+<td>[IP/URL]</td>
+<td>[Owner]</td>
+<td>[Public/Internal/Confidential]</td>
+</tr>
+<tr>
+<td>EXT-002</td>
+<td>[Name]</td>
+<td>[IP/URL]</td>
+<td>[Owner]</td>
+<td>[Public/Internal/Confidential]</td>
+</tr>
+<tr>
+<td>EXT-003</td>
+<td>[Name]</td>
+<td>[IP/URL]</td>
+<td>[Owner]</td>
+<td>[Public/Internal/Confidential]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total External IPs/URLs</strong>: ___</p>
+<h4>Internal Assets</h4>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Asset ID</th>
+<th>Name/Description</th>
+<th>Network Segment</th>
+<th>Owner</th>
+<th>Data Sensitivity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INT-001</td>
+<td>[Name]</td>
+<td>[VLAN/Subnet]</td>
+<td>[Owner]</td>
+<td>[Public/Internal/Confidential]</td>
+</tr>
+<tr>
+<td>INT-002</td>
+<td>[Name]</td>
+<td>[VLAN/Subnet]</td>
+<td>[Owner]</td>
+<td>[Public/Internal/Confidential]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Internal Hosts</strong>: ___</p>
+<h3>3.4 In-Scope Assets - Applications</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>App ID</th>
+<th>Application Name</th>
+<th>Type</th>
+<th>URL/Endpoint</th>
+<th>Authentication</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APP-001</td>
+<td>[Name]</td>
+<td>Web/Mobile/API</td>
+<td>[URL]</td>
+<td>[Method]</td>
+<td>[Owner]</td>
+</tr>
+<tr>
+<td>APP-002</td>
+<td>[Name]</td>
+<td>Web/Mobile/API</td>
+<td>[URL]</td>
+<td>[Method]</td>
+<td>[Owner]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Applications</strong>: ___</p>
+<h3>3.5 In-Scope Assets - Cloud Infrastructure</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Cloud ID</th>
+<th>Provider</th>
+<th>Services</th>
+<th>Account/Project</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CLD-001</td>
+<td>AWS/Azure/GCP</td>
+<td>[Services]</td>
+<td>[Account]</td>
+<td>[Owner]</td>
+</tr>
+<tr>
+<td>CLD-002</td>
+<td>AWS/Azure/GCP</td>
+<td>[Services]</td>
+<td>[Account]</td>
+<td>[Owner]</td>
+</tr>
+</tbody>
+</table>
+<h3>3.6 In-Scope Assets - Payment Systems</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Payment ID</th>
+<th>System Name</th>
+<th>Type</th>
+<th>Owner</th>
+<th>Regulatory Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PMT-001</td>
+<td>[SWIFT Alliance]</td>
+<td>SWIFT</td>
+<td>[Owner]</td>
+<td>[SWIFT CSP]</td>
+</tr>
+<tr>
+<td>PMT-003</td>
+<td>[ACH/Payment]</td>
+<td>ACH</td>
+<td>[Owner]</td>
+<td>[NACHA/Regulatory]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>3.7 Out-of-Scope Assets</h3>
+<p>The following are explicitly <strong>excluded</strong> from this assessment:</p>
+<ul>
+<li>[ ] Production database servers (write access limited)</li>
+<li>[ ] Mobile applications (separate engagement)</li>
+<li>[ ] Third-party vendor systems not owned by client</li>
+<li>[ ] Physical security systems (unless specifically requested)</li>
+<li>[ ] Social engineering (unless specifically requested)</li>
+<li>[ ] Third-party SaaS applications (except: <strong><em>_</em></strong>______)</li>
+<li>[ ] Legacy systems (end-of-life, documented risk)</li>
+<li>[ ] Physical security assessments</li>
+<li>[ ] Social engineering assessments</li>
+<li>[ ] Denial of Service testing</li>
+<li>[ ] Supply chain assessments</li>
+<li>[ ] [Other exclusions]</li>
+</ul>
+<p><strong>Reason for Exclusions</strong>: 
+<code>[Explain why certain assets are out of scope and any compensating controls]</code></p>
+<hr />
+<h3>3.3 Network Diagrams</h3>
+<p><strong>Attached</strong>: <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No<br />
+<strong>Location</strong>: [Reference to attached diagrams or Confluence URL]</p>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>4. Testing Types</h2><div class="kicker">PART VI: SCOPE DEFINITION</div></div><div class="md-content">
+<h3>4.1 Required Testing Types</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Test Type</th>
+<th>Included</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>External Network Assessment</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span></td>
+<td>[Any limitations]</td>
+</tr>
+<tr>
+<td>Internal Network Assessment</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span></td>
+<td>[VLANs excluded]</td>
+</tr>
+<tr>
+<td>Web Application Testing</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span></td>
+<td>[OWASP Top 10 + business logic]</td>
+</tr>
+<tr>
+<td>API Security Testing</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span></td>
+<td>[REST/GraphQL/SOAP]</td>
+</tr>
+<tr>
+<td>Mobile Application Testing</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span></td>
+<td>[iOS/Android/Backend]</td>
+</tr>
+<tr>
+<td>Cloud Security Assessment</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span></td>
+<td>[AWS/Azure/GCP]</td>
+</tr>
+<tr>
+<td>Wireless Network Assessment</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span></td>
+<td>[Specific SSIDs]</td>
+</tr>
+<tr>
+<td>Social Engineering</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span></td>
+<td>[Phishing/Physical]</td>
+</tr>
+<tr>
+<td>Red Team / Full Attack Simulation</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span></td>
+<td>[Objectives]</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 Testing Methodology</h3>
+<p>The following methodologies will be followed:</p>
+<ul>
+<li>[ ] NIST SP 800-115 (Technical Guide to Security Testing)</li>
+<li>[ ] OWASP Testing Guide v4.2</li>
+<li>[ ] OWASP ASVS</li>
+<li>[ ] PTES (Penetration Testing Execution Standard)</li>
+<li>[ ] CIS Controls Benchmark</li>
+<li>[ ] Cloud-specific ([CIS Benchmark / Vendor Best Practices])</li>
+<li>[ ] Custom methodology (describe below)</li>
+</ul>
+<p><code>[If custom methodology, describe approach]</code></p>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>5. Compliance Requirements</h2><div class="kicker">PART VI: SCOPE DEFINITION</div></div><div class="md-content">
+<h3>5.1 Applicable Frameworks</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Framework</th>
+<th>Requirement</th>
+<th>Testing Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> ISO 27001</td>
+<td>A.12.6.1</td>
+<td>[Vulnerability management]</td>
+</tr>
+<tr>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> GDPR</td>
+<td>Article 32</td>
+<td>[Technical measures]</td>
+</tr>
+<tr>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> SOX</td>
+<td>IT General Controls</td>
+<td>[Segregation of duties]</td>
+</tr>
+<tr>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> NIST CSF</td>
+<td>PR.AC</td>
+<td>[Access controls]</td>
+</tr>
+<tr>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Industry-Specific</td>
+<td>[Name]</td>
+<td>[Requirements]</td>
+</tr>
+</tbody>
+</table>
+<h3>5.2 Compliance Deliverables</h3>
+<ul>
+<li>[ ] Compliance-specific findings mapping</li>
+<li>[ ] Remediation guidance for compliance gaps</li>
+<li>[ ] Attestation letter for auditors</li>
+<li>[ ] Executive summary for board</li>
+<li>[ ] Raw scan data for auditor review</li>
+</ul>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>6. Constraints and Restrictions</h2><div class="kicker">PART VI: SCOPE DEFINITION</div></div><div class="md-content">
+<h3>6.1 Time Constraints</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Day</th>
+<th>Time Window</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Monday</td>
+<td>[Allowed/Hours]</td>
+<td>[Notes]</td>
+</tr>
+<tr>
+<td>Tuesday-Thursday</td>
+<td>[Allowed/Hours]</td>
+<td>[Notes]</td>
+</tr>
+<tr>
+<td>Friday</td>
+<td>[Allowed/Hours]</td>
+<td>[Notes]</td>
+</tr>
+<tr>
+<td>Weekend</td>
+<td>[Allowed/Hours]</td>
+<td>[Notes]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Testing Window</strong>: [Start Date] to [End Date]</p>
+<h3>6.2 Technical Restrictions</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Restriction</th>
+<th>Affected Systems</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No DoS testing</td>
+<td>[Systems]</td>
+<td>Excluded from scope</td>
+</tr>
+<tr>
+<td>No credential brute force</td>
+<td>[Systems]</td>
+<td>Limited to 5 attempts</td>
+</tr>
+<tr>
+<td>No database deletion</td>
+<td>[Systems]</td>
+<td>Read-only access only</td>
+</tr>
+<tr>
+<td>No malware deployment</td>
+<td>[Systems]</td>
+<td>[Alternative approach]</td>
+</tr>
+<tr>
+<td>Source IP restriction</td>
+<td>[All/Specific]</td>
+<td>[Whitelisted IPs below]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Whitelisted Tester IPs</strong>:
+<code>[IP 1]
+[IP 2]</code></p>
+<h3>6.3 Data Handling</h3>
+<ul>
+<li>[ ] No data exfiltration allowed</li>
+<li>[ ] Evidence limited to screenshots/evidence files</li>
+<li>[ ] PII handling required (PII Processing Agreement attached)</li>
+<li>[ ] Data retention: 90 days post engagement</li>
+</ul>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>7. Authorization and Approval</h2><div class="kicker">PART VI: SCOPE DEFINITION</div></div><div class="md-content">
+<h3>7.1 Authorization Matrix</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Role</th>
+<th>Name</th>
+<th>Title</th>
+<th>Signature</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System Owner</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Network Owner</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Lead</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Legal Counsel</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Executive Sponsor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>7.2 Supporting Documents Attached</h3>
+<ul>
+<li>[ ] Network diagrams</li>
+<li>[ ] Asset inventory</li>
+<li>[ ] Authorization letters</li>
+<li>[ ] PII Processing Agreement</li>
+<li>[ ] Data Classification Guide</li>
+<li>[ ] Previous penetration test reports</li>
+<li>[ ] Security policies</li>
+</ul>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>8. Sign-Off</h2><div class="kicker">PART VI: SCOPE DEFINITION</div></div><div class="md-content">
+<p>By signing below, the parties confirm that:</p>
+<ol>
+<li>The assets and scope listed above are accurate and authorized for testing</li>
+<li>All necessary approvals have been obtained</li>
+<li>Rules of Engagement have been reviewed and accepted</li>
+<li>Emergency contacts have been established</li>
+</ol>
+<h3>Client Authorization</h3>
+<p><strong>Name</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Title</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Signature</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Date</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<h3>Testing Provider Acceptance</h3>
+<p><strong>Name</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Title</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Signature</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Date</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<hr />
+<p><strong>Document Version History</strong></p>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>[Date]</td>
+<td>[Author]</td>
+<td>Initial version</td>
+</tr>
+</tbody>
+</table></div></div><h1>Asset Inventory Template</h1>
+<p><strong>Project</strong>: [Project Name]<br />
+<strong>Date</strong>: [Date]<br />
+<strong>Owner</strong>: [Name]<br />
+<strong>Classification</strong>: Confidential  </p>
+<hr />
+<div class="md-section"><div class="section-head"><h2>1. Asset Registry</h2><div class="kicker">PART VII: ASSET INVENTORY</div></div><div class="md-content">
+<h3>1.1 External Assets (Internet-Facing)</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Asset ID</th>
+<th>Name</th>
+<th>Type</th>
+<th>IP Address</th>
+<th>URL/Domain</th>
+<th>Owner</th>
+<th>Data Sensitivity</th>
+<th>Tier</th>
+<th>Last Security Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EXT-001</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EXT-002</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EXT-003</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EXT-004</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EXT-005</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Asset Type Legend</strong>: Web Server | DNS | Email | VPN | CDN | Cloud LB | API | Trade Gateway | Open Banking API
+<strong>Data Sensitivity Legend</strong>: Public | Internal | Confidential | Restricted | Critical Financial
+<strong>Tier Legend</strong>: 1 = Critical (CBS) | 2 = Important | 3 = Standard</p>
+<h3>1.2 Internal Network Assets</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Asset ID</th>
+<th>Name</th>
+<th>Type</th>
+<th>IP Address</th>
+<th>MAC Address</th>
+<th>VLAN/Subnet</th>
+<th>Owner</th>
+<th>Data Sensitivity</th>
+<th>Tier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INT-001</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>INT-002</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>INT-003</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>INT-004</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>INT-005</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Asset Type Legend</strong>: Server | Workstation | Network Device | Database | Mainframe | Payment Gateway | Core Banking</p>
+<h3>1.3 Application Assets</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>App ID</th>
+<th>Name</th>
+<th>Type</th>
+<th>URL/Endpoint</th>
+<th>Platform</th>
+<th>Auth Method</th>
+<th>Users</th>
+<th>Data Sensitivity</th>
+<th>Owner</th>
+<th>Tier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APP-001</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>APP-002</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>APP-003</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>APP-004</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>APP-005</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Application Type</strong>: Web | Mobile | API | Desktop | Embedded | SaaS (Third-Party ICT)
+<strong>Authentication Method</strong>: None | Basic Auth | Form-based | OAuth 2.0 | SAML | LDAP | API Key | JWT | Multi-factor</p>
+<h3>1.4 Cloud Infrastructure</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Cloud ID</th>
+<th>Provider</th>
+<th>Account/Project</th>
+<th>Region</th>
+<th>Services</th>
+<th>Owner</th>
+<th>Tier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CLD-001</td>
+<td>AWS/Azure/GCP</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CLD-002</td>
+<td>AWS/Azure/GCP</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CLD-003</td>
+<td>AWS/Azure/GCP</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Services</strong>: Compute | Storage | Database | Networking | Security | Analytics | Mainframe as a Service</p>
+<h3>1.5 Mobile Applications</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Mobile ID</th>
+<th>App Name</th>
+<th>Platform</th>
+<th>Version</th>
+<th>Backend URL</th>
+<th>Owner</th>
+<th>App Store</th>
+<th>Tier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MOB-001</td>
+<td></td>
+<td>iOS/Android</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes/No</td>
+<td></td>
+</tr>
+<tr>
+<td>MOB-002</td>
+<td></td>
+<td>iOS/Android</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes/No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>2. Network Architecture</h2><div class="kicker">PART VII: ASSET INVENTORY</div></div><div class="md-content">
+<h3>2.1 Network Zones</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Zone</th>
+<th>Description</th>
+<th>IP Range</th>
+<th>Security Level</th>
+<th>Connected Zones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DMZ</td>
+<td>External facing web and API</td>
+<td></td>
+<td>High</td>
+<td>Internal, Internet</td>
+</tr>
+<tr>
+<td>Core Banking</td>
+<td>Ledger, balances, core apps</td>
+<td></td>
+<td>Critical</td>
+<td>Internal</td>
+</tr>
+<tr>
+<td>Trading DMZ</td>
+<td>Low latency execution / fix</td>
+<td></td>
+<td>Critical</td>
+<td>External exchanges</td>
+</tr>
+<tr>
+<td>Payment Network</td>
+<td>SWIFT, SEPA</td>
+<td></td>
+<td>Critical</td>
+<td>Core Banking</td>
+</tr>
+<tr>
+<td>Internal</td>
+<td>Corporate workstations</td>
+<td></td>
+<td>Medium</td>
+<td>DMZ, Data Center</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 Network Diagram Reference</h3>
+<p><strong>Attached</strong>: <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No<br />
+<strong>Location</strong>: [Reference link or file path]</p>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>3. Third-Party Connections (ICT Providers)</h2><div class="kicker">PART VII: ASSET INVENTORY</div></div><div class="md-content">
+<table class="v33-table">
+<thead>
+<tr>
+<th>Third Party</th>
+<th>System</th>
+<th>Connection Type</th>
+<th>Data Shared</th>
+<th>Risk Level</th>
+<th>Contract Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>VPN/Direct/API</td>
+<td></td>
+<td>Low/Med/High</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>VPN/Direct/API</td>
+<td></td>
+<td>Low/Med/High</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>VPN/Direct/API</td>
+<td></td>
+<td>Low/Med/High</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>4. Data Classification Summary</h2><div class="kicker">PART VII: ASSET INVENTORY</div></div><div class="md-content">
+<table class="v33-table">
+<thead>
+<tr>
+<th>Classification</th>
+<th>Examples</th>
+<th>Systems</th>
+<th>Risk Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Restricted</strong></td>
+<td>SWIFT messaging, PANs, Trade Secrets, Auth Tokens</td>
+<td></td>
+<td>Highest</td>
+</tr>
+<tr>
+<td><strong>Confidential</strong></td>
+<td>Customer Financial Data, Market Orders, PII</td>
+<td></td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>Internal</strong></td>
+<td>Corporate policies, internal ops</td>
+<td></td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Public</strong></td>
+<td>Marketing materials, public disclosures</td>
+<td></td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>5. Compliance Scope Mapping</h2><div class="kicker">PART VII: ASSET INVENTORY</div></div><div class="md-content">
+<table class="v33-table">
+<thead>
+<tr>
+<th>Compliance Framework</th>
+<th>Data Types / Focus</th>
+<th>Systems in Scope</th>
+<th>Testing Frequency Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DORA</td>
+<td>Critical financial &amp; payment services</td>
+<td></td>
+<td>Annual (TLPT 3 yrs)</td>
+</tr>
+<tr>
+<td>FRB Supervision</td>
+<td>Core banking and systemic risk</td>
+<td></td>
+<td>Annual</td>
+</tr>
+<tr>
+<td>HKMA iCAST</td>
+<td>CFI designated critical systems</td>
+<td></td>
+<td>Simulation based</td>
+</tr>
+<tr>
+<td>PRA CBEST</td>
+<td>Critical business services (CBS)</td>
+<td></td>
+<td>2-3 years</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>6. Asset Criticality Assessment</h2><div class="kicker">PART VII: ASSET INVENTORY</div></div><div class="md-content">
+<h3>6.1 Business Impact Factors</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Factor</th>
+<th>Weight</th>
+<th>Assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Systemic Financial Impact</td>
+<td>25%</td>
+<td>$___ per hour transaction loss</td>
+</tr>
+<tr>
+<td>Customer Financial Impact</td>
+<td>20%</td>
+<td>___ retail/commercial customers</td>
+</tr>
+<tr>
+<td>Reputational Impact</td>
+<td>20%</td>
+<td>High/Medium/Low</td>
+</tr>
+<tr>
+<td>Regulatory Impact</td>
+<td>15%</td>
+<td>Potential license revocation</td>
+</tr>
+<tr>
+<td>Operational Impact</td>
+<td>10%</td>
+<td>Recovery time</td>
+</tr>
+<tr>
+<td>Data Sensitivity</td>
+<td>10%</td>
+<td>Classification</td>
+</tr>
+</tbody>
+</table>
+<h3>6.2 Asset Criticality Matrix</h3>
+<p><code>Low Impact          Medium Impact          High Impact
+                ┌─────────────────┬─────────────────┬─────────────────┐
+  High Likelihood │     HIGH         │    CRITICAL      │    CRITICAL     │
+                ├─────────────────┼─────────────────┼─────────────────┤
+ Medium Likelihood │     MEDIUM       │     HIGH         │    CRITICAL     │
+                ├─────────────────┼─────────────────┼─────────────────┤
+   Low Likelihood  │      LOW         │     MEDIUM       │      HIGH       │
+                └─────────────────┴─────────────────┴─────────────────┘</code></p>
+<hr />
+<p><strong>Document Maintenance</strong></p>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>[Date]</td>
+<td>[Author]</td>
+<td>Initial asset inventory</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Next Review Date</strong>: [Date]</p></div></div><h1>Rules of Engagement Template</h1>
+<p><strong>Document Type</strong>: Rules of Engagement<br />
+<strong>Version</strong>: 1.0<br />
+<strong>Date</strong>: [DATE]<br />
+<strong>Related Scope</strong>: [Reference to Scope Statement]<br />
+<strong>Classification</strong>: Confidential  </p>
+<hr />
+<div class="md-section"><div class="section-head"><h2>1. Introduction</h2><div class="kicker">PART VIII: RULES OF ENGAGEMENT</div></div><div class="md-content">
+<h3>1.1 Purpose</h3>
+<p>This document establishes the rules, procedures, and constraints for conducting authorized penetration testing activities. All parties must adhere to these rules to ensure:
+- Legal compliance
+- Business continuity
+- Data protection
+- Safe testing practices</p>
+<h3>1.2 Scope of This Document</h3>
+<p>These rules govern:
+- Permitted testing techniques
+- Prohibited activities
+- Communication procedures
+- Emergency protocols
+- Data handling requirements
+- Evidence preservation</p>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>2. Authorization</h2><div class="kicker">PART VIII: RULES OF ENGAGEMENT</div></div><div class="md-content">
+<h3>2.1 Legal Authorization</h3>
+<p>```
+AUTHORIZED BY: [Client Organization Name]
+AUTHORIZATION DATE: [Date]
+SCOPE REFERENCE: [Linked Scope Statement ID]</p>
+<p>This penetration testing engagement is conducted with explicit written 
+authorization from the system owners. All testing activities are performed 
+against systems for which the client has legal authority to permit security testing.
+```</p>
+<h3>2.2 Authorization Boundaries</h3>
+<ul>
+<li>Testing is <strong>limited to assets</strong> listed in the Scope Statement</li>
+<li>Testing is <strong>valid only during</strong> the agreed testing window</li>
+<li>Testing must <strong>adhere to</strong> all constraints listed in Section 4</li>
+</ul>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>3. Communication Procedures</h2><div class="kicker">PART VIII: RULES OF ENGAGEMENT</div></div><div class="md-content">
+<h3>3.1 Primary Contacts</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Role</th>
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+<th>Slack/Teams</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Client Project Lead</strong></td>
+<td>[Name]</td>
+<td>[Email]</td>
+<td>[Phone]</td>
+<td>[Handle]</td>
+</tr>
+<tr>
+<td><strong>Client Security Lead</strong></td>
+<td>[Name]</td>
+<td>[Email]</td>
+<td>[Phone]</td>
+<td>[Handle]</td>
+</tr>
+<tr>
+<td><strong>Test Team Lead</strong></td>
+<td>[Name]</td>
+<td>[Email]</td>
+<td>[Phone]</td>
+<td>[Handle]</td>
+</tr>
+<tr>
+<td><strong>Test Engineer</strong></td>
+<td>[Name]</td>
+<td>[Email]</td>
+<td>[Phone]</td>
+<td>[Handle]</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Escalation Contacts (24/7)</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Role</th>
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Emergency - Client</strong></td>
+<td>[Name]</td>
+<td>[Email]</td>
+<td>[Phone]</td>
+</tr>
+<tr>
+<td><strong>Emergency - Test Team</strong></td>
+<td>[Name]</td>
+<td>[Email]</td>
+<td>[Phone]</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 Communication Schedule</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Meeting/Frequency</th>
+<th>Purpose</th>
+<th>Attendees</th>
+<th>Format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kickoff Call</td>
+<td>Scope review, procedures</td>
+<td>All contacts</td>
+<td>Video call</td>
+</tr>
+<tr>
+<td>Daily Standup (optional)</td>
+<td>Status update</td>
+<td>Leads</td>
+<td>Slack/Teams</td>
+</tr>
+<tr>
+<td>Weekly Report</td>
+<td>Findings summary</td>
+<td>Project leads</td>
+<td>Email + Call</td>
+</tr>
+<tr>
+<td>Critical Finding Alert</td>
+<td>Immediate notification</td>
+<td>Security lead</td>
+<td>Phone + Email</td>
+</tr>
+<tr>
+<td>Exit Interview</td>
+<td>Preliminary findings</td>
+<td>All contacts</td>
+<td>Video call</td>
+</tr>
+<tr>
+<td>Final Debrief</td>
+<td>Report walkthrough</td>
+<td>Stakeholders</td>
+<td>In-person/Video</td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 Communication Channels</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Channel</th>
+<th>Use Case</th>
+<th>Response Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email</td>
+<td>Formal communications, reports</td>
+<td>Within 4 business hours</td>
+</tr>
+<tr>
+<td>Slack/Teams</td>
+<td>Quick questions, status</td>
+<td>Within 2 hours during testing</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>Critical issues, emergencies</td>
+<td>Immediate</td>
+</tr>
+<tr>
+<td>Encrypted Email</td>
+<td>Sensitive findings</td>
+<td>Within 4 business hours</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>4. Testing Constraints</h2><div class="kicker">PART VIII: RULES OF ENGAGEMENT</div></div><div class="md-content">
+<h3>4.1 Absolute Prohibitions</h3>
+<p>The following activities are <strong>NEVER permitted</strong> without explicit written approval:</p>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Prohibited Activity</th>
+<th>Rationale</th>
+<th>Exception Available?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Denial of Service (DoS) attacks</td>
+<td>Business continuity</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+<tr>
+<td>Data exfiltration</td>
+<td>Data protection</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+<tr>
+<td>Physical intrusion</td>
+<td>Legal/safety</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+<tr>
+<td>Social engineering (non-physical)</td>
+<td>Human safety</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+<tr>
+<td>Modifying system configurations</td>
+<td>Availability</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+<tr>
+<td>Deleting data or logs</td>
+<td>Evidence integrity</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+<tr>
+<td>Deploying malware/backdoors</td>
+<td>Legal</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+<tr>
+<td>Brute force attacks on auth systems</td>
+<td>Account lockout</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+<tr>
+<td>Testing production payment systems</td>
+<td>Revenue impact</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 Testing Time Restrictions</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Day</th>
+<th>Allowed Hours</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Monday</td>
+<td>TBD</td>
+<td></td>
+</tr>
+<tr>
+<td>Tuesday</td>
+<td>TBD</td>
+<td></td>
+</tr>
+<tr>
+<td>Wednesday</td>
+<td>TBD</td>
+<td></td>
+</tr>
+<tr>
+<td>Thursday</td>
+<td>TBD</td>
+<td></td>
+</tr>
+<tr>
+<td>Friday</td>
+<td>TBD</td>
+<td></td>
+</tr>
+<tr>
+<td>Saturday</td>
+<td>TBD</td>
+<td></td>
+</tr>
+<tr>
+<td>Sunday</td>
+<td>TBD</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Testing Window</strong>: [Start Date/Time] to [End Date/Time]</p>
+<h3>4.3 Rate Limiting</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Test Type</th>
+<th>Limitation</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Port scans</td>
+<td>Max [X] packets/second</td>
+<td>Nmap rate limit</td>
+</tr>
+<tr>
+<td>HTTP requests</td>
+<td>Max [X] requests/second</td>
+<td>Burp throttle</td>
+</tr>
+<tr>
+<td>Authentication attempts</td>
+<td>Max [X] per account</td>
+<td>To prevent lockout</td>
+</tr>
+<tr>
+<td>Credential stuffing</td>
+<td><strong>NOT ALLOWED</strong></td>
+<td>Prohibited activity</td>
+</tr>
+</tbody>
+</table>
+<h3>4.4 Source IP Whitelisting</h3>
+<p>All testing must originate from the following IP addresses:</p>
+<p>```
+PRIMARY TESTER IPs:
+- TBD</p>
+<p>FAILOVER IPs:
+- TBD</p>
+<p>If testing must originate from other IPs, pre-approval required.
+```</p>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>5. Safety Protocols</h2><div class="kicker">PART VIII: RULES OF ENGAGEMENT</div></div><div class="md-content">
+<h3>5.1 Kill Switch Criteria</h3>
+<p>Testing must be <strong>immediately paused</strong> if any of the following occur:</p>
+<ul>
+<li>[ ] System becomes unresponsive or crashes</li>
+<li>[ ] Business-critical service disruption detected</li>
+<li>[ ] Alert from security operations center</li>
+<li>[ ] Unexpected data access (beyond test scope)</li>
+<li>[ ] Any legal concern raised</li>
+<li>[ ] Client requests immediate halt</li>
+<li>[ ] Evidence of active compromise by third party</li>
+</ul>
+<h3>5.2 Kill Switch Procedure</h3>
+<p><code>STEP 1: Testing engineer identifies kill switch trigger
+STEP 2: Immediately cease ALL active testing
+STEP 3: Document:
+        - What triggered the stop
+        - Last command/action performed
+        - Systems affected
+        - Evidence collected
+STEP 4: Contact Client Emergency Contact within 15 minutes
+STEP 5: Await written authorization before resuming
+STEP 6: Resume only after root cause addressed</code></p>
+<h3>5.3 System Impact Thresholds</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Impact Level</th>
+<th>Definition</th>
+<th>Required Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>None</strong></td>
+<td>No observable impact</td>
+<td>Continue testing</td>
+</tr>
+<tr>
+<td><strong>Minor</strong></td>
+<td>Brief slowdown, normal logs</td>
+<td>Document, continue</td>
+</tr>
+<tr>
+<td><strong>Moderate</strong></td>
+<td>Service degradation</td>
+<td>Pause, notify client</td>
+</tr>
+<tr>
+<td><strong>Severe</strong></td>
+<td>Service unavailable</td>
+<td>STOP, emergency protocol</td>
+</tr>
+<tr>
+<td><strong>Critical</strong></td>
+<td>Data breach/financial impact</td>
+<td>STOP, full incident response</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>6. Data Handling</h2><div class="kicker">PART VIII: RULES OF ENGAGEMENT</div></div><div class="md-content">
+<h3>6.1 Data Access Boundaries</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Access Permitted</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PII (Personally Identifiable Info)</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+<td>[Restrictions]</td>
+</tr>
+<tr>
+<td>Financial data</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+<td>[Restrictions]</td>
+</tr>
+<tr>
+<td>Healthcare data (PHI)</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+<td>[Restrictions]</td>
+</tr>
+<tr>
+<td>Authentication credentials</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+<td>[Restrictions]</td>
+</tr>
+<tr>
+<td>Business confidential</td>
+<td><span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Yes <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> No</td>
+<td>[Restrictions]</td>
+</tr>
+</tbody>
+</table>
+<h3>6.2 Evidence Handling</h3>
+<p>```
+EVIDENCE COLLECTION RULES:</p>
+<ol>
+<li>Only capture evidence necessary to demonstrate vulnerability</li>
+<li>Screenshots preferred over raw data</li>
+<li>No actual customer PII in screenshots</li>
+<li>Hash and preserve original evidence</li>
+<li>Encrypt all evidence at rest</li>
+<li>Delete evidence within 90 days of engagement close</li>
+<li>Evidence accessible only to named team members
+```</li>
+</ol>
+<h3>6.3 Data Exfiltration Prevention</h3>
+<ul>
+<li>[ ] Proof-of-concept only (no actual data theft)</li>
+<li>[ ] If sensitive data encountered, immediately document and stop</li>
+<li>[ ] Any exfiltrated data will be securely destroyed</li>
+<li>[ ] Client notified immediately if sensitive data accessed</li>
+</ul>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>7. Reporting Procedures</h2><div class="kicker">PART VIII: RULES OF ENGAGEMENT</div></div><div class="md-content">
+<h3>7.1 Finding Classification</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Severity</th>
+<th>CVSS Range</th>
+<th>Definition</th>
+<th>SLA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Critical</strong></td>
+<td>9.0-10.0</td>
+<td>Immediate threat, active exploitation risk</td>
+<td>24 hours</td>
+</tr>
+<tr>
+<td><strong>High</strong></td>
+<td>7.0-8.9</td>
+<td>Significant vulnerability, likely exploitation</td>
+<td>7 days</td>
+</tr>
+<tr>
+<td><strong>Medium</strong></td>
+<td>4.0-6.9</td>
+<td>Moderate risk, some exploitation potential</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td><strong>Low</strong></td>
+<td>0.1-3.9</td>
+<td>Limited risk, difficult exploitation</td>
+<td>90 days</td>
+</tr>
+<tr>
+<td><strong>Informational</strong></td>
+<td>N/A</td>
+<td>Best practice observation</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3>7.2 Critical Finding Notification</h3>
+<p>```
+CRITICAL FINDING PROCESS:</p>
+<ol>
+<li>Tester identifies potential critical finding</li>
+<li>Verify severity classification</li>
+<li>Document preliminary evidence</li>
+<li>Notify client security lead immediately</li>
+<li>Phone call (required)</li>
+<li>Follow-up email with details</li>
+<li>Client confirms receipt and understanding</li>
+<li>Provide detailed writeup within 24 hours</li>
+<li>Coordinate remediation timing</li>
+<li>Retest after remediation (if requested)
+```</li>
+</ol>
+<h3>7.3 Report Delivery</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Deliverable</th>
+<th>Audience</th>
+<th>Format</th>
+<th>Timeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Executive Summary</td>
+<td>C-Suite, Board</td>
+<td>PDF, 2-3 pages</td>
+<td>Final report</td>
+</tr>
+<tr>
+<td>Technical Report</td>
+<td>IT/Security Teams</td>
+<td>PDF, full detail</td>
+<td>Final report</td>
+</tr>
+<tr>
+<td>Risk Matrix</td>
+<td>Management</td>
+<td>Excel/CSV</td>
+<td>Weekly updates</td>
+</tr>
+<tr>
+<td>Raw Findings</td>
+<td>Security Team</td>
+<td>JSON/XML/CSV</td>
+<td>Final report</td>
+</tr>
+<tr>
+<td>Remediation Tracker</td>
+<td>IT Teams</td>
+<td>Spreadsheet</td>
+<td>With report</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>8. Confidentiality</h2><div class="kicker">PART VIII: RULES OF ENGAGEMENT</div></div><div class="md-content">
+<h3>8.1 Non-Disclosure</h3>
+<p>All information gathered during this engagement is confidential:
+- Test results and findings
+- System architecture and configurations
+- Vulnerability details
+- Security weaknesses</p>
+<h3>8.2 Data Retention</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Retention Period</th>
+<th>Destruction Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Evidence files</td>
+<td>90 days</td>
+<td>Secure erase</td>
+</tr>
+<tr>
+<td>Reports</td>
+<td>1 year</td>
+<td>Secure archive</td>
+</tr>
+<tr>
+<td>Working documents</td>
+<td>30 days</td>
+<td>Secure delete</td>
+</tr>
+<tr>
+<td>Communication records</td>
+<td>1 year</td>
+<td>Secure archive</td>
+</tr>
+</tbody>
+</table>
+<h3>8.3 Third-Party Disclosure</h3>
+<p>Findings may only be disclosed to:
+- Client organization and authorized personnel
+- Client's designated auditors (with written approval)
+- Legal authorities (if legally required)</p>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>9. Agreement and Signatures</h2><div class="kicker">PART VIII: RULES OF ENGAGEMENT</div></div><div class="md-content">
+<h3>9.1 Acceptance</h3>
+<p>By signing below, all parties agree to the rules and procedures outlined in this document.</p>
+<h3>Client Acceptance</h3>
+<p><strong>Name</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Title</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Signature</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Date</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<h3>Testing Provider Acceptance</h3>
+<p><strong>Name</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Title</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Signature</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Date</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<h3>Testing Engineer(s)</h3>
+<p><strong>Name</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Signature</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Date</strong>: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>Appendix A: Quick Reference Card</h2><div class="kicker">PART VIII: RULES OF ENGAGEMENT</div></div><div class="md-content">
+<p><code>╔════════════════════════════════════════════════════════════════╗
+║              PENETRATION TEST QUICK REFERENCE                  ║
+╠════════════════════════════════════════════════════════════════╣
+║ TESTING WINDOW: [Date Range]                                   ║
+║ WHITELISTED IPs: [IP List]                                    ║
+║                                                                ║
+║ EMERGENCY CONTACT: [Name] - [Phone]                           ║
+║                                                                ║
+║ STOP IMMEDIATELY IF:                                          ║
+║   - System crashes or becomes unresponsive                    ║
+║   - Service disruption detected                               ║
+║   - SOC alerts on testing activity                           ║
+║   - Unexpected sensitive data access                          ║
+║   - Client requests halt                                     ║
+║                                                                ║
+║ NEVER DO:                                                     ║
+║   - DoS testing (unless explicitly authorized)                ║
+║   - Data exfiltration                                         ║
+║   - Modify configurations                                      ║
+║   - Delete data or logs                                       ║
+║   - Deploy malware or backdoors                               ║
+║   - Physical intrusion                                        ║
+║                                                                ║
+║ REPORT CRITICAL FINDINGS: Phone call + Email                 ║
+║ SLA: 24 hours for critical finding notification               ║
+╚════════════════════════════════════════════════════════════════╝</code></p>
+<hr />
+<p><strong>Document Version History</strong></p>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>[Date]</td>
+<td>[Author]</td>
+<td>Initial version</td>
+</tr>
+</tbody>
+</table></div></div><h1>Penetration Test Finding Tracker</h1>
+<p><strong>Project</strong>: [Project Name]<br />
+<strong>Engagement Period</strong>: [Start Date] - [End Date]<br />
+<strong>Report Date</strong>: [Date]<br />
+<strong>Classification</strong>: Confidential  </p>
+<hr />
+<div class="md-section"><div class="section-head"><h2>1. Finding Summary</h2><div class="kicker">PART IX: REMEDIATION TRACKER</div></div><div class="md-content">
+<h3>1.1 Statistics Overview</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Critical Findings</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>High Findings</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Medium Findings</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Low Findings</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Informational</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Total Findings</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Remediated</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>In Progress</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Open</strong></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h3>1.2 Risk Distribution</h3>
+<h3>1.2 Risk Distribution</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Severity</th>
+<th>Count</th>
+<th>Percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Critical</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>High</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Low</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Info</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>2. Findings Detail</h2><div class="kicker">PART IX: REMEDIATION TRACKER</div></div><div class="md-content">
+<h3>Finding Template (Copy this block for each finding)</h3>
+<hr />
+<p><strong>Finding ID</strong>: FIND-[###]<br />
+<strong>Title</strong>: [Vulnerability Title]<br />
+<strong>Severity</strong>: [Critical/High/Medium/Low/Informational]<br />
+<strong>CVSS Score</strong>: [X.X]<br />
+<strong>CVSS Vector</strong>: [Vector String]<br />
+<strong>Status</strong>: [Open/In Progress/Remediated/Verified]<br />
+<strong>Discovery Date</strong>: [Date]<br />
+<strong>Remediation Target</strong>: [Date]<br />
+<strong>Remediated Date</strong>: [Date]  </p>
+<p><strong>Affected Asset(s)</strong>:
+- [Asset ID] - [Asset Name]</p>
+<p><strong>Description</strong>:
+<code>[Detailed description of the vulnerability, how it was found, and why it's a risk]</code></p>
+<p><strong>Evidence</strong>:
+<code>[Proof of concept steps, commands used, expected vs actual results]</code></p>
+<p><strong>Impact</strong>:
+<code>[Business impact if exploited, what an attacker could achieve]</code></p>
+<p><strong>Recommendations</strong>:
+<code>1. [Specific remediation step]
+2. [Specific remediation step]
+3. [Specific remediation step]</code></p>
+<p><strong>Effort to Fix</strong>: [Low/Medium/High]</p>
+<p><strong>References</strong>:
+- [CVE if applicable]
+- [CWE]
+- [OWASP if applicable]</p>
+<hr />
+<h3>2.1 Critical Findings</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>FIND ID</th>
+<th>Title</th>
+<th>Affected Asset</th>
+<th>CVSS</th>
+<th>Status</th>
+<th>Owner</th>
+<th>Target Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIND-001</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 High Findings</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>FIND ID</th>
+<th>Title</th>
+<th>Affected Asset</th>
+<th>CVSS</th>
+<th>Status</th>
+<th>Owner</th>
+<th>Target Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIND-002</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>FIND-003</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>2.3 Medium Findings</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>FIND ID</th>
+<th>Title</th>
+<th>Affected Asset</th>
+<th>CVSS</th>
+<th>Status</th>
+<th>Owner</th>
+<th>Target Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIND-004</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>FIND-005</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>2.4 Low Findings</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>FIND ID</th>
+<th>Title</th>
+<th>Affected Asset</th>
+<th>CVSS</th>
+<th>Status</th>
+<th>Owner</th>
+<th>Target Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIND-006</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>2.5 Informational</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>FIND ID</th>
+<th>Title</th>
+<th>Affected Asset</th>
+<th>Status</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIND-007</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>3. Remediation Tracking</h2><div class="kicker">PART IX: REMEDIATION TRACKER</div></div><div class="md-content">
+<h3>3.1 By Status</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Status</th>
+<th>Count</th>
+<th>Percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Open</strong></td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td><strong>In Progress</strong></td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td><strong>Remediated</strong></td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td><strong>Verified</strong></td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td><strong>Risk Accepted</strong></td>
+<td>0</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Remediation Timeline</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Week</th>
+<th>Expected Remediation %</th>
+<th>Actual Remediation %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Week 1</td>
+<td>10%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Week 2</td>
+<td>20%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Week 3</td>
+<td>40%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Week 4</td>
+<td>60%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Week 6</td>
+<td>80%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Week 8</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 Open Findings by Owner</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Owner</th>
+<th>Critical</th>
+<th>High</th>
+<th>Medium</th>
+<th>Low</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>4. Remediation Evidence</h2><div class="kicker">PART IX: REMEDIATION TRACKER</div></div><div class="md-content">
+<h3>Finding: FIND-[###] - [Title]</h3>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+<th>Completed By</th>
+<th>Date</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Retest Performed By</strong>: [Name]<br />
+<strong>Retest Date</strong>: [Date]<br />
+<strong>Retest Result</strong>: <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Verified Fixed <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Not Fixed <span style="color:#94a3b8; font-size:14pt; margin-right:4px;">☐</span> Partially Fixed<br />
+<strong>Notes</strong>: </p>
+<hr />
+</div></div><div class="md-section"><div class="section-head"><h2>5. SLA Compliance</h2><div class="kicker">PART IX: REMEDIATION TRACKER</div></div><div class="md-content">
+<table class="v33-table">
+<thead>
+<tr>
+<th>Severity</th>
+<th>Finding Count</th>
+<th>Met SLA</th>
+<th>Breached SLA</th>
+<th>Compliance Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Critical</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>High</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Low</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SLA Definitions</strong>:
+- Critical: 24 hours
+- High: 7 days
+- Medium: 30 days
+- Low: 90 days</p>
+<hr />
+<p><strong>Document Maintenance</strong></p>
+<table class="v33-table">
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>[Date]</td>
+<td>[Author]</td>
+<td>Initial tracker</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Last Updated</strong>: [Date]
+<strong>Next Review</strong>: [Date]</p></div></div>
+    
+    <div class="page">
+      <div class="signoff-box">
+        <h3>Engagement Sign-Off</h3>
+        <p>By signing below, the client agrees that this unified scoping document satisfies the engagement coverage requirements for DORA, FRB, HKMA, and PRA compliance regimes.</p>
+        <p><strong>Executive Sponsor:</strong> <span class="signoff-line"></span></p>
+        <p><strong>Date:</strong> <span class="signoff-line"></span></p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
