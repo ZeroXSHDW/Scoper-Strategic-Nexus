@@ -1,0 +1,34 @@
+# General ignore patterns for the SOW Rendering Service project
+# Python compiled files
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+
+# Build artefacts and distribution packages
+*.egg-info/
+build/
+dist/
+
+# PDF outputs and generated artefacts
+output/
+*.pdf
+
+# Coverage and test caches
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+
+# OS and IDE artefacts
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Environment files (keep secret)
+.env

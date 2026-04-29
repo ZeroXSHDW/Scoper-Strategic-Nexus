@@ -1,0 +1,25 @@
+{
+  "actors": [
+    {
+      "id": "APT29",
+      "name": "Cozy Bear (APT29)",
+      "origin": "Russian Federation",
+      "motivation": "Espionage, Information Theft",
+      "ttp_summary": "Highly stealthy, defense evasion, leveraging compromised supply chains and custom malware."
+    },
+    {
+      "id": "FIN7",
+      "name": "FIN7",
+      "origin": "Eastern Europe",
+      "motivation": "Financial Gain",
+      "ttp_summary": "Targeting financial institutions via spear-phishing, utilizing Carbanak backdoor and living-off-the-land techniques."
+    },
+    {
+      "id": "LAZARUS",
+      "name": "Lazarus Group",
+      "origin": "North Korea",
+      "motivation": "Financial Gain, State-Sponsored Espionage",
+      "ttp_summary": "SWIFT system compromises, destructive wiper attacks, and sophisticated ransomware deployments."
+    }
+  ]
+}

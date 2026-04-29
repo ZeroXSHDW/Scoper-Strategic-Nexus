@@ -1,0 +1,120 @@
+{
+  "guidance": [
+    {
+      "frameworkId": "DORA",
+      "sections": [
+        {
+          "title": "ICT Asset Criticality Mapping",
+          "content": "Under DORA, scoping must start with the ICT Asset Register. Every asset in scope must be mapped to a 'Critical or Important Function' (CIF). If an asset supports a CIF, it is subject to more rigorous testing and reporting requirements."
+        },
+        {
+          "title": "Third-Party ICT Risk",
+          "content": "DORA requires that testing includes third-party ICT service providers where they support critical or important functions. This scoping pack must include a list of involved third parties and confirmation of their authorization to test."
+        },
+        {
+          "title": "Threat Intelligence Requirements",
+          "content": "For TLPT (Threat-Led Penetration Testing), the scope must be driven by current, relevant threat intelligence. The scenarios defined in this pack should match the TTPs of actors targeting the financial sector."
+        }
+      ]
+    },
+    {
+      "frameworkId": "FFIEC",
+      "sections": [
+        {
+          "title": "Examination Readiness",
+          "content": "FFIEC scoping should prioritize areas identified in the last examination. Testing must be independent (performed by individuals who did not design or maintain the controls)."
+        },
+        {
+          "title": "Risk-Based Scoping",
+          "content": "Management must justify the exclusion of any significant business unit or technology from the annual testing program. This pack includes a justification section for exclusions."
+        }
+      ]
+    },
+    {
+      "frameworkId": "MITRE",
+      "sections": [
+        {
+          "title": "T1190 - Exploit Public-Facing Application",
+          "content": "Adversaries may attempt to take advantage of a weakness in an Internet-facing computer or program using software, data, or commands in order to cause unintended or unanticipated behavior."
+        },
+        {
+          "title": "T1078 - Valid Accounts",
+          "content": "Adversaries may obtain and abuse credentials of existing accounts as a means of gaining Initial Access, Persistence, Privilege Escalation, or Defense Evasion."
+        },
+        {
+          "title": "T1566 - Phishing",
+          "content": "Adversaries may send phishing messages to gain access to victim systems. All forms of phishing are electronically delivered social engineering."
+        },
+        {
+          "title": "T1059 - Command and Scripting Interpreter",
+          "content": "Adversaries may abuse command and script interpreters to execute commands, scripts, or binaries."
+        }
+      ]
+    },
+    {
+      "frameworkId": "OWASP",
+      "sections": [
+        {
+          "title": "A01:2021-Broken Access Control",
+          "content": "Testing must validate that users cannot act outside of their intended permissions. Failures typically lead to unauthorized information disclosure, modification, or destruction of all data."
+        },
+        {
+          "title": "A02:2021-Cryptographic Failures",
+          "content": "Testing must verify the protection of sensitive data in transit and at rest. This includes passwords, credit card numbers, health records, personal information, and business secrets."
+        },
+        {
+          "title": "A03:2021-Injection",
+          "content": "Testing must validate that user-supplied data is not interpreted as commands or queries (e.g., SQL, NoSQL, OS command, ORM, LDAP, and EL expression or OGNL injection)."
+        },
+        {
+          "title": "A04:2021-Insecure Design",
+          "content": "Testing must evaluate the architectural design for missing or ineffective control design. Insecure design cannot be fixed by a perfect implementation."
+        }
+      ]
+    },
+    {
+      "frameworkId": "CIS",
+      "sections": [
+        {
+          "title": "Control 1: Inventory and Control of Enterprise Assets",
+          "content": "Actively manage (inventory, track, and correct) all enterprise assets connected to the infrastructure physically, virtually, remotely, and those within cloud environments."
+        },
+        {
+          "title": "Control 4: Secure Configuration of Enterprise Assets and Software",
+          "content": "Establish and maintain the secure configuration of enterprise assets and software."
+        },
+        {
+          "title": "Control 12: Network Infrastructure Management",
+          "content": "Establish, implement, and actively manage network devices, in order to prevent attackers from exploiting vulnerable network services and access points."
+        }
+      ]
+    },
+    {
+      "frameworkId": "PRA",
+      "sections": [
+        {
+          "title": "CBEST Intelligence-Led Testing",
+          "content": "Testing must be driven by bespoke threat intelligence targeting the specific critical business services (CBS) of the UK financial institution."
+        }
+      ]
+    },
+    {
+      "frameworkId": "HKMA",
+      "sections": [
+        {
+          "title": "iCAST Execution",
+          "content": "Simulations must cover the 'Assume Breach' methodology to assess the detection and response capabilities of the institution's Security Operations Center (SOC)."
+        }
+      ]
+    },
+    {
+      "frameworkId": "FRB",
+      "sections": [
+        {
+          "title": "SR 13-1 / Vendor Risk",
+          "content": "The scoping must encompass critical third-party vendors and external facing infrastructure in alignment with FRB supervision expectations."
+        }
+      ]
+    }
+  ]
+}

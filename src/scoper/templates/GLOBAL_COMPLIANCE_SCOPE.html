@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Outfit:wght@400;600;700;900&display=swap');
+    @page { size:A4; margin:11mm 10mm 14mm; }
+    @media print { @page { margin: 0; } body { margin: 1.6cm; } }
+    {{customStyle}}
+  </style>
+</head>
+<body>
+  <main>
+    <!-- Premium V33 Cover Injected via Generator -->
+
+    <!-- Inject the Dynamic Data (Omni Matrices, Framework Mappings, etc.) -->
+    {{content}}
+
+    <!-- Inject the Markdown Forms -->
+    {{compliance_forms}}
+    
+    <div class="page">
+      <div class="signoff-box">
+        <h3>Engagement Sign-Off</h3>
+        <p>By signing below, the client agrees that this unified scoping document satisfies the engagement coverage requirements for DORA, FRB, HKMA, and PRA compliance regimes.</p>
+        <p><strong>Executive Sponsor:</strong> <span class="signoff-line"></span></p>
+        <p><strong>Date:</strong> <span class="signoff-line"></span></p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

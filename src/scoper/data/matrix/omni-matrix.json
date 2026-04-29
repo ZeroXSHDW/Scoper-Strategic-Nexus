@@ -1,0 +1,12 @@
+{
+  "controls": [
+    { "id": "AC_01", "name": "Access Control Policy", "framework": "NIST", "ref": "AC-1", "impact": "High" },
+    { "id": "IA_02", "name": "Multi-factor Authentication", "framework": "PCI", "ref": "8.3", "impact": "Critical" },
+    { "id": "SI_04", "name": "Information System Monitoring", "framework": "DORA", "ref": "Art 24", "impact": "Medium" }
+  ],
+  "service_control_map": {
+    "PT-NET-EXT": ["AC_01", "SI_04"],
+    "PT-APP-WEB": ["IA_02", "AC_01"],
+    "RT-FULL": ["AC_01", "IA_02", "SI_04"]
+  }
+}

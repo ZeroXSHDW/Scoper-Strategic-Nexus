@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scoper"
+version = "0.1.0"
+description = "CLI tool for Statement of Work generation and management"
+authors = [{name = "ZeroDevLLC"}]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "click>=8.0",
+    "jinja2>=3.0",
+    "markdown>=3.0",
+    "playwright>=1.30.0",
+    "PyYAML>=6.0",
+    "questionary>=2.0.0",
+    "rich>=12.0",
+]
+
+[project.scripts]
+scoper = "scoper.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

@@ -1,0 +1,41 @@
+{
+  "frameworks": [
+    {
+      "id": "DORA",
+      "name": "Digital Operational Resilience Act (DORA)",
+      "region": "European Union",
+      "articles": [
+        { "ref": "Article 24", "title": "General Control Testing", "requirement": "ICT resilience testing programme.", "scoping_guidance": "Critical ICT systems." },
+        { "ref": "Article 26", "title": "TLPT", "requirement": "Threat-led penetration testing.", "scoping_guidance": "Every 3 years for critical entities." }
+      ],
+      "mandatory_evidence": ["Asset Register", "Threat Scenarios", "TI Plan", "Remediation Plan"]
+    },
+    {
+      "id": "FRB",
+      "name": "Federal Reserve Board (FRB) Supervision",
+      "region": "United States",
+      "articles": [
+        { "ref": "SR 13-1", "title": "Supplemental Policy Statement on the Internal Audit Function", "requirement": "Independent testing of security controls.", "scoping_guidance": "Risk-based coverage." }
+      ],
+      "mandatory_evidence": ["Independent Review", "Mgmt Response", "Prior Findings Remediation"]
+    },
+    {
+      "id": "HKMA",
+      "name": "Hong Kong Monetary Authority (HKMA) iCAST",
+      "region": "Hong Kong",
+      "articles": [
+        { "ref": "CFI", "title": "Intelligence-led Cyber Attack Simulation", "requirement": "Perform intelligence-led simulated attacks.", "scoping_guidance": "Threat intelligence derived simulation." }
+      ],
+      "mandatory_evidence": ["Threat Intelligence Report", "Execution Log", "Remediation Plan"]
+    },
+    {
+      "id": "PRA",
+      "name": "Prudential Regulation Authority (PRA) CBEST",
+      "region": "United Kingdom",
+      "articles": [
+        { "ref": "CBEST", "title": "Intelligence-led Penetration Testing", "requirement": "Employ external/internal threat-led penetration testing.", "scoping_guidance": "System-specific critical boundary." }
+      ],
+      "mandatory_evidence": ["Targeted Threat Intelligence", "Test Plan", "Execution Report", "Control Effectiveness Summary"]
+    }
+  ]
+}

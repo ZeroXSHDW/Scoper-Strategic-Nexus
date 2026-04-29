@@ -1,0 +1,7 @@
+{
+  "steps": [
+    { "id": "STEP_1", "name": "Acquisition", "method": "SHA-256 Verified Capture" },
+    { "id": "STEP_2", "name": "Processing", "method": "Air-Gapped Analysis Environment" },
+    { "id": "STEP_3", "name": "Destruction", "method": "NIST 800-88 Compliant Wipe" }
+  ]
+}

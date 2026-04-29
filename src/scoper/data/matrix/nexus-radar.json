@@ -1,0 +1,10 @@
+{
+  "pillars": [
+    { "id": "P_GOV", "name": "Governance", "weight": 20 },
+    { "id": "P_RES", "name": "Resilience", "weight": 20 },
+    { "id": "P_INT", "name": "Integrity", "weight": 15 },
+    { "id": "P_PRI", "name": "Privacy", "weight": 15 },
+    { "id": "P_SOV", "name": "Sovereignty", "weight": 15 },
+    { "id": "P_ID", "name": "Identity", "weight": 15 }
+  ]
+}

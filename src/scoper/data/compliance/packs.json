@@ -1,0 +1,132 @@
+{
+  "packs": [
+    {
+      "id": "regulated-bank-internal-scoping-base",
+      "label": "Regulated Bank Internal Scoping Base",
+      "frameworks": [
+        "DORA",
+        "FRB",
+        "HKMA",
+        "PRA",
+        "BANKING_SECURITY_BASELINE",
+        "MITRE",
+        "OWASP",
+        "CIS"
+      ],
+      "services": [
+        "PT-NET-EXT",
+        "PT-NET-INT",
+        "PT-NET-AD",
+        "PT-APP-WEB",
+        "PT-APP-API",
+        "PT-CLD-INF",
+        "PT-ADV-PT",
+        "VA-NET-EXT",
+        "VA-NET-INT"
+      ],
+      "narrative": "Internal-bank base pack for compliance, risk, security, technology, cloud, audit, operational resilience, and third-party owners.",
+      "duration": "2-3 weeks",
+      "fitNote": "Use as the default base pack when an internal regulated bank needs blank scoping templates."
+    },
+    {
+      "id": "dora-bank-resilience",
+      "label": "DORA Bank Resilience",
+      "frameworks": [
+        "DORA",
+        "MITRE",
+        "OWASP",
+        "CIS"
+      ],
+      "services": [
+        "PT-NET-EXT",
+        "PT-NET-INT",
+        "PT-APP-WEB",
+        "PT-APP-API",
+        "PT-CLD-INF",
+        "RT-FULL"
+      ],
+      "narrative": "DORA resilience and TLPT-ready scoping for critical ICT systems, functions, and third-party ICT dependencies.",
+      "duration": "5-7 weeks",
+      "fitNote": "Use when DORA testing, ICT function mapping, or threat-led scoping drives the internal bank evidence pack."
+    },
+
+    {
+      "id": "pra-cbest-uk-resilience",
+      "label": "PRA CBEST UK Bank Resilience",
+      "frameworks": [
+        "PRA",
+        "MITRE",
+        "OWASP",
+        "CIS"
+      ],
+      "services": [
+        "RT-FULL",
+        "PT-APP-WEB",
+        "PT-NET-EXT"
+      ],
+      "narrative": "UK Prudential Regulation Authority CBEST scoping for intelligence-led penetration testing.",
+      "duration": "8-12 weeks",
+      "fitNote": "Use for UK financial institutions requiring CBEST or STAR-FS assessments."
+    },
+    {
+      "id": "hkma-icf-resilience",
+      "label": "HKMA iCAST Hong Kong Framework",
+      "frameworks": [
+        "HKMA",
+        "MITRE",
+        "OWASP",
+        "CIS"
+      ],
+      "services": [
+        "RT-FULL",
+        "PT-NET-INT",
+        "PT-CLD-INF"
+      ],
+      "narrative": "Hong Kong Monetary Authority (HKMA) Cybersecurity Fortification Initiative (CFI) iCAST scoping.",
+      "duration": "6-10 weeks",
+      "fitNote": "Use for HKMA regulated entities undergoing intelligence-led cyber attack simulation."
+    },
+    {
+      "id": "frb-supervision-pack",
+      "label": "Federal Reserve Board (FRB) Supervision",
+      "frameworks": [
+        "FRB",
+        "MITRE",
+        "OWASP",
+        "CIS"
+      ],
+      "services": [
+        "PT-NET-EXT",
+        "PT-NET-INT",
+        "PT-CLD-INF",
+        "PT-APP-API"
+      ],
+      "narrative": "US Federal Reserve Board (FRB) banking supervision and SR 13-1 oversight scoping.",
+      "duration": "4-6 weeks",
+      "fitNote": "Use for institutions under FRB regulatory supervision requiring security validation."
+    },
+    {
+      "id": "global-unified-pack",
+      "label": "Global Regulated Enterprise (DORA, FRB, HKMA, PRA)",
+      "frameworks": [
+        "DORA",
+        "FRB",
+        "HKMA",
+        "PRA",
+        "MITRE",
+        "OWASP",
+        "CIS"
+      ],
+      "services": [
+        "RT-FULL",
+        "PT-APP-WEB",
+        "PT-NET-EXT",
+        "PT-CLD-INF",
+        "PT-APP-API"
+      ],
+      "narrative": "A unified global compliance scoping document consolidating DORA, FRB, HKMA, and PRA requirements.",
+      "duration": "12-16 weeks",
+      "fitNote": "Use for global enterprises requiring unified compliance scoping."
+    }
+  ]
+}

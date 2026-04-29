@@ -1,0 +1,10 @@
+{
+  "matrix": [
+    ["Project Kick-off", "R", "A", "C", "I"],
+    ["Access Provisioning", "C", "I", "R", "A"],
+    ["Technical Testing", "R", "A", "I", "C"],
+    ["Report Delivery", "R", "A", "C", "I"],
+    ["Remediation Sign-off", "C", "I", "R", "A"]
+  ],
+  "roles": ["Security Provider", "Client Security Lead", "Client IT Admin", "Client Executive"]
+}

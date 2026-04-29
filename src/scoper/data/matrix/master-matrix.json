@@ -1,0 +1,26 @@
+{
+  "mappings": [
+    {
+      "serviceCode": "PT-NET-EXT",
+      "frameworks": {
+        "DORA": { "requirement": "Article 24 (General Testing)", "relevance": "High", "justification": "External attack surface is a primary ICT risk vector." },
+        "FFIEC": { "requirement": "InfoSec Booklet - Appendix C", "relevance": "Mandatory", "justification": "Required for internet-facing financial services." },
+        "PCI-DSS": { "requirement": "Requirement 11.3.1", "relevance": "Mandatory", "justification": "Annual external penetration testing is a core requirement." }
+      }
+    },
+    {
+      "serviceCode": "RT-FULL",
+      "frameworks": {
+        "DORA": { "requirement": "Article 26 (TLPT)", "relevance": "Mandatory", "justification": "Required for entities identified as critical." },
+        "CBEST": { "requirement": "Intelligence-Led Testing", "relevance": "Mandatory", "justification": "Primary methodology for UK financial simulations." }
+      }
+    },
+    {
+      "serviceCode": "PT-APP-WEB",
+      "frameworks": {
+        "PCI-DSS": { "requirement": "Requirement 11.3.2", "relevance": "Mandatory", "justification": "Application layer testing required for all payment-related apps." },
+        "DORA": { "requirement": "Article 25", "relevance": "High", "justification": "Applications supporting critical functions must be tested." }
+      }
+    }
+  ]
+}

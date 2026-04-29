@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <style>
+    :root { --ink:#172033; --muted:#596579; --line:#cfd7e4; --soft:#f6f8fb; --soft2:#eaf1f6; --accent:#0b6f6a; --accent2:#244c75; --danger:#8a2416; --gold:#8d6a18; }
+    @page { size:A4; margin:11mm 10mm 14mm; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); font-family:Arial, Helvetica, sans-serif; font-size:8.9pt; line-height:1.25; background:#fff; }
+    main { max-width:1010px; margin:0 auto; padding: 20px; }
+    h1,h2,h3 { margin:0; line-height:1.15; }
+    h1 { font-size:28pt; letter-spacing:0; margin-bottom: 20px; }
+    h2 { color:var(--accent); font-size:14.8pt; }
+    h3 { margin:7px 0 4px; font-size:10.2pt; }
+    p { margin:4px 0 6px; }
+    ul { margin:4px 0 7px 16px; padding:0; }
+    li { margin:1px 0; }
+    table { width:100%; margin:5px 0 8px; border-collapse:separate; border-spacing:0; table-layout:fixed; border:1px solid var(--line); }
+    th,td { padding:4px 5px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); vertical-align:top; overflow-wrap:anywhere; }
+    th:last-child,td:last-child { border-right:0; }
+    tr:last-child td { border-bottom:0; }
+    th { background:var(--soft2); text-align:left; color:#223451; font-size:7.8pt; text-transform:uppercase; letter-spacing:.03em; }
+    tbody tr:nth-child(even) td { background:#fbfcfe; }
+    .page { padding:4mm 0 3mm; break-after:page; border-bottom:1px solid #e5ebf3; }
+    .page:last-child { border-bottom:0; break-after: auto; }
+    .section-head { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:7px; padding-bottom:5px; border-bottom:2px solid var(--accent); break-after:avoid; }
+    .kicker { display:inline-block; width:fit-content; margin-bottom:0; padding:4px 7px; border:1px solid var(--accent); color:var(--accent); background:#fff; font-size:7.4pt; font-weight:700; text-transform:uppercase; letter-spacing:.05em; white-space:nowrap; }
+    .compact th,.compact td { padding:3px 4px; font-size:7.9pt; }
+    {{customStyle}}
+  </style>
+</head>
+<body>
+  <main>
+    {{content}}
+  </main>
+</body>
+</html>

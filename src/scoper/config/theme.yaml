@@ -1,0 +1,7 @@
+# Scoper Dynamic Theme Configuration
+theme:
+  # The default Slate Navy bank-grade palette
+  accent: "#0f172a"
+  neon: "#0ea5e9"
+  slate: "#334155"
+  bg: "#ffffff"

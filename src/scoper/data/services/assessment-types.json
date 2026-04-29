@@ -1,0 +1,93 @@
+{
+  "assessmentTypes": [
+    ["External infrastructure", "Public IPs, domains, VPN, mail, DNS, internet-facing cloud endpoints.", "External attack surface and compliance testing."],
+    ["Internal infrastructure", "Internal ranges, AD, servers, endpoints, network devices, segmentation.", "Assumed breach, insider risk, PCI segmentation, identity attack paths."],
+    ["Web application", "Web portals, admin consoles, workflows, roles, files, payments, reports.", "OWASP WSTG / Top 10 plus business logic."],
+    ["API / web services", "REST, GraphQL, SOAP, gRPC, webhooks, integrations, auth scopes.", "OWASP API Top 10, BOLA, tenant isolation, abuse cases."],
+    ["Mobile application", "iOS, Android, app build, backend APIs, local storage, platform protections.", "OWASP MASVS/MASTG coverage."],
+    ["Cloud / Kubernetes", "AWS, Azure, GCP, SaaS, Kubernetes, IAM, storage, logging, network.", "CIS benchmarks, cloud attack paths, control plane review."],
+    ["SIEM validation", "Rules, log sources, alerts, ATT&CK techniques, SOC workflow, response.", "Purple team and detection assurance."],
+    ["Attack emulation", "Threat actor, objectives, TTPs, white cell, safety limits, success criteria.", "Threat-led red team or TLPT-style testing."],
+    ["Specialist assessment", "Wireless, physical, social, OT/ICS, code review, tabletop, custom.", "Use when standard technical sections do not fit."]
+  ],
+  "domains": [
+    {
+      "id": "external",
+      "title": "External Infrastructure",
+      "trigger": "Use for public IPs, domains, remote access, mail, DNS, cloud public endpoints, or external compliance testing.",
+      "capture": [
+        ["Targets", "IP ranges, domains, subdomains, cloud endpoints, externally exposed services."],
+        ["Context", "Business owner, hosting provider, WAF/CDN, internet exposure, criticality."],
+        ["Depth", "Discovery only, vulnerability validation, exploit validation, compliance evidence."],
+        ["Limits", "Rate limits, lockout risk, provider terms, third-party approvals, DoS exclusions."],
+        ["Evidence", "Service inventory, screenshots, request/response, PoC output, affected asset IDs."]
+      ],
+      "sizing": ["IP/domain count", "Live service count", "WAF/CDN/provider constraints", "Compliance deadline", "Retest need"]
+    },
+    {
+      "id": "internal",
+      "title": "Internal Infrastructure and Identity",
+      "trigger": "Use for internal network, assumed breach, Active Directory, segmentation, VPN, Wi-Fi, firewall, or endpoint testing.",
+      "capture": [
+        ["Targets", "CIDRs, VLANs, sites, AD domains, forests, trusts, privileged groups, key servers."],
+        ["Access", "On-site, VPN, jump host, assumed-breach device, standard user, admin account."],
+        ["Critical zones", "CDE, ePHI, CUI, finance, production, OT/ICS, backups, identity systems."],
+        ["Allowed actions", "Scanning, credential capture, lateral movement, privilege escalation, segmentation paths."],
+        ["Evidence", "Attack path, segmentation pass/fail, affected hosts, logs, screenshots, command output."]
+      ],
+      "sizing": ["Host count", "Domain count", "Sites/segments", "AD depth", "Safety restrictions"]
+    },
+    {
+      "id": "web",
+      "title": "Web Applications",
+      "trigger": "Use for web portals, customer applications, admin interfaces, authenticated workflows, and business logic.",
+      "capture": [
+        ["Targets", "Application names, URLs, environments, owners, release window, source/code access."],
+        ["Roles", "User roles, admin roles, tenants, organizations, authorization boundaries."],
+        ["Workflows", "Login, MFA, password reset, file upload, payment, approval, export, reporting."],
+        ["Data", "PII, PHI, cardholder data, financial data, credentials, documents, logs."],
+        ["Evidence", "OWASP coverage, screenshots, HTTP requests/responses, reproduction steps."]
+      ],
+      "sizing": ["Application count", "Roles/tenants", "Workflow complexity", "Business logic", "Source availability"]
+    },
+    {
+      "id": "api",
+      "title": "APIs and Web Services",
+      "trigger": "Use for REST, GraphQL, SOAP, gRPC, webhooks, batch interfaces, and partner integrations.",
+      "capture": [
+        ["Targets", "Base URLs, endpoint list, methods, schemas, specs, collections, versions."],
+        ["Auth", "OAuth/OIDC, JWT, API keys, mTLS, scopes, claims, service accounts."],
+        ["Authorization", "Object ownership, tenant isolation, role boundaries, function-level access."],
+        ["Safety", "State-changing calls, destructive methods, rate limits, test data, partner callbacks."],
+        ["Evidence", "Endpoint coverage, PoC requests/responses, schema gaps, affected objects."]
+      ],
+      "sizing": ["Endpoint count", "API type", "Auth complexity", "Tenant model", "State-changing tests"]
+    },
+    {
+      "id": "mobile",
+      "title": "Mobile Applications",
+      "trigger": "Use for iOS, Android, mobile APIs, MDM-controlled apps, or device-bound workflows.",
+      "capture": [
+        ["Targets", "App name, platform, build, bundle/package ID, device requirements, backend APIs."],
+        ["Access", "App binaries, test accounts, device enrollment, MDM, MFA, proxy permissions."],
+        ["Coverage", "Local storage, crypto, network security, platform interaction, auth/session, resilience."],
+        ["Restrictions", "Root/jailbreak limits, production data, app store terms, third-party SDKs."],
+        ["Evidence", "Screens, local storage proof, traffic captures, MASVS coverage, backend findings."]
+      ],
+      "sizing": ["Platforms", "Build availability", "Backend complexity", "Protections", "Device/MDM setup"]
+    },
+    {
+      "id": "cloud",
+      "title": "Cloud and Kubernetes",
+      "trigger": "Use for AWS, Azure, GCP, SaaS control planes, Kubernetes, serverless, storage, IAM, or cloud networking.",
+      "capture": [
+        ["Targets", "Accounts, subscriptions, projects, regions, clusters, services, environments."],
+        ["Access", "Read-only role, security audit role, break-glass policy, MFA, time-limited access."],
+        ["Focus", "IAM, public exposure, storage, secrets, network, logging, CI/CD, containers."],
+        ["Limits", "No production changes, no resource deletion, no live exploit unless approved."],
+        ["Evidence", "Control gaps, IAM paths, screenshots, config exports, log settings, asset IDs."]
+      ],
+      "sizing": ["Provider count", "Account count", "Service count", "IAM complexity", "Kubernetes/CI-CD scope"]
+    }
+  ]
+}
