@@ -4,6 +4,8 @@ Scoper is an enterprise-grade, intelligence-led scoping engine built for financi
 
 This project features the highly advanced **V33 Omni-Strategic Nexus** architecture, generating beautiful, board-ready Threat-Led Penetration Testing (TLPT) documentation.
 
+🚀 **[View the Sample Output PDF](examples/Sample_Nexus_Pack.pdf)**
+
 ## Core Features
 *   **Omni-Strategic Radar Charts**: Dynamically generates compliance coverage mapping (P_RESILIENCE, P_INTELLIGENCE, P_GOVERNANCE).
 *   **Targeted Threat Profiles**: Emulates real-world Advanced Persistent Threats (APTs) like Cozy Bear (APT29), FIN7, and Lazarus Group.
