@@ -272,6 +272,68 @@ def generate_pack(client: str, region: str, pack: str, service: list, output: st
         sys.exit(1)
 
 
+@main.command(name="wizard")
+@click.option("--data-dir", type=click.Path(exists=True), help="Path to data directory")
+@click.pass_context
+def wizard(ctx, data_dir: str):
+    """Interactive guided wizard for generating scoping packs."""
+    import sys
+    from rich.prompt import Prompt, Confirm
+    import json
+    
+    if data_dir:
+        path = Path(data_dir)
+    else:
+        path = Path(__file__).parent / "data"
+        
+    console.print("\n[bold cyan]=== Regulatory Vendor Scoping Wizard ===[/bold cyan]\n")
+    
+    client_name = Prompt.ask("[bold]Enter the Client Name[/bold]")
+    region = Prompt.ask("[bold]Enter the primary operating region[/bold]", default="Global")
+    
+    # Load packs
+    packs_path = path / "compliance" / "packs.json"
+    packs = []
+    if packs_path.exists():
+        packs = json.loads(packs_path.read_text(encoding='utf-8')).get('packs', [])
+        
+    if not packs:
+        console.print("[red]No compliance packs found in data directory.[/red]")
+        sys.exit(1)
+        
+    console.print("\n[bold]Select a Compliance Strategy:[/bold]")
+    for i, pack in enumerate(packs):
+        console.print(f"  [cyan]{i+1}[/cyan]. {pack.get('label')} ({pack.get('id')})")
+        
+    pack_idx = int(Prompt.ask("Enter number", default="1")) - 1
+    selected_pack = packs[pack_idx]
+    
+    console.print(f"\n[green]Selected:[/green] {selected_pack.get('label')}")
+    
+    add_svcs = Confirm.ask("\nWould you like to add any additional ad-hoc services?")
+    extra_services = []
+    if add_svcs:
+        catalog_path = path / "services" / "catalog.json"
+        catalog = []
+        if catalog_path.exists():
+            catalog = json.loads(catalog_path.read_text(encoding='utf-8'))
+            
+        console.print("\n[bold]Available Services:[/bold]")
+        for i, svc in enumerate(catalog):
+            console.print(f"  [cyan]{i+1}[/cyan]. {svc.get('code')} - {svc.get('label')}")
+            
+        svc_idxs = Prompt.ask("Enter numbers (comma-separated)", default="")
+        if svc_idxs.strip():
+            for idx_str in svc_idxs.split(','):
+                idx = int(idx_str.strip()) - 1
+                extra_services.append(catalog[idx].get('code'))
+                
+    output_pdf = Prompt.ask("\n[bold]Output PDF filename[/bold]", default=f"output/{client_name.replace(' ', '_')}_Scope.pdf")
+    
+    console.print("\n[cyan]Generating your premium scoping pack...[/cyan]")
+    ctx.invoke(generate_pack, client=client_name, region=region, pack=selected_pack.get('id'), service=extra_services, output=output_pdf, data_dir=data_dir)
+
+
 @main.command(name="fetch-frameworks")
 @click.option("--data-dir", type=click.Path(exists=True), help="Path to data directory")
 def fetch_frameworks_cmd(data_dir: str):

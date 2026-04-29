@@ -1,7 +1,13 @@
 # Scoper Dynamic Theme Configuration
 theme:
-  # The default Slate Navy bank-grade palette
-  accent: "#0f172a"
-  neon: "#0ea5e9"
-  slate: "#334155"
-  bg: "#ffffff"
+  # Premium Cyber-Dark Mode Palette
+  accent: "#f8fafc"
+  neon: "#00f0ff"
+  slate: "#94a3b8"
+  bg: "#020617"
+  glass_bg: "rgba(15, 23, 42, 0.75)"
+  card_border: "rgba(255, 255, 255, 0.08)"
+  shadow: "0 10px 40px -10px rgba(0, 240, 255, 0.15)"
+  table_bg: "rgba(255, 255, 255, 0.02)"
+  table_bg_alt: "rgba(255, 255, 255, 0.04)"
+  text_muted: "#64748b"

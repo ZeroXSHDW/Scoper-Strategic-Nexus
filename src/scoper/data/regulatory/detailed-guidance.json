@@ -4,16 +4,20 @@
       "frameworkId": "DORA",
       "sections": [
         {
-          "title": "ICT Asset Criticality Mapping",
-          "content": "Under DORA, scoping must start with the ICT Asset Register. Every asset in scope must be mapped to a 'Critical or Important Function' (CIF). If an asset supports a CIF, it is subject to more rigorous testing and reporting requirements."
+          "title": "Digital Operational Resilience Act (EU 2022/2554)",
+          "content": "DORA enforces a unified, pan-European approach to operational resilience. Financial entities must demonstrate the capability to withstand, respond to, and recover from all types of ICT-related disruptions and threats."
         },
         {
-          "title": "Third-Party ICT Risk",
-          "content": "DORA requires that testing includes third-party ICT service providers where they support critical or important functions. This scoping pack must include a list of involved third parties and confirmation of their authorization to test."
+          "title": "ICT Asset Criticality & Risk Management",
+          "content": "Scoping must strictly map to the ICT Asset Register. Every in-scope asset is evaluated against 'Critical or Important Functions' (CIFs). Assets supporting CIFs require rigorous continuous testing, monitoring, and Board-level reporting."
         },
         {
-          "title": "Threat Intelligence Requirements",
-          "content": "For TLPT (Threat-Led Penetration Testing), the scope must be driven by current, relevant threat intelligence. The scenarios defined in this pack should match the TTPs of actors targeting the financial sector."
+          "title": "Third-Party ICT Risk Oversight",
+          "content": "Testing explicitly encompasses critical third-party ICT service providers (CTPPs). Financial entities are accountable for the security posture of their entire supply chain, mandating authorization and joint-testing protocols."
+        },
+        {
+          "title": "Threat-Led Penetration Testing (TLPT)",
+          "content": "Advanced TLPT engagements are required to mirror the TTPs of advanced persistent threats (APTs) targeting the EU financial sector. Scenarios must be bespoke, intelligence-driven, and validated by the relevant competent authorities."
         }
       ]
     },
@@ -21,12 +25,16 @@
       "frameworkId": "FFIEC",
       "sections": [
         {
-          "title": "Examination Readiness",
-          "content": "FFIEC scoping should prioritize areas identified in the last examination. Testing must be independent (performed by individuals who did not design or maintain the controls)."
+          "title": "Information Security Booklet (IT Examination Handbook)",
+          "content": "FFIEC scoping mandates a robust, risk-based approach to evaluating the institution's information security program, ensuring alignment with the Cybersecurity Assessment Tool (CAT) and enterprise risk management."
         },
         {
-          "title": "Risk-Based Scoping",
-          "content": "Management must justify the exclusion of any significant business unit or technology from the annual testing program. This pack includes a justification section for exclusions."
+          "title": "Architecture, Infrastructure, and Operations (AIO)",
+          "content": "Assessments must cover the design and operation of network architectures, cloud environments, and hybrid infrastructures, ensuring that defense-in-depth principles are rigorously applied and maintained."
+        },
+        {
+          "title": "Independent Control Validation",
+          "content": "Testing must be performed by independent parties without conflicts of interest in the design, installation, or maintenance of the systems being evaluated, ensuring objective regulatory examination readiness."
         }
       ]
     },
@@ -34,20 +42,20 @@
       "frameworkId": "MITRE",
       "sections": [
         {
-          "title": "T1190 - Exploit Public-Facing Application",
-          "content": "Adversaries may attempt to take advantage of a weakness in an Internet-facing computer or program using software, data, or commands in order to cause unintended or unanticipated behavior."
+          "title": "Initial Access & Execution Strategies",
+          "content": "Scenarios evaluate adversarial techniques such as Spearphishing (T1566), Valid Accounts (T1078), and External Remote Services (T1133) to breach the perimeter and establish initial footholds."
         },
         {
-          "title": "T1078 - Valid Accounts",
-          "content": "Adversaries may obtain and abuse credentials of existing accounts as a means of gaining Initial Access, Persistence, Privilege Escalation, or Defense Evasion."
+          "title": "Defense Evasion & Persistence",
+          "content": "Testing validates the SOC's ability to detect advanced evasion techniques, including Process Injection (T1055), Obfuscated Files/Information (T1027), and Scheduled Task/Job manipulation (T1053)."
         },
         {
-          "title": "T1566 - Phishing",
-          "content": "Adversaries may send phishing messages to gain access to victim systems. All forms of phishing are electronically delivered social engineering."
+          "title": "Credential Access & Lateral Movement",
+          "content": "Assessments simulate attempts to dump credentials (T1003) and move laterally via SMB/Windows Admin Shares (T1021.002) and Pass the Hash (T1550.002), challenging internal zero-trust boundaries."
         },
         {
-          "title": "T1059 - Command and Scripting Interpreter",
-          "content": "Adversaries may abuse command and script interpreters to execute commands, scripts, or binaries."
+          "title": "Command and Control (C2) & Exfiltration",
+          "content": "Validation of egress controls against Application Layer Protocol (T1071) C2 channels and automated Data Exfiltration (T1048), ensuring sensitive client data remains contained."
         }
       ]
     },
@@ -55,20 +63,20 @@
       "frameworkId": "OWASP",
       "sections": [
         {
-          "title": "A01:2021-Broken Access Control",
-          "content": "Testing must validate that users cannot act outside of their intended permissions. Failures typically lead to unauthorized information disclosure, modification, or destruction of all data."
+          "title": "A01:2021 - Broken Access Control",
+          "content": "Rigorous testing to ensure cryptographic boundaries and authorization schemas prevent horizontal and vertical privilege escalation, unauthorized data access, and API manipulation."
         },
         {
-          "title": "A02:2021-Cryptographic Failures",
-          "content": "Testing must verify the protection of sensitive data in transit and at rest. This includes passwords, credit card numbers, health records, personal information, and business secrets."
+          "title": "A02:2021 - Cryptographic Failures",
+          "content": "Verification of data-at-rest and data-in-transit encryption standards, evaluating TLS configurations, key management lifecycle, and protection against cryptographic downgrades."
         },
         {
-          "title": "A03:2021-Injection",
-          "content": "Testing must validate that user-supplied data is not interpreted as commands or queries (e.g., SQL, NoSQL, OS command, ORM, LDAP, and EL expression or OGNL injection)."
+          "title": "A03:2021 - Injection",
+          "content": "Validation against payload injection vulnerabilities, including SQL, NoSQL, ORM, and OS Command injections, ensuring input sanitization and parameterized query enforcement."
         },
         {
-          "title": "A04:2021-Insecure Design",
-          "content": "Testing must evaluate the architectural design for missing or ineffective control design. Insecure design cannot be fixed by a perfect implementation."
+          "title": "A04:2021 - Insecure Design & Architecture",
+          "content": "Threat modeling and architectural review to identify inherent design flaws that cannot be mitigated through patching, emphasizing secure-by-design principles early in the SDLC."
         }
       ]
     },
@@ -76,16 +84,16 @@
       "frameworkId": "CIS",
       "sections": [
         {
-          "title": "Control 1: Inventory and Control of Enterprise Assets",
-          "content": "Actively manage (inventory, track, and correct) all enterprise assets connected to the infrastructure physically, virtually, remotely, and those within cloud environments."
+          "title": "Implementation Group 3 (IG3) Baselines",
+          "content": "Scoping aligns with CIS IG3, designed for mature organizations targeted by sophisticated adversaries, demanding the highest level of comprehensive cyber defense implementation."
         },
         {
-          "title": "Control 4: Secure Configuration of Enterprise Assets and Software",
-          "content": "Establish and maintain the secure configuration of enterprise assets and software."
+          "title": "Control 1 & 2: Enterprise Asset and Software Inventory",
+          "content": "Active management, discovery, and tracking of all connected enterprise assets and software to eliminate shadow IT and establish a definitive attack surface baseline."
         },
         {
-          "title": "Control 12: Network Infrastructure Management",
-          "content": "Establish, implement, and actively manage network devices, in order to prevent attackers from exploiting vulnerable network services and access points."
+          "title": "Control 4: Secure Configuration",
+          "content": "Establishment and continuous enforcement of hardened secure configurations across enterprise assets, cloud infrastructure, and software applications."
         }
       ]
     },
@@ -93,8 +101,16 @@
       "frameworkId": "PRA",
       "sections": [
         {
-          "title": "CBEST Intelligence-Led Testing",
-          "content": "Testing must be driven by bespoke threat intelligence targeting the specific critical business services (CBS) of the UK financial institution."
+          "title": "CBEST Intelligence-Led Testing Framework",
+          "content": "Testing must be driven by bespoke, high-fidelity threat intelligence targeting the Critical Business Services (CBS) of UK financial institutions, complying with PRA and FCA joint guidelines."
+        },
+        {
+          "title": "STAR-FS & Supervisory Statements",
+          "content": "Alignment with SS1/21 (Operational resilience: Impact tolerances) to ensure the institution can remain within its impact tolerances during severe but plausible cyber attack scenarios."
+        },
+        {
+          "title": "Systemic Risk & Contagion Assessment",
+          "content": "Simulations must model the potential for systemic contagion affecting the wider UK financial system, validating segregation controls and recovery playbooks."
         }
       ]
     },
@@ -102,8 +118,16 @@
       "frameworkId": "HKMA",
       "sections": [
         {
-          "title": "iCAST Execution",
-          "content": "Simulations must cover the 'Assume Breach' methodology to assess the detection and response capabilities of the institution's Security Operations Center (SOC)."
+          "title": "Cybersecurity Fortification Initiative (CFI) 2.0",
+          "content": "Comprehensive alignment with the HKMA's updated CFI 2.0 requirements, ensuring the Authorized Institution (AI) maintains robust cyber resilience."
+        },
+        {
+          "title": "iCAST Execution & 'Assume Breach'",
+          "content": "Simulations must encompass the Intelligence-led Cyber Attack Simulation Testing (iCAST) methodology, utilizing 'Assume Breach' paradigms to stress-test the SOC's detection, response, and containment capabilities."
+        },
+        {
+          "title": "Cyber Resilience Assessment Framework (C-RAF)",
+          "content": "Scoping supports the C-RAF inherent risk assessment, calibrating the depth of technical validation based on the institution's designated risk profile (Low, Medium, or High)."
         }
       ]
     },
@@ -111,8 +135,67 @@
       "frameworkId": "FRB",
       "sections": [
         {
-          "title": "SR 13-1 / Vendor Risk",
-          "content": "The scoping must encompass critical third-party vendors and external facing infrastructure in alignment with FRB supervision expectations."
+          "title": "SR 13-1 / Third-Party Risk Management",
+          "content": "Strict scoping inclusion of critical third-party vendors and external-facing infrastructure, aligning with the Federal Reserve Board's expectations for comprehensive vendor risk oversight."
+        },
+        {
+          "title": "SR 14-8 / Consolidated Recovery Planning",
+          "content": "Validation that the organization's technical controls support its consolidated recovery plans, ensuring the ability to resume core business lines under severe cyber distress."
+        },
+        {
+          "title": "Sound Practices for Cyber Resilience",
+          "content": "Evaluation of the institution's alignment with interagency guidelines on cyber resilience, focusing on governance, dependency management, and incident response readiness."
+        }
+      ]
+    },
+    {
+      "frameworkId": "MAS",
+      "sections": [
+        {
+          "title": "Technology Risk Management (TRM) Guidelines",
+          "content": "Alignment with the Monetary Authority of Singapore (MAS) TRM guidelines. Scoping includes risk assessments across IT infrastructure, applications, and third-party vendor integrations."
+        },
+        {
+          "title": "Adversarial Attack Simulation (AASE)",
+          "content": "Simulations encompass threat-led penetration testing aligned with MAS AASE requirements, targeting critical business functions and assessing the institution's capability to detect and respond to advanced cyber threats."
+        },
+        {
+          "title": "Cyber Hygiene Notice (Notice 655)",
+          "content": "Technical validation of the institution's adherence to baseline cyber hygiene practices, including administrative account security, malware protection, and network segmentation."
+        }
+      ]
+    },
+    {
+      "frameworkId": "APRA",
+      "sections": [
+        {
+          "title": "CPS 234 Information Security Standard",
+          "content": "Comprehensive testing to ensure the APRA-regulated entity maintains an information security capability commensurate with the size and extent of threats to its information assets."
+        },
+        {
+          "title": "CORIE Framework Testing",
+          "content": "Execution of Cyber Operational Resilience Intelligence-led Exercises (CORIE) to evaluate the detection and response maturity of the financial institution against targeted cyber attacks."
+        },
+        {
+          "title": "Third-Party Information Asset Protection",
+          "content": "Rigorous scope inclusion of external supply chain and related third parties that manage the institution's information assets, fulfilling APRA's third-party risk management expectations."
+        }
+      ]
+    },
+    {
+      "frameworkId": "NYDFS",
+      "sections": [
+        {
+          "title": "23 NYCRR Part 500 Compliance",
+          "content": "Verification of the Covered Entity's cybersecurity program as required by the New York State Department of Financial Services, specifically evaluating penetration testing and vulnerability management practices."
+        },
+        {
+          "title": "Multi-Factor Authentication & Access Controls",
+          "content": "Detailed technical assessment of non-public information (NPI) boundaries, evaluating the robustness of MFA implementations for external and internal access as mandated by the amended regulations."
+        },
+        {
+          "title": "Incident Response Plan Readiness",
+          "content": "Simulations designed to trigger and test the efficacy of the organization's incident response procedures, specifically focusing on containment times and regulatory notification triggers."
         }
       ]
     }

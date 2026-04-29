@@ -175,9 +175,10 @@ def export_to_pdf(input_file: str, output_file: Optional[str] = None, css_file: 
 def export_raw_html_to_pdf(html_content: str, output_file: str) -> Path:
     """Export raw HTML string to PDF using Playwright in-memory."""
     output_path = Path(output_file)
+    html_dest = output_path.with_suffix('.html')
+    html_dest.write_text(html_content, encoding='utf-8')
+    
     if not HAS_PLAYWRIGHT:
-        html_dest = output_path.with_suffix('.html')
-        html_dest.write_text(html_content)
         logger.warning(f"Playwright not installed. Saved HTML instead: {html_dest}")
         return html_dest
 
@@ -217,9 +218,6 @@ def export_raw_html_to_pdf(html_content: str, output_file: str) -> Path:
         else:
             logger.error(f"PDF Generation failed: {e}")
         
-        # Fallback to HTML
-        html_dest = output_path.with_suffix('.html')
-        html_dest.write_text(html_content)
         logger.warning(f"Saved HTML instead: {html_dest}")
         return html_dest
 

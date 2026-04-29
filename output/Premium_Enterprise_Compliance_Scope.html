@@ -2,82 +2,107 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Omni-Strategic Nexus v33.0 - Global Bank</title>
+  <title>Regulatory Vendor Scoping Request - Global Financial Bank</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Outfit:wght@400;600;700;900&display=swap');
     @page { size:A4; margin:11mm 10mm 14mm; }
     @media print { @page { margin: 0; } body { margin: 1.6cm; } }
     
           :root {
-            --accent: #0f172a;
-            --neon: #0ea5e9;
-            --slate: #334155;
-            --bg: #ffffff;
+            --accent: #f8fafc;
+            --neon: #00f0ff;
+            --slate: #94a3b8;
+            --bg: #020617;
+            --glass_bg: rgba(15, 23, 42, 0.75);
+            --card_border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 10px 40px -10px rgba(0, 240, 255, 0.15);
+            --table_bg: rgba(255, 255, 255, 0.02);
+            --table_bg_alt: rgba(255, 255, 255, 0.04);
+            --text_muted: #64748b;
           }
           * { box-sizing: border-box; }
 body { color: var(--slate); background: var(--bg); font-family: 'Inter', -apple-system, sans-serif; font-size: 8.5pt; line-height: 1.6; margin: 0; }
 main { max-width: 1010px; margin: 0 auto; padding: 10px; }
 
-h1, h2, h3, h4 { color: var(--accent); letter-spacing: -0.02em; margin-top: 15px; margin-bottom: 5px; }
-h1 { font-size: 24pt; font-weight: 900; }
-h2 { font-size: 16pt; font-weight: 700; border-bottom: 2px solid var(--accent); padding-bottom: 4px; }
-h3 { font-size: 11pt; color: var(--slate); font-weight: 600; }
-p { margin: 4px 0 10px; color: #475569; }
+h1, h2, h3, h4 { color: var(--accent); letter-spacing: -0.02em; margin-top: 15px; margin-bottom: 5px; font-family: 'Outfit', sans-serif; }
+h1 { font-size: 24pt; font-weight: 900; text-shadow: 0 0 20px rgba(0, 240, 255, 0.2); }
+h2 { font-size: 16pt; font-weight: 700; border-bottom: 2px solid var(--neon); padding-bottom: 4px; display: inline-block; box-shadow: 0 4px 10px -4px rgba(0, 240, 255, 0.4); }
+h3 { font-size: 11pt; color: var(--accent); font-weight: 600; }
+p { margin: 4px 0 10px; color: var(--text_muted); }
 
 /* Premium Cover Page */
-.cover-v33 { min-height: 275mm; padding: 50mm 40mm; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(135deg, var(--bg) 0%, #f8fafc 100%); color: var(--accent); position: relative; overflow: hidden; border-left: 16px solid var(--accent); box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.02); }
-.cover-v33::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image: radial-gradient(var(--slate) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.03; pointer-events: none; }
-.v33-top { display: flex; justify-content: space-between; font-size: 9pt; font-weight: 600; letter-spacing: 4px; color: #64748b; text-transform: uppercase; z-index: 1; }
-.v33-box { width: 60px; height: 8px; background: var(--neon); margin-bottom: 40px; border-radius: 2px; }
-.v33-center h1 { font-size: 58pt; font-weight: 900; line-height: 1; margin: 0; letter-spacing: -2px; border: none; }
-.v33-center h1 span { color: var(--neon); }
-.v33-kicker { font-size: 11pt; letter-spacing: 6px; text-transform: uppercase; font-weight: 700; color: #64748b; margin-bottom: 10px; }
-.v33-footer { display: flex; gap: 60px; border-top: 1px solid #e2e8f0; padding-top: 40px; z-index: 1; }
-.v33-m span { display: block; font-size: 7pt; color: #94a3b8; text-transform: uppercase; margin-bottom: 5px; }
-.v33-m strong { font-size: 12pt; font-weight: 600; color: var(--accent); }
+.cover-v33 { min-height: 275mm; padding: 50mm 40mm; display: flex; flex-direction: column; justify-content: space-between; background: radial-gradient(circle at top right, rgba(0, 240, 255, 0.1), transparent 40%), linear-gradient(135deg, var(--bg) 0%, #080f26 100%); color: var(--accent); position: relative; overflow: hidden; border-left: 16px solid var(--neon); box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5); }
+.cover-v33::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.5; pointer-events: none; }
+.v33-top { display: flex; justify-content: space-between; font-size: 9pt; font-weight: 600; letter-spacing: 4px; color: var(--text_muted); text-transform: uppercase; z-index: 1; }
+.v33-box { width: 60px; height: 8px; background: var(--neon); margin-bottom: 40px; border-radius: 4px; box-shadow: 0 0 20px rgba(0, 240, 255, 0.6); }
+.v33-center h1 { font-size: 58pt; font-weight: 900; line-height: 1; margin: 0; letter-spacing: -2px; border: none; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.v33-center h1 span { background: linear-gradient(90deg, var(--neon), #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.3)); }
+.v33-kicker { font-size: 11pt; letter-spacing: 6px; text-transform: uppercase; font-weight: 700; color: var(--slate); margin-bottom: 10px; font-family: 'Outfit', sans-serif; }
+.v33-footer { display: flex; gap: 60px; border-top: 1px solid var(--card_border); padding-top: 40px; z-index: 1; }
+.v33-m span { display: block; font-size: 7pt; color: var(--slate); text-transform: uppercase; margin-bottom: 5px; letter-spacing: 1px; }
+.v33-m strong { font-size: 12pt; font-weight: 600; color: var(--accent); text-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
 
-/* Score Cards & Layouts */
-.v33-score-card { display: flex; gap: 40px; align-items: center; background: #f8fafc; color: var(--accent); padding: 40px; border-radius: 8px; margin: 30px 0; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); page-break-inside: avoid; }
-.v33-score-val { font-size: 48pt; font-weight: 900; color: var(--neon); line-height: 1; }
-.v33-score-lbl { font-size: 8pt; font-weight: 700; letter-spacing: 2px; color: #64748b; }
+/* Score Cards & Glassmorphism */
+.v33-score-card { display: flex; gap: 40px; align-items: center; background: var(--glass_bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); color: var(--accent); padding: 40px; border-radius: 16px; margin: 30px 0; border: 1px solid var(--card_border); box-shadow: var(--shadow), inset 0 0 20px rgba(255,255,255,0.02); page-break-inside: avoid; }
+.v33-score-val { font-size: 56pt; font-weight: 900; color: var(--neon); line-height: 1; text-shadow: 0 0 30px rgba(0, 240, 255, 0.4); font-family: 'Outfit', sans-serif; }
+.v33-score-lbl { font-size: 8pt; font-weight: 700; letter-spacing: 2px; color: var(--slate); margin-top: 10px; }
 
 /* Status Badges */
-.v33-v { color: #166534; font-weight: 600; background: #dcfce7; padding: 2px 8px; border-radius: 12px; font-size: 0.8em; }
-.v33-x { color: #991b1b; font-weight: 600; background: #fee2e2; padding: 2px 8px; border-radius: 12px; font-size: 0.8em; }
+.v33-v { color: #22c55e; font-weight: 700; background: rgba(34, 197, 94, 0.15); padding: 4px 12px; border-radius: 12px; font-size: 0.8em; border: 1px solid rgba(34, 197, 94, 0.3); box-shadow: 0 0 10px rgba(34, 197, 94, 0.2); }
+.v33-x { color: #ef4444; font-weight: 700; background: rgba(239, 68, 68, 0.15); padding: 4px 12px; border-radius: 12px; font-size: 0.8em; border: 1px solid rgba(239, 68, 68, 0.3); box-shadow: 0 0 10px rgba(239, 68, 68, 0.2); }
 
 /* Premium Tables */
-.v33-table, table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 15px 0 25px; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.02); page-break-inside: avoid; }
-.v33-table th, table th { background: #f8fafc; color: #334155; text-transform: uppercase; font-size: 6.5pt; font-weight: 800; letter-spacing: 1px; padding: 8px 10px; border-bottom: 2px solid #cbd5e1; border-right: 1px solid #e2e8f0; }
-.v33-table td, table td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; border-right: 1px solid #e2e8f0; font-size: 8pt; line-height: 1.4; color: #475569; }
-.v33-table th:last-child, table th:last-child, .v33-table td:last-child, table td:last-child { border-right: none; }
-.v33-table tr:nth-child(even) td, table tr:nth-child(even) td { background: #fafafa; }
+.v33-table, table { width: 100%; border-collapse: collapse; margin: 15px 0 25px; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); page-break-inside: avoid; background: var(--glass_bg); border: 1px solid var(--card_border); }
+.v33-table th, table th { background: rgba(255, 255, 255, 0.05); color: var(--accent); text-transform: uppercase; font-size: 7pt; font-weight: 800; letter-spacing: 1.5px; padding: 14px; border-bottom: 2px solid rgba(0, 240, 255, 0.3); text-align: left; font-family: 'Outfit', sans-serif; }
+.v33-table td, table td { padding: 12px 14px; border-bottom: 1px solid var(--card_border); font-size: 8.5pt; line-height: 1.5; color: var(--slate); }
+.v33-table tr:nth-child(even) td, table tr:nth-child(even) td { background: var(--table_bg_alt); }
+.v33-table tr:hover td, table tr:hover td { background: rgba(0, 240, 255, 0.05); }
 .v33-table tr:last-child td, table tr:last-child td { border-bottom: none; }
 
 /* Workstreams */
-.v33-ws { margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden; page-break-inside: avoid; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-.v33-ws-h { background: #f8fafc; color: var(--accent); padding: 10px 14px; font-weight: 700; display: flex; justify-content: space-between; font-size: 9pt; border-bottom: 1px solid #e2e8f0; }
-.v33-ws-h span { color: var(--neon); }
-.v33-ws-b { padding: 14px; font-size: 8pt; background: #ffffff; }
-.v33-ws-f { margin-top: 10px; font-weight: 700; color: #64748b; text-align: right; border-top: 1px dashed #e2e8f0; padding-top: 10px; }
+.v33-ws { margin-bottom: 24px; border: 1px solid var(--card_border); border-radius: 12px; overflow: hidden; page-break-inside: avoid; box-shadow: var(--shadow); background: var(--glass_bg); backdrop-filter: blur(10px); }
+.v33-ws-h { background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), transparent); color: var(--accent); padding: 14px 18px; font-weight: 700; display: flex; justify-content: space-between; font-size: 9.5pt; border-bottom: 1px solid var(--card_border); font-family: 'Outfit', sans-serif; }
+.v33-ws-h span { color: var(--neon); text-shadow: 0 0 8px rgba(0, 240, 255, 0.4); }
+.v33-ws-b { padding: 18px; font-size: 8.5pt; color: var(--slate); }
+.v33-ws-f { margin-top: 12px; font-weight: 700; color: var(--text_muted); text-align: right; border-top: 1px dashed var(--card_border); padding-top: 14px; }
+
+/* Execution Timeline */
+.v33-timeline { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; padding: 25px; background: var(--glass_bg); border-radius: 12px; border: 1px solid var(--card_border); box-shadow: var(--shadow); }
+.v33-tl-row { display: flex; align-items: center; gap: 20px; }
+.v33-tl-label { width: 120px; font-weight: 700; font-size: 8.5pt; color: var(--accent); flex-shrink: 0; font-family: 'Outfit', sans-serif; }
+.v33-tl-track { flex: 1; height: 32px; background: rgba(255, 255, 255, 0.03); border-radius: 16px; position: relative; border: 1px solid rgba(255, 255, 255, 0.05); overflow: hidden; }
+.v33-tl-bar { position: absolute; top: 0; bottom: 0; background: linear-gradient(90deg, rgba(0, 240, 255, 0.6), rgba(59, 130, 246, 0.8)); border-radius: 16px; display: flex; align-items: center; padding: 0 12px; box-shadow: 0 0 15px rgba(0, 240, 255, 0.3); border: 1px solid rgba(0, 240, 255, 0.5); }
+.v33-tl-days { color: #fff; font-size: 7.5pt; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
 /* Sections & Typography details */
-.md-section { margin-bottom: 20px; padding-bottom: 10px; page-break-inside: avoid; }
-.section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-bottom: 10px; page-break-after: avoid; }
-.section-head h2 { margin: 0; border: none; }
-.kicker { display: inline-block; padding: 4px 8px; border: 1px solid var(--accent); color: var(--accent); background: #f8fafc; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; white-space: nowrap; border-radius: 4px; }
+.md-section { margin-bottom: 30px; padding-bottom: 15px; page-break-inside: avoid; }
+.section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-bottom: 20px; page-break-after: avoid; }
+.section-head h2 { margin: 0; border: none; box-shadow: none; }
+.kicker { display: inline-block; padding: 6px 12px; border: 1px solid rgba(0, 240, 255, 0.3); color: var(--neon); background: rgba(0, 240, 255, 0.05); font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; border-radius: 6px; box-shadow: 0 0 15px rgba(0, 240, 255, 0.1); }
 
 /* Sign-off & Auth */
-.v33-auth { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 60px; page-break-inside: avoid; background: #f8fafc; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; }
-.v33-seal-box { width: 60px; height: 60px; border: 2px solid var(--accent); margin-bottom: 10px; border-radius: 50%; opacity: 0.8; }
-.v33-seal-wrap { text-align: center; color: var(--accent); font-size: 6pt; font-weight: 700; letter-spacing: 1px; }
-.v33-sigs { display: flex; gap: 50px; }
-.v33-sig { text-align: center; font-weight: 600; font-size: 9pt; color: #64748b; }
-.v33-sig .l { border-bottom: 1px solid #cbd5e1; margin: 40px 0 10px; width: 200px; }
-.v33-fp { text-align: center; font-size: 7pt; color: #cbd5e1; margin-top: 30px; }
+.v33-auth { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 60px; page-break-inside: avoid; background: var(--glass_bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 40px; border-radius: 16px; border: 1px solid var(--card_border); box-shadow: var(--shadow); position: relative; overflow: hidden; }
+.v33-auth::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at center, rgba(0, 240, 255, 0.05) 0%, transparent 50%); pointer-events: none; }
+.v33-seal-box { width: 64px; height: 64px; border: 2px solid var(--neon); margin-bottom: 15px; border-radius: 50%; opacity: 0.9; box-shadow: 0 0 25px rgba(0,240,255,0.4), inset 0 0 15px rgba(0,240,255,0.2); position: relative; }
+.v33-seal-box::after { content: ''; position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; border: 1px dashed var(--neon); border-radius: 50%; opacity: 0.5; }
+.v33-seal-wrap { text-align: center; color: var(--accent); font-size: 7pt; font-weight: 800; letter-spacing: 2px; font-family: 'Outfit', sans-serif; z-index: 1; }
+.v33-sigs { display: flex; gap: 60px; z-index: 1; }
+.v33-sig { text-align: center; font-weight: 600; font-size: 9pt; color: var(--slate); }
+.v33-sig .l { border-bottom: 1px solid var(--text_muted); margin: 40px 0 10px; width: 200px; }
+.v33-fp { text-align: center; font-size: 7pt; color: var(--text_muted); margin-top: 40px; letter-spacing: 2px; opacity: 0.6; }
 
-.signoff-box { border: 1px solid #e2e8f0; padding: 25px; margin-top: 30px; background: #f8fafc; border-radius: 8px; page-break-inside: avoid; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
-.signoff-box h3 { margin-top: 0; }
-.signoff-line { border-bottom: 1px solid #cbd5e1; display: inline-block; width: 280px; margin-left: 10px; }
+/* Markdown Content Styling */
+.md-content ul { padding-left: 20px; color: var(--slate); }
+.md-content li { margin-bottom: 6px; }
+.signoff-box { border: 1px solid var(--card_border); padding: 30px; margin-top: 40px; background: var(--glass_bg); border-radius: 12px; page-break-inside: avoid; box-shadow: var(--shadow); backdrop-filter: blur(10px); }
+.signoff-box h3 { margin-top: 0; border-bottom: 1px solid var(--card_border); padding-bottom: 10px; margin-bottom: 20px; }
+.signoff-line { border-bottom: 1px solid var(--text_muted); display: inline-block; width: 280px; margin-left: 10px; }
+
+@media print {
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: var(--bg) !important; }
+  .cover-v33, .v33-score-card, .v33-auth, .v33-ws { background: var(--bg) !important; border: 1px solid var(--card_border) !important; box-shadow: none !important; }
+  .v33-table th { background: var(--card_border) !important; color: var(--accent) !important; }
+}
 
         
   </style>
@@ -90,17 +115,17 @@ p { margin: 4px 0 10px; color: #475569; }
     <div class="cover-v33">
           <div class="v33-lines"></div>
           <div class="v33-top">
-            <span class="v33-id">FINGERPRINT // 5D59595AF66E5E88</span>
+            <span class="v33-id">FINGERPRINT // 5703239D8726B163</span>
             <span class="v33-cl">// CONFIDENTIAL STRATEGY //</span>
           </div>
           <div class="v33-center">
             <div class="v33-box"></div>
-            <div class="v33-kicker">Omnipotence Engagement Architecture</div>
-            <h1>Strategic<br/><span>Nexus</span></h1>
-            <p>Strategic Security Scoping v33.0 Omni-Review</p>
+            <div class="v33-kicker">Regulatory Vendor Scoping Request</div>
+            <h1>Scope<br/><span>Definition</span></h1>
+            <p>DORA TLPT, PRA CBEST, & HKMA iCAST Vendor Requirements</p>
           </div>
           <div class="v33-footer">
-            <div class="v33-m"><span>ENTITY</span><strong>Global Bank</strong></div>
+            <div class="v33-m"><span>ENTITY</span><strong>Global Financial Bank</strong></div>
             <div class="v33-m"><span>NEXUS SCORE</span><strong>70%</strong></div>
           </div>
         </div><div class="md-section">
@@ -108,19 +133,70 @@ p { margin: 4px 0 10px; color: #475569; }
                 <h2>Nexus Strategic Analysis</h2>
                 <div class="kicker">PART I: STRATEGY</div>
             </div>
-            <div class="v33-score-card">
-            <div class="v33-score-main">
-                <div class="v33-score-val">70</div>
-                <div class="v33-score-lbl">NEXUS INDEX</div>
+            <div style="display: flex; gap: 40px; align-items: flex-start; page-break-inside: avoid;">
+            <div style="flex: 1;">
+                <div class="v33-score-card" style="margin-top: 0;">
+                    <div class="v33-score-main">
+                        <div class="v33-score-val">70</div>
+                        <div class="v33-score-lbl">NEXUS INDEX</div>
+                    </div>
+                    <div class="v33-score-text">
+                        <h3>1.1 Engagement Coverage Index</h3>
+                        <p>This score reflects the breadth of technical validation across core governance pillars.</p>
+                    </div>
+                </div>
+                <table class="v33-table">
+                    <thead><tr><th>Pillar</th><th>Status</th><th>Priority</th></tr></thead>
+                    <tbody><tr><td>GOV</td><td><span class="v33-v">VALIDATED</span></td><td>Strategic</td></tr><tr><td>RES</td><td><span class="v33-v">VALIDATED</span></td><td>Strategic</td></tr><tr><td>INT</td><td><span class="v33-v">VALIDATED</span></td><td>Strategic</td></tr><tr><td>PRI</td><td><span class="v33-x">GAP</span></td><td>Strategic</td></tr><tr><td>SOV</td><td><span class="v33-v">VALIDATED</span></td><td>Strategic</td></tr><tr><td>ID</td><td><span class="v33-x">GAP</span></td><td>Strategic</td></tr></tbody>
+                </table>
             </div>
-            <div class="v33-score-text">
-                <h3>1.1 Engagement Coverage Index</h3>
-                <p>This score reflects the breadth of technical validation across core governance pillars.</p>
+            <div style="flex: 1; display: flex; justify-content: center; align-items: center; background: var(--glass_bg); border: 1px solid var(--card_border); border-radius: 16px; padding: 20px; box-shadow: var(--shadow); backdrop-filter: blur(20px);">
+                
+    <svg width="100%" height="100%" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <linearGradient id="poly-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="rgba(0, 240, 255, 0.4)" />
+          <stop offset="100%" stop-color="rgba(59, 130, 246, 0.1)" />
+        </linearGradient>
+      </defs>
+      
+      <!-- Background Grids -->
+      <polygon points="150.0,50.0 236.60254037844385,100.0 236.60254037844388,200.0 150.0,250.0 63.39745962155615,200.00000000000003 63.39745962155614,99.99999999999999" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <polygon points="150.0,100.0 193.30127018922192,125.0 193.30127018922195,175.0 150.0,200.0 106.69872981077808,175.00000000000003 106.69872981077808,125.0" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="150.0" y1="150.0" x2="150.0" y2="50.0" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+<line x1="150.0" y1="150.0" x2="236.60254037844385" y2="100.0" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+<line x1="150.0" y1="150.0" x2="236.60254037844388" y2="200.0" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+<line x1="150.0" y1="150.0" x2="150.0" y2="250.0" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+<line x1="150.0" y1="150.0" x2="63.39745962155615" y2="200.00000000000003" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+<line x1="150.0" y1="150.0" x2="63.39745962155614" y2="99.99999999999999" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+      
+      <!-- Data Polygon -->
+      <polygon points="150.0,50.0 236.60254037844385,100.0 236.60254037844388,200.0 150.0,170.0 63.39745962155615,200.00000000000003 132.67949192431124,140.0" fill="url(#poly-grad)" stroke="#00f0ff" stroke-width="2" filter="url(#neon-glow)"/>
+      
+      <!-- Data Points -->
+      <circle cx="150.0" cy="50.0" r="4" fill="#020617" stroke="#00f0ff" stroke-width="2" filter="url(#neon-glow)"/>
+<circle cx="236.60254037844385" cy="100.0" r="4" fill="#020617" stroke="#00f0ff" stroke-width="2" filter="url(#neon-glow)"/>
+<circle cx="236.60254037844388" cy="200.0" r="4" fill="#020617" stroke="#00f0ff" stroke-width="2" filter="url(#neon-glow)"/>
+<circle cx="150.0" cy="170.0" r="4" fill="#020617" stroke="#00f0ff" stroke-width="2" filter="url(#neon-glow)"/>
+<circle cx="63.39745962155615" cy="200.00000000000003" r="4" fill="#020617" stroke="#00f0ff" stroke-width="2" filter="url(#neon-glow)"/>
+<circle cx="132.67949192431124" cy="140.0" r="4" fill="#020617" stroke="#00f0ff" stroke-width="2" filter="url(#neon-glow)"/>
+<text x="150.0" y="29.0" font-family="Outfit, sans-serif" font-size="10px" font-weight="700" fill="#94a3b8" text-anchor="middle" letter-spacing="1px">GOV</text>
+<text x="258.25317547305485" y="91.5" font-family="Outfit, sans-serif" font-size="10px" font-weight="700" fill="#94a3b8" text-anchor="start" letter-spacing="1px">RES</text>
+<text x="258.25317547305485" y="216.49999999999997" font-family="Outfit, sans-serif" font-size="10px" font-weight="700" fill="#94a3b8" text-anchor="start" letter-spacing="1px">INT</text>
+<text x="150.0" y="279.0" font-family="Outfit, sans-serif" font-size="10px" font-weight="700" fill="#94a3b8" text-anchor="middle" letter-spacing="1px">PRI</text>
+<text x="41.74682452694519" y="216.50000000000006" font-family="Outfit, sans-serif" font-size="10px" font-weight="700" fill="#94a3b8" text-anchor="end" letter-spacing="1px">SOV</text>
+<text x="41.746824526945176" y="91.49999999999999" font-family="Outfit, sans-serif" font-size="10px" font-weight="700" fill="#94a3b8" text-anchor="end" letter-spacing="1px">ID</text>
+</svg>
             </div>
-        </div><table class="v33-table">
-            <thead><tr><th>Pillar</th><th>Status</th><th>Priority</th></tr></thead>
-            <tbody><tr><td>GOV</td><td><span class="v33-v">VALIDATED</span></td><td>Strategic</td></tr><tr><td>RES</td><td><span class="v33-v">VALIDATED</span></td><td>Strategic</td></tr><tr><td>INT</td><td><span class="v33-v">VALIDATED</span></td><td>Strategic</td></tr><tr><td>PRI</td><td><span class="v33-x">GAP</span></td><td>Strategic</td></tr><tr><td>SOV</td><td><span class="v33-v">VALIDATED</span></td><td>Strategic</td></tr><tr><td>ID</td><td><span class="v33-x">GAP</span></td><td>Strategic</td></tr></tbody>
-        </table>
+        </div>
         </div><div class="md-section">
             <div class="section-head">
                 <h2>Regulatory Framework Analysis</h2>
@@ -129,28 +205,56 @@ p { margin: 4px 0 10px; color: #475569; }
             <h3>1.5 Regulatory Alignment: Global Regulated Enterprise (DORA, FRB, HKMA, PRA)</h3>
             <p><strong>Narrative:</strong> A unified global compliance scoping document consolidating DORA, FRB, HKMA, and PRA requirements.</p><div class="v33-ws" style="margin-top: 20px;">
                         <div class="v33-ws-h"><span>FRAMEWORK</span> DORA</div>
-                        <div class="v33-ws-b"><h4>ICT Asset Criticality Mapping</h4><p>Under DORA, scoping must start with the ICT Asset Register. Every asset in scope must be mapped to a 'Critical or Important Function' (CIF). If an asset supports a CIF, it is subject to more rigorous testing and reporting requirements.</p><h4>Third-Party ICT Risk</h4><p>DORA requires that testing includes third-party ICT service providers where they support critical or important functions. This scoping pack must include a list of involved third parties and confirmation of their authorization to test.</p><h4>Threat Intelligence Requirements</h4><p>For TLPT (Threat-Led Penetration Testing), the scope must be driven by current, relevant threat intelligence. The scenarios defined in this pack should match the TTPs of actors targeting the financial sector.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
+                        <div class="v33-ws-b"><h4>Digital Operational Resilience Act (EU 2022/2554)</h4><p>DORA enforces a unified, pan-European approach to operational resilience. Financial entities must demonstrate the capability to withstand, respond to, and recover from all types of ICT-related disruptions and threats.</p><h4>ICT Asset Criticality & Risk Management</h4><p>Scoping must strictly map to the ICT Asset Register. Every in-scope asset is evaluated against 'Critical or Important Functions' (CIFs). Assets supporting CIFs require rigorous continuous testing, monitoring, and Board-level reporting.</p><h4>Third-Party ICT Risk Oversight</h4><p>Testing explicitly encompasses critical third-party ICT service providers (CTPPs). Financial entities are accountable for the security posture of their entire supply chain, mandating authorization and joint-testing protocols.</p><h4>Threat-Led Penetration Testing (TLPT)</h4><p>Advanced TLPT engagements are required to mirror the TTPs of advanced persistent threats (APTs) targeting the EU financial sector. Scenarios must be bespoke, intelligence-driven, and validated by the relevant competent authorities.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
                         <div class="v33-ws-h"><span>FRAMEWORK</span> FRB</div>
-                        <div class="v33-ws-b"><h4>SR 13-1 / Vendor Risk</h4><p>The scoping must encompass critical third-party vendors and external facing infrastructure in alignment with FRB supervision expectations.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
+                        <div class="v33-ws-b"><h4>SR 13-1 / Third-Party Risk Management</h4><p>Strict scoping inclusion of critical third-party vendors and external-facing infrastructure, aligning with the Federal Reserve Board's expectations for comprehensive vendor risk oversight.</p><h4>SR 14-8 / Consolidated Recovery Planning</h4><p>Validation that the organization's technical controls support its consolidated recovery plans, ensuring the ability to resume core business lines under severe cyber distress.</p><h4>Sound Practices for Cyber Resilience</h4><p>Evaluation of the institution's alignment with interagency guidelines on cyber resilience, focusing on governance, dependency management, and incident response readiness.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
                         <div class="v33-ws-h"><span>FRAMEWORK</span> HKMA</div>
-                        <div class="v33-ws-b"><h4>iCAST Execution</h4><p>Simulations must cover the 'Assume Breach' methodology to assess the detection and response capabilities of the institution's Security Operations Center (SOC).</p></div></div><div class="v33-ws" style="margin-top: 20px;">
+                        <div class="v33-ws-b"><h4>Cybersecurity Fortification Initiative (CFI) 2.0</h4><p>Comprehensive alignment with the HKMA's updated CFI 2.0 requirements, ensuring the Authorized Institution (AI) maintains robust cyber resilience.</p><h4>iCAST Execution & 'Assume Breach'</h4><p>Simulations must encompass the Intelligence-led Cyber Attack Simulation Testing (iCAST) methodology, utilizing 'Assume Breach' paradigms to stress-test the SOC's detection, response, and containment capabilities.</p><h4>Cyber Resilience Assessment Framework (C-RAF)</h4><p>Scoping supports the C-RAF inherent risk assessment, calibrating the depth of technical validation based on the institution's designated risk profile (Low, Medium, or High).</p></div></div><div class="v33-ws" style="margin-top: 20px;">
                         <div class="v33-ws-h"><span>FRAMEWORK</span> PRA</div>
-                        <div class="v33-ws-b"><h4>CBEST Intelligence-Led Testing</h4><p>Testing must be driven by bespoke threat intelligence targeting the specific critical business services (CBS) of the UK financial institution.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
+                        <div class="v33-ws-b"><h4>CBEST Intelligence-Led Testing Framework</h4><p>Testing must be driven by bespoke, high-fidelity threat intelligence targeting the Critical Business Services (CBS) of UK financial institutions, complying with PRA and FCA joint guidelines.</p><h4>STAR-FS & Supervisory Statements</h4><p>Alignment with SS1/21 (Operational resilience: Impact tolerances) to ensure the institution can remain within its impact tolerances during severe but plausible cyber attack scenarios.</p><h4>Systemic Risk & Contagion Assessment</h4><p>Simulations must model the potential for systemic contagion affecting the wider UK financial system, validating segregation controls and recovery playbooks.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
                         <div class="v33-ws-h"><span>FRAMEWORK</span> MITRE</div>
-                        <div class="v33-ws-b"><h4>T1190 - Exploit Public-Facing Application</h4><p>Adversaries may attempt to take advantage of a weakness in an Internet-facing computer or program using software, data, or commands in order to cause unintended or unanticipated behavior.</p><h4>T1078 - Valid Accounts</h4><p>Adversaries may obtain and abuse credentials of existing accounts as a means of gaining Initial Access, Persistence, Privilege Escalation, or Defense Evasion.</p><h4>T1566 - Phishing</h4><p>Adversaries may send phishing messages to gain access to victim systems. All forms of phishing are electronically delivered social engineering.</p><h4>T1059 - Command and Scripting Interpreter</h4><p>Adversaries may abuse command and script interpreters to execute commands, scripts, or binaries.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
+                        <div class="v33-ws-b"><h4>Initial Access & Execution Strategies</h4><p>Scenarios evaluate adversarial techniques such as Spearphishing (T1566), Valid Accounts (T1078), and External Remote Services (T1133) to breach the perimeter and establish initial footholds.</p><h4>Defense Evasion & Persistence</h4><p>Testing validates the SOC's ability to detect advanced evasion techniques, including Process Injection (T1055), Obfuscated Files/Information (T1027), and Scheduled Task/Job manipulation (T1053).</p><h4>Credential Access & Lateral Movement</h4><p>Assessments simulate attempts to dump credentials (T1003) and move laterally via SMB/Windows Admin Shares (T1021.002) and Pass the Hash (T1550.002), challenging internal zero-trust boundaries.</p><h4>Command and Control (C2) & Exfiltration</h4><p>Validation of egress controls against Application Layer Protocol (T1071) C2 channels and automated Data Exfiltration (T1048), ensuring sensitive client data remains contained.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
                         <div class="v33-ws-h"><span>FRAMEWORK</span> OWASP</div>
-                        <div class="v33-ws-b"><h4>A01:2021-Broken Access Control</h4><p>Testing must validate that users cannot act outside of their intended permissions. Failures typically lead to unauthorized information disclosure, modification, or destruction of all data.</p><h4>A02:2021-Cryptographic Failures</h4><p>Testing must verify the protection of sensitive data in transit and at rest. This includes passwords, credit card numbers, health records, personal information, and business secrets.</p><h4>A03:2021-Injection</h4><p>Testing must validate that user-supplied data is not interpreted as commands or queries (e.g., SQL, NoSQL, OS command, ORM, LDAP, and EL expression or OGNL injection).</p><h4>A04:2021-Insecure Design</h4><p>Testing must evaluate the architectural design for missing or ineffective control design. Insecure design cannot be fixed by a perfect implementation.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
+                        <div class="v33-ws-b"><h4>A01:2021 - Broken Access Control</h4><p>Rigorous testing to ensure cryptographic boundaries and authorization schemas prevent horizontal and vertical privilege escalation, unauthorized data access, and API manipulation.</p><h4>A02:2021 - Cryptographic Failures</h4><p>Verification of data-at-rest and data-in-transit encryption standards, evaluating TLS configurations, key management lifecycle, and protection against cryptographic downgrades.</p><h4>A03:2021 - Injection</h4><p>Validation against payload injection vulnerabilities, including SQL, NoSQL, ORM, and OS Command injections, ensuring input sanitization and parameterized query enforcement.</p><h4>A04:2021 - Insecure Design & Architecture</h4><p>Threat modeling and architectural review to identify inherent design flaws that cannot be mitigated through patching, emphasizing secure-by-design principles early in the SDLC.</p></div></div><div class="v33-ws" style="margin-top: 20px;">
                         <div class="v33-ws-h"><span>FRAMEWORK</span> CIS</div>
-                        <div class="v33-ws-b"><h4>Control 1: Inventory and Control of Enterprise Assets</h4><p>Actively manage (inventory, track, and correct) all enterprise assets connected to the infrastructure physically, virtually, remotely, and those within cloud environments.</p><h4>Control 4: Secure Configuration of Enterprise Assets and Software</h4><p>Establish and maintain the secure configuration of enterprise assets and software.</p><h4>Control 12: Network Infrastructure Management</h4><p>Establish, implement, and actively manage network devices, in order to prevent attackers from exploiting vulnerable network services and access points.</p></div></div>
+                        <div class="v33-ws-b"><h4>Implementation Group 3 (IG3) Baselines</h4><p>Scoping aligns with CIS IG3, designed for mature organizations targeted by sophisticated adversaries, demanding the highest level of comprehensive cyber defense implementation.</p><h4>Control 1 & 2: Enterprise Asset and Software Inventory</h4><p>Active management, discovery, and tracking of all connected enterprise assets and software to eliminate shadow IT and establish a definitive attack surface baseline.</p><h4>Control 4: Secure Configuration</h4><p>Establishment and continuous enforcement of hardened secure configurations across enterprise assets, cloud infrastructure, and software applications.</p></div></div>
         </div><div class="md-section">
             <div class="section-head">
-                <h2>Technical Data Governance</h2>
+                <h2>Threat Intelligence Modeling</h2>
+                <div class="kicker">PART I.c: INTELLIGENCE</div>
+            </div>
+            <h3>1.6 Threat Intelligence Scenarios</h3>
+        <p>In accordance with the stringent intelligence-led requirements of <strong>DORA TLPT</strong>, <strong>PRA CBEST</strong>, and <strong>HKMA iCAST</strong>, the following Advanced Persistent Threat (APT) profiles are designated as in-scope for simulation.</p>
+        <table class="v33-table">
+            <thead><tr><th>Threat Actor</th><th>Target Sector</th><th>Primary Objective</th><th>Kill-Chain Focus</th></tr></thead>
+            <tbody>
+                <tr><td><strong>FIN7 / Carbanak</strong></td><td>Financial Services</td><td>Financial Theft, Ransomware</td><td>Initial Access, Lateral Movement, Exfiltration</td></tr>
+                <tr><td><strong>Lazarus Group</strong></td><td>Global Banking</td><td>SWIFT compromise, Cryptocurrency</td><td>Defense Evasion, Persistence, C2</td></tr>
+                <tr><td><strong>Cozy Bear (APT29)</strong></td><td>Government & Finance</td><td>Espionage, Supply Chain</td><td>Supply Chain Compromise, Discovery</td></tr>
+            </tbody>
+        </table>
+        </div><div class="md-section">
+            <div class="section-head">
+                <h2>Data Governance & Sovereignty</h2>
                 <div class="kicker">PART II: GOVERNANCE</div>
             </div>
             <h3>2.1 Digital Chain of Evidence</h3>
           <p>Artifacts produced during this engagement follow a cryptographically-verifiable lifecycle.</p><table class="v33-table">
             <thead><tr><th>Lifecycle Phase</th><th>Validation Method</th></tr></thead>
             <tbody><tr><td>Acquisition</td><td>SHA-256 Verified Capture</td></tr><tr><td>Processing</td><td>Air-Gapped Analysis Environment</td></tr><tr><td>Destruction</td><td>NIST 800-88 Compliant Wipe</td></tr></tbody>
+        </table>
+        
+        <br/>
+        
+        <h3>2.2 Data Sovereignty & Handling</h3>
+        <p>Strict data localization and handling protocols are enforced during testing.</p>
+        <table class="v33-table">
+        <thead><tr><th>Data Classification</th><th>Processing Region</th><th>Retention SLA</th></tr></thead>
+        <tbody>
+            <tr><td>Engagement Metadata</td><td>Global (Primary)</td><td>7 Years (Regulatory)</td></tr>
+            <tr><td>Vulnerability Findings</td><td>Global (Encrypted)</td><td>90 Days post-remediation</td></tr>
+            <tr><td>PII / Sensitive Artifacts</td><td>Volatile Memory Only</td><td>Wiped immediately post-validation</td></tr>
+        </tbody>
         </table>
         </div><div class="md-section">
             <div class="section-head">
@@ -161,69 +265,121 @@ p { margin: 4px 0 10px; color: #475569; }
                 <div class="v33-ws-h"><span>PT-NET-EXT</span> External Network Penetration Test</div>
                 <div class="v33-ws-b">
                     <p>A structured assessment of internet-facing infrastructure including firewalls, VPNs, mail gateways, and publicly reachable hosts. Testers simulate real-world attackers attempting to gain unauthorised access from outside the perimeter. Findings are rated by exploitability and business impact.</p>
-                    <div class="v33-ws-f">2 Days | €3,500 Budgetary ALLOC</div>
+                    <div class="v33-ws-f">Expected Duration: 2 Days</div>
                 </div>
             </div><div class="v33-ws">
                 <div class="v33-ws-h"><span>PT-APP-WEB</span> Web Application Penetration Test</div>
                 <div class="v33-ws-b">
                     <p>Manual-led security testing of web applications aligned to the OWASP Top 10 and WSTG, covering injection flaws, broken authentication, sensitive data exposure, XML external entities, broken access control, security misconfigurations, XSS, insecure deserialisation, and business logic vulnerabilities.</p>
-                    <div class="v33-ws-f">3 Days | €4,000 Budgetary ALLOC</div>
+                    <div class="v33-ws-f">Expected Duration: 3 Days</div>
                 </div>
             </div><div class="v33-ws">
                 <div class="v33-ws-h"><span>PT-APP-API</span> REST/GraphQL API Security Testing</div>
                 <div class="v33-ws-b">
                     <p>Targeted assessment of REST, SOAP, and GraphQL APIs using the OWASP API Security Top 10 framework. Covers broken object-level authorisation, excessive data exposure, lack of rate limiting, broken function-level authorisation, mass assignment, security misconfiguration, and injection flaws.</p>
-                    <div class="v33-ws-f">2 Days | €3,500 Budgetary ALLOC</div>
+                    <div class="v33-ws-f">Expected Duration: 2 Days</div>
                 </div>
             </div><div class="v33-ws">
                 <div class="v33-ws-h"><span>RT-FULL</span> Full Red Team Engagement</div>
                 <div class="v33-ws-b">
                     <p>An adversary simulation engagement where a dedicated red team uses realistic threat actor TTPs to attack the organisation across all vectors — digital, physical, and human — without prior disclosure to defenders. Measures the organisation's detection, response, and containment capabilities.</p>
-                    <div class="v33-ws-f">17 Days | €25,000 Budgetary ALLOC</div>
+                    <div class="v33-ws-f">Expected Duration: 17 Days</div>
                 </div>
             </div><div class="v33-ws">
                 <div class="v33-ws-h"><span>PT-CLD-INF</span> Cloud Infrastructure Penetration Test</div>
                 <div class="v33-ws-b">
                     <p>Assessment of cloud-native infrastructure, IAM, and resource configurations.</p>
-                    <div class="v33-ws-f">3 Days | €5,000 Budgetary ALLOC</div>
+                    <div class="v33-ws-f">Expected Duration: 3 Days</div>
                 </div>
             </div></div>
         </div><div class="md-section">
             <div class="section-head">
-                <h2>Omni Control Matrix</h2>
-                <div class="kicker">PART III.b: OMNI MATRIX</div>
+                <h2>Execution Constraints</h2>
+                <div class="kicker">PART III.b: CONSTRAINTS</div>
             </div>
-            <h3>3.1 Omni Control Mapping</h3>
-            <p>The following granular controls are in scope for the selected execution modules.</p>
-            <table class="v33-table">
-            <thead><tr><th>Control ID</th><th>Domain</th><th>Description</th></tr></thead>
-            <tbody><tr><td><strong>AC_01</strong></td><td>None</td><td>None</td></tr><tr><td><strong>IA_02</strong></td><td>None</td><td>None</td></tr><tr><td><strong>SI_04</strong></td><td>None</td><td>None</td></tr></tbody></table>
+            <h3>3.1 Third-Party ICT Dependencies</h3>
+        <p>Per regulatory mandate, all Critical Third-Party Providers (CTPPs) in scope must be explicitly authorized.</p>
+        <table class="v33-table">
+            <thead><tr><th>Vendor / CTPP</th><th>Service Provided</th><th>Testing Authorization</th><th>Status</th></tr></thead>
+            <tbody>
+                <tr><td>Amazon Web Services (AWS)</td><td>Cloud Infrastructure</td><td>Verified (AWS Pentest Rules)</td><td><span class="v33-v">AUTHORIZED</span></td></tr>
+                <tr><td>Microsoft Azure</td><td>Entra ID & Cloud Hosting</td><td>Verified (Azure Rules of Engagement)</td><td><span class="v33-v">AUTHORIZED</span></td></tr>
+                <tr><td>External SaaS Platform</td><td>Core Banking Integration</td><td>Pending Written Approval</td><td><span class="v33-x">PENDING</span></td></tr>
+            </tbody>
+        </table>
+        
+        <br/>
+        
+        <h3>3.2 Regulatory Exclusions & Justification</h3>
+        <p>Any significant asset excluded from this testing must have management-approved justification.</p>
+        <table class="v33-table">
+            <thead><tr><th>Asset / System</th><th>Category</th><th>Exclusion Justification</th></tr></thead>
+            <tbody>
+                <tr><td>Legacy Mainframe (Z-OS)</td><td>Core Processing</td><td>In-flight migration to Cloud; frozen state until Q4. Risk accepted by Board.</td></tr>
+                <tr><td>Third-Party Payment Gateway</td><td>Payment Processing</td><td>Vendor explicitly prohibits intrusive dynamic testing. Covered under SOC2 Type II.</td></tr>
+            </tbody>
+        </table>
         </div><div class="md-section">
             <div class="section-head">
-                <h2>RACI Governance</h2>
-                <div class="kicker">PART III.c: RACI MATRIX</div>
+                <h2>Governance & Escalation</h2>
+                <div class="kicker">PART III.c: GOVERNANCE</div>
             </div>
-            <h3>3.2 RACI Governance Matrix</h3>
+            <h3>3.3 RACI Governance Matrix</h3>
             <p>Responsibility Assignment Matrix for engagement activities.</p>
             <table class="v33-table">
-            <thead><tr><th>Activity</th><th>Provider</th><th>Client Sec Lead</th><th>Client IT</th><th>Client Exec</th></tr></thead>
-            <tbody><tr><td>Project Kick-off</td><td><strong>R</strong></td><td><strong>A</strong></td><td><strong>C</strong></td><td><strong>I</strong></td></tr><tr><td>Access Provisioning</td><td><strong>C</strong></td><td><strong>I</strong></td><td><strong>R</strong></td><td><strong>A</strong></td></tr><tr><td>Technical Testing</td><td><strong>R</strong></td><td><strong>A</strong></td><td><strong>I</strong></td><td><strong>C</strong></td></tr><tr><td>Report Delivery</td><td><strong>R</strong></td><td><strong>A</strong></td><td><strong>C</strong></td><td><strong>I</strong></td></tr><tr><td>Remediation Sign-off</td><td><strong>C</strong></td><td><strong>I</strong></td><td><strong>R</strong></td><td><strong>A</strong></td></tr></tbody></table>
+            <thead><tr><th>Activity</th><th>External Vendor</th><th>Internal Sec Lead</th><th>Internal IT</th><th>Internal Exec</th></tr></thead>
+            <tbody><tr><td>Project Kick-off</td><td><strong>R</strong></td><td><strong>A</strong></td><td><strong>C</strong></td><td><strong>I</strong></td></tr><tr><td>Access Provisioning</td><td><strong>C</strong></td><td><strong>I</strong></td><td><strong>R</strong></td><td><strong>A</strong></td></tr><tr><td>Technical Testing</td><td><strong>R</strong></td><td><strong>A</strong></td><td><strong>I</strong></td><td><strong>C</strong></td></tr><tr><td>Report Delivery</td><td><strong>R</strong></td><td><strong>A</strong></td><td><strong>C</strong></td><td><strong>I</strong></td></tr><tr><td>Remediation Sign-off</td><td><strong>C</strong></td><td><strong>I</strong></td><td><strong>R</strong></td><td><strong>A</strong></td></tr></tbody></table><br/><h3>3.4 Incident Escalation Matrix</h3>
+        <p>Pre-defined SLAs for communicating critical findings during active execution.</p>
+        <table class="v33-table">
+        <thead><tr><th>Severity Level</th><th>Escalation SLA</th><th>Primary Contact</th><th>Communication Channel</th></tr></thead>
+        <tbody>
+            <tr><td><strong style="color:#ef4444;">CRITICAL (Zero-Day / Active Breach)</strong></td><td>&lt; 4 Hours</td><td>Client CISO</td><td>Out-of-band encrypted comms</td></tr>
+            <tr><td><strong style="color:#f97316;">HIGH (Exploitable Path)</strong></td><td>&lt; 24 Hours</td><td>SOC Lead</td><td>Encrypted Portal Ticket</td></tr>
+            <tr><td><strong style="color:#eab308;">MEDIUM / LOW</strong></td><td>End of Phase</td><td>Project Manager</td><td>Weekly Status Report</td></tr>
+        </tbody></table>
         </div><div class="md-section">
             <div class="section-head">
-                <h2>Verification & Sign-off</h2>
-                <div class="kicker">PART IV: AUTHORIZATION</div>
+                <h2>Vendor Bid Requirements</h2>
+                <div class="kicker">PART IV: BID REQUIREMENTS</div>
+            </div>
+            <h3>4.1 Mandatory Vendor Qualifications</h3>
+        <p>To be considered eligible for this engagement, the bidding vendor must attest to the following minimum regulatory and operational requirements.</p>
+        <table class="v33-table">
+            <thead><tr><th>Qualification Domain</th><th>Minimum Requirement</th><th>Vendor Attestation (Yes/No)</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Regulatory Status</strong></td><td>Approved provider under PRA CBEST, HKMA iCAST, or equivalent regulatory frameworks.</td><td></td></tr>
+                <tr><td><strong>Technical Certification</strong></td><td>CREST Defensible Penetration Testing (or equivalent organizational accreditation).</td><td></td></tr>
+                <tr><td><strong>Lead Operator Status</strong></td><td>Lead Threat Intelligence / Execution operators must hold active CREST CCSAS / OSCE3 equivalent.</td><td></td></tr>
+                <tr><td><strong>Liability Insurance</strong></td><td>Active Professional Indemnity and Cyber Liability Insurance ($5M Minimum).</td><td></td></tr>
+            </tbody>
+        </table>
+        
+        <br/><br/>
+        
+        <h3>4.2 Vendor Pricing Submission</h3>
+        <p>Vendors must provide their commercial bid directly against the scoped modules below. Prices must be inclusive of all T&E and project management overhead.</p>
+        <table class="v33-table">
+            <thead><tr><th>Scoped Module</th><th>Proposed Effort (Days)</th><th>Blended Day Rate (€)</th><th>Total Cost (€)</th></tr></thead>
+            <tbody><tr><td>PT-NET-EXT - External Network Penetration Test</td><td></td><td></td><td></td></tr><tr><td>PT-APP-WEB - Web Application Penetration Test</td><td></td><td></td><td></td></tr><tr><td>PT-APP-API - REST/GraphQL API Security Testing</td><td></td><td></td><td></td></tr><tr><td>RT-FULL - Full Red Team Engagement</td><td></td><td></td><td></td></tr><tr><td>PT-CLD-INF - Cloud Infrastructure Penetration Test</td><td></td><td></td><td></td></tr>
+                <tr><td colspan="3" style="text-align: right;"><strong>TOTAL ENGAGEMENT BID</strong></td><td></td></tr>
+            </tbody>
+        </table>
+        </div><div class="md-section">
+            <div class="section-head">
+                <h2>Vendor Acknowledgment & Bid Submission</h2>
+                <div class="kicker">PART V: AUTHORIZATION</div>
             </div>
             <div class="v33-auth">
           <div class="v33-seal-wrap">
             <div class="v33-seal-box"></div>
-            <span>NEXUS SEAL</span>
+            <span>BID SEAL</span>
           </div>
           <div class="v33-sigs">
-            <div class="v33-sig">Executive Sponsor Approval<div class="l"></div></div>
-            <div class="v33-sig">Lead Strategic Provider<div class="l"></div></div>
+            <div class="v33-sig">Internal Executive Sponsor<div class="l"></div></div>
+            <div class="v33-sig">External Vendor Authorized Signatory<div class="l"></div></div>
           </div>
         </div>
-        <div class="v33-fp">FINGERPRINT // 5D59595AF66E5E88F02600D36FFEF289D467A9E849BB259A13F821382623506F</div>
+        <div class="v33-fp">FINGERPRINT // 5703239D8726B163488D3CCF96775B8C98B26DCB751B6A4377F09C9524130A14</div>
         </div>
 
     <!-- Inject the Markdown Forms -->

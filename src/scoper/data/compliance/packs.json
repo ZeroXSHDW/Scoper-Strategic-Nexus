@@ -107,12 +107,11 @@
     },
     {
       "id": "global-unified-pack",
-      "label": "Global Regulated Enterprise (DORA, FRB, HKMA, PRA)",
+      "label": "Global Regulated Enterprise (DORA, PRA, HKMA)",
       "frameworks": [
         "DORA",
-        "FRB",
-        "HKMA",
         "PRA",
+        "HKMA",
         "MITRE",
         "OWASP",
         "CIS"
@@ -124,9 +123,51 @@
         "PT-CLD-INF",
         "PT-APP-API"
       ],
-      "narrative": "A unified global compliance scoping document consolidating DORA, FRB, HKMA, and PRA requirements.",
+      "narrative": "A unified global compliance scoping document strictly consolidating DORA TLPT, PRA CBEST, and HKMA iCAST requirements.",
       "duration": "12-16 weeks",
       "fitNote": "Use for global enterprises requiring unified compliance scoping."
+    },
+    {
+      "id": "apac-resilience-pack",
+      "label": "APAC Regulated Enterprise (APRA, MAS, HKMA)",
+      "frameworks": [
+        "APRA",
+        "MAS",
+        "HKMA",
+        "MITRE",
+        "OWASP",
+        "CIS"
+      ],
+      "services": [
+        "RT-FULL",
+        "PT-APP-WEB",
+        "PT-NET-EXT",
+        "PT-CLD-INF"
+      ],
+      "narrative": "A unified Asia-Pacific compliance scoping document consolidating APRA (Australia), MAS (Singapore), and HKMA (Hong Kong) requirements.",
+      "duration": "10-14 weeks",
+      "fitNote": "Use for global enterprises operating across the APAC region requiring unified compliance scoping."
+    },
+    {
+      "id": "us-state-federal-pack",
+      "label": "US State & Federal Regulated Entity (NYDFS, FRB, FFIEC)",
+      "frameworks": [
+        "NYDFS",
+        "FRB",
+        "FFIEC",
+        "MITRE",
+        "OWASP",
+        "CIS"
+      ],
+      "services": [
+        "PT-APP-WEB",
+        "PT-NET-EXT",
+        "PT-NET-INT",
+        "PT-APP-API"
+      ],
+      "narrative": "A unified US compliance scoping document consolidating New York State (NYDFS) and Federal (FRB, FFIEC) regulatory expectations.",
+      "duration": "8-12 weeks",
+      "fitNote": "Use for US financial institutions operating in highly regulated jurisdictions like New York."
     }
   ]
 }

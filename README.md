@@ -1,17 +1,17 @@
-# Scoper: V33 Omni-Strategic Nexus
+# Scoper: Regulatory Vendor Scoping Request Generator
 
-Scoper is an enterprise-grade, intelligence-led scoping engine built for financial regulatory frameworks (DORA, CBEST, MAS, FRB).
+Scoper is an enterprise-grade, intelligence-led scoping engine strictly built for top-tier financial regulatory frameworks: **DORA TLPT, PRA CBEST, and HKMA iCAST**.
 
-This project features the highly advanced **V33 Omni-Strategic Nexus** architecture, generating beautiful, board-ready Threat-Led Penetration Testing (TLPT) documentation.
+This project features a highly advanced generator engine that produces beautiful, purely technical **Regulatory Vendor Scoping Requests (RFPs)**. It completely removes internal budgetary fluff to give your external penetration testing vendors exactly what they need to scope and bid on a highly regulated engagement.
 
-🚀 **[View the Sample Output PDF](examples/Sample_Nexus_Pack.pdf)**
+🚀 **[View the Sample Output PDF](output/Vendor_RFP_DORA_PRA_HKMA_Scope.pdf)**
 
 ## Core Features
-*   **Omni-Strategic Radar Charts**: Dynamically generates compliance coverage mapping (P_RESILIENCE, P_INTELLIGENCE, P_GOVERNANCE).
-*   **Targeted Threat Profiles**: Emulates real-world Advanced Persistent Threats (APTs) like Cozy Bear (APT29), FIN7, and Lazarus Group.
-*   **Execution Timeline (CSS Gantt)**: Beautiful, pure-CSS auto-generated Gantt charts for tracking engagement phases.
-*   **Digital Chain of Custody**: Cryptographically-verifiable evidence chains across the Red Team lifecycle.
-*   **RACI Matrices & Omni-Controls**: Granular mappings to financial resilience controls with explicit client-provider responsibility assignments.
+*   **Target Environment Profiling**: Quantifies the exact scale of assets (Web Apps, External IPs, Phishing Targets) for accurate vendor quoting.
+*   **Targeted Threat Profiles**: Emulates real-world Advanced Persistent Threats (APTs) required by DORA and PRA.
+*   **Execution Constraints & RoE**: Explicitly prohibits dangerous testing methods (like DoS/DDoS) to ensure production safety.
+*   **Mandatory Regulatory Deliverables**: Contractually obligates vendors to produce TTIRs, RTTPs, and Cryptographic Attack Logs.
+*   **Vendor Qualifications**: Enforces strict CREST/CBEST attestation and liability insurance minimums.
 
 ## Installation
 
