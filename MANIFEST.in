@@ -1,3 +1,0 @@
-recursive-include src/scoper/data *
-recursive-include src/scoper/templates *
-recursive-include src/scoper/assets *

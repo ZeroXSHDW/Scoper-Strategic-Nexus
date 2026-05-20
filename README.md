@@ -1,51 +1,92 @@
-# Scoper: Regulatory Vendor Scoping Request Generator
+# Financial Regulatory Requirements CLI
 
-Scoper is an enterprise-grade, intelligence-led scoping engine strictly built for top-tier financial regulatory frameworks: **DORA TLPT, PRA CBEST, and HKMA iCAST**.
+This repository is a minimal Python CLI for generating the two approved vendor regulatory scoping deliverables:
 
-This project features a highly advanced generator engine that produces beautiful, purely technical **Regulatory Vendor Scoping Requests (RFPs)**. It completely removes internal budgetary fluff to give your external penetration testing vendors exactly what they need to scope and bid on a highly regulated engagement.
+- `Penetration Testing - Scoping/Generated/Regulatory/regulatory_requirements_reference_latest.xlsx`
+- `Penetration Testing - Scoping/Generated/Regulatory/regulatory_vendor_questionnaire_template_latest.docx`
 
-🚀 **[View the Sample Output PDF](output/Vendor_RFP_DORA_PRA_HKMA_Scope.pdf)**
+The CLI downloads or uses cached official source material, builds a local SQLite requirements index, and exports the XLSX reference workbook and concise DOCX vendor questionnaire from the same indexed data.
 
-## Core Features
-*   **Target Environment Profiling**: Quantifies the exact scale of assets (Web Apps, External IPs, Phishing Targets) for accurate vendor quoting.
-*   **Targeted Threat Profiles**: Emulates real-world Advanced Persistent Threats (APTs) required by DORA and PRA.
-*   **Execution Constraints & RoE**: Explicitly prohibits dangerous testing methods (like DoS/DDoS) to ensure production safety.
-*   **Mandatory Regulatory Deliverables**: Contractually obligates vendors to produce TTIRs, RTTPs, and Cryptographic Attack Logs.
-*   **Vendor Qualifications**: Enforces strict CREST/CBEST attestation and liability insurance minimums.
+## Scope
 
-## Installation
+The source manifest is intentionally narrow:
 
-Ensure you have Python 3.9+ installed. The project is bundled for native global installation:
+| Regulatory family | Covered material |
+|---|---|
+| EU DORA | DORA Regulation (EU) 2022/2554 plus ICT risk and TLPT RTS material |
+| US FRB and FFIEC | Federal Reserve SR 23-4 and FFIEC Information Security material |
+| HKMA CFI / iCAST | HKMA CFI 2.0 and iCAST source material |
+| PRA / Bank of England CBEST | CBEST implementation guide material |
+| Supplied scope templates | Three local ZeroDev scope PDFs used as questionnaire design inputs |
+
+Broad security frameworks such as OWASP, NIST, ISO, PCI, HIPAA, SOC 2, GDPR, FedRAMP, and cloud vendor guidance are not part of this generator unless the manifest is deliberately changed.
+
+## Install
 
 ```bash
-pip install -e .
-playwright install chromium
+python3 -m pip install -r requirements.txt
 ```
 
-## Usage
+Editable package install is optional:
 
-### 1. Generate the V33 Strategic SOW (PDF)
-Use the CLI to construct an engagement mapping specific services against a global compliance pack. The following command generates the massive, premium-styled ultimate scoping document:
 ```bash
-python -m scoper.cli generate-pack --client "Global Financial Bank" --pack global-unified-pack --output output/tlpt_strategy_premium.pdf
+python3 -m pip install -e .
 ```
 
-### 2. View Intelligence Catalogs
-Inspect the loaded Red Team services, frameworks, and targeted threat actors:
+## Build
+
+Use the cached source files already in the repository:
+
 ```bash
-scoper dashboard
+python3 -m regulatory_requirements build-all --offline
 ```
 
-### 3. Classic Markdown SOW Generator
-For standard project initialization:
+Refresh official sources before building:
+
 ```bash
-scoper init MyProject
-scoper add MyProject "PT-APP-API"
-scoper build MyProject
+python3 -m regulatory_requirements build-all --refresh
 ```
 
-## Architecture
--   `src/scoper/data/intelligence/actors.json`: Target APT profiling.
--   `src/scoper/data/matrix/omni-matrix.json`: Financial resilience control mappings.
--   `src/scoper/assets/style.css`: Premium V33 stylesheet with glassmorphism and print-media adjustments.
--   `src/scoper/generator.py`: The V33 HTML/PDF compiler engine.
+If installed with `pip install -e .`, the console command is also available:
+
+```bash
+regulatory-requirements build-all --refresh
+```
+
+The build writes a local `index.db`, provenance log, dated outputs, and latest output copies under `Penetration Testing - Scoping/Generated/Regulatory/`. Git tracks only the two latest approved deliverables.
+
+Remove local-only build files while keeping the two approved latest deliverables:
+
+```bash
+python3 -m regulatory_requirements clean
+```
+
+## Test
+
+```bash
+python3 -m unittest tests/test_regulatory_requirements.py
+python3 -m regulatory_requirements clean
+./scripts/audit-git-tracking.sh --strict-local
+```
+
+## Repository Layout
+
+| Path | Purpose |
+|---|---|
+| `regulatory_requirements/` | Python downloader, indexer, XLSX exporter, and DOCX exporter |
+| `regulatory_requirements/sources.json` | Approved source manifest |
+| `tests/` | Unit and artifact structure tests |
+| `requirements.txt` | Runtime/test dependencies |
+| `SOURCE_DOCUMENTS.md` | Human-readable source register |
+| `Penetration Testing - Scoping/Compliance Frameworks/` | Cached official source archives required for offline rebuilds |
+| `Penetration Testing - Scoping/Generated/Regulatory/` | Approved latest XLSX and DOCX deliverables |
+| `scripts/audit-git-tracking.sh` | Publication hygiene check |
+
+## Publishing Checklist
+
+1. Run `python3 -m regulatory_requirements build-all --refresh`.
+2. Run `python3 -m unittest tests/test_regulatory_requirements.py`.
+3. Run `python3 -m regulatory_requirements clean`.
+4. Run `./scripts/audit-git-tracking.sh --strict-local`.
+5. Confirm the two `latest` deliverables are the intended files to publish.
+6. Keep local databases, dated generated files, logs, caches, dependencies, and OS metadata untracked.
