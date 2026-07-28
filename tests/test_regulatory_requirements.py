@@ -18,7 +18,9 @@ from regulatory_requirements.cli import (
     export_artifacts,
     extract_requirements,
     load_sources,
+    primary_source_file_path,
     quality_assessment,
+    rel,
     response_required_for_requirement,
     sha256_bytes,
     should_keep_requirement,
@@ -35,6 +37,61 @@ class RegulatoryRequirementsTests(unittest.TestCase):
         self.assertTrue({source.framework for source in sources}.issubset(ALLOWED_FRAMEWORKS))
         self.assertIn("FRB_SUPERVISION", {source.framework for source in sources})
         self.assertIn("FFIEC", {source.framework for source in sources})
+
+    def test_manifest_accepts_empty_sources_list(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            manifest = Path(tmp) / "sources.json"
+            manifest.write_text(
+                json.dumps({"schema_version": 1, "sources": []}),
+                encoding="utf-8",
+            )
+            self.assertEqual(load_sources(manifest), [])
+
+    def test_manifest_rejects_missing_required_fields(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            manifest = Path(tmp) / "sources.json"
+            manifest.write_text(
+                json.dumps(
+                    {
+                        "schema_version": 1,
+                        "sources": [
+                            {
+                                "id": "incomplete",
+                                "title": "Incomplete",
+                                "framework": "FFIEC",
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "missing"):
+                load_sources(manifest)
+
+    def test_primary_source_path_handles_absolute_and_relative(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            absolute = Path(tmp) / "absolute.txt"
+            absolute.write_text("x", encoding="utf-8")
+            source = Source(
+                id="path-fixture",
+                title="Path fixture",
+                authority="Fixture",
+                framework="FFIEC",
+                jurisdiction="US",
+                source_url="https://example.com/source",
+                download_url=None,
+                local_path=str(absolute),
+                source_kind="official_text",
+                parser_profile="frb_ffiec",
+                access="public_direct",
+                notes="fixture",
+            )
+            self.assertEqual(
+                primary_source_file_path(source).resolve(),
+                absolute.resolve(),
+            )
+            # Absolute paths outside PROJECT_ROOT fall back to full path strings.
+            self.assertEqual(rel(absolute), str(absolute.resolve()))
 
     def test_manifest_rejects_non_target_frameworks(self):
         with tempfile.TemporaryDirectory() as tmp:
