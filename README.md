@@ -64,6 +64,8 @@ python3 -m regulatory_requirements clean
 ## Test
 
 ```bash
+PYTHONPATH=. python3 -m pytest -q
+# or:
 python3 -m unittest tests/test_regulatory_requirements.py
 python3 -m regulatory_requirements clean
 ./scripts/audit-git-tracking.sh --strict-local
@@ -85,7 +87,7 @@ python3 -m regulatory_requirements clean
 ## Publishing Checklist
 
 1. Run `python3 -m regulatory_requirements build-all --refresh`.
-2. Run `python3 -m unittest tests/test_regulatory_requirements.py`.
+2. Run `PYTHONPATH=. python3 -m pytest -q` (or `python3 -m unittest tests/test_regulatory_requirements.py`).
 3. Run `python3 -m regulatory_requirements clean`.
 4. Run `./scripts/audit-git-tracking.sh --strict-local`.
 5. Confirm the two `latest` deliverables are the intended files to publish.
