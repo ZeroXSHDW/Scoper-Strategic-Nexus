@@ -1,34 +1,57 @@
-# General ignore patterns for the SOW Rendering Service project
-# Python compiled files
+# Regulatory Requirements Scoper — ignore local/runtime artefacts.
+# Git tracks only source, tests, and the two approved `*_latest` deliverables.
+
+# Python
 *.pyc
 __pycache__/
 *.pyo
 *.pyd
+*.egg-info/
+build/
+dist/
+.eggs/
 
 # Virtual environments
 venv/
 .venv/
+ENV/
 
-# Build artefacts and distribution packages
-*.egg-info/
-build/
-dist/
-
-# PDF outputs and generated artefacts
-output/
-*.pdf
-
-# Coverage and test caches
+# Local databases, logs, and caches (never publish)
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.sqlite3-journal
+*.log
+download-log.json
+.cache/
 .coverage
 .coverage.*
 htmlcov/
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
-# OS and IDE artefacts
+# Generated dated / intermediate artefacts (keep *_latest tracked)
+Penetration Testing - Scoping/Generated/Regulatory/*
+!Penetration Testing - Scoping/Generated/Regulatory/regulatory_requirements_reference_latest.xlsx
+!Penetration Testing - Scoping/Generated/Regulatory/regulatory_vendor_questionnaire_template_latest.docx
+
+# OS and IDE
 .DS_Store
 Thumbs.db
+.AppleDouble
+.LSOverride
+._*
 .idea/
 .vscode/
+*.swp
+*.swo
+*~
 
-# Environment files (keep secret)
+# Environment / secrets
 .env
+.env.*
+!.env.example
+*.pem
+*.key

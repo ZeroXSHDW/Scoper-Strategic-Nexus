@@ -1,4 +1,4 @@
-# Financial Regulatory Requirements CLI
+# Scoper Strategic Nexus — Financial Regulatory Requirements CLI
 
 This repository is a minimal Python CLI for generating the two approved vendor regulatory scoping deliverables:
 
@@ -90,3 +90,7 @@ python3 -m regulatory_requirements clean
 4. Run `./scripts/audit-git-tracking.sh --strict-local`.
 5. Confirm the two `latest` deliverables are the intended files to publish.
 6. Keep local databases, dated generated files, logs, caches, dependencies, and OS metadata untracked.
+
+## License
+
+MIT — see [LICENSE](LICENSE)
