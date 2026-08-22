@@ -108,3 +108,11 @@ PYTHONPATH=. python3 -m pytest -q
 ## License
 
 MIT — see [LICENSE](LICENSE)
+
+## Contributing
+
+Keep the package deterministic and fixture-backed. Run the verification commands above and see [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+
+## Security
+
+Report vulnerabilities privately using [SECURITY.md](SECURITY.md). Do not publish sensitive scope definitions, credentials, or local paths.
