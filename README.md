@@ -93,6 +93,18 @@ python3 -m regulatory_requirements clean
 5. Confirm the two `latest` deliverables are the intended files to publish.
 6. Keep local databases, dated generated files, logs, caches, dependencies, and OS metadata untracked.
 
+## Verification
+
+The pull-request gate installs the package in editable mode, checks dependency
+consistency, builds a wheel, and runs the fixture-backed test suite:
+
+```bash
+python3 -m pip install -e . pytest build
+python3 -m pip check
+python3 -m build --wheel
+PYTHONPATH=. python3 -m pytest -q
+```
+
 ## License
 
 MIT — see [LICENSE](LICENSE)
