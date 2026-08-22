@@ -116,3 +116,20 @@ Keep the package deterministic and fixture-backed. Run the verification commands
 ## Security
 
 Report vulnerabilities privately using [SECURITY.md](SECURITY.md). Do not publish sensitive scope definitions, credentials, or local paths.
+
+## Features
+
+- Deterministic strategic-scope models with fixture-backed output.
+- Package, wheel, dependency, and test gates suitable for reviewable releases.
+
+## Configuration
+
+Keep environment-specific settings outside the repository unless they are
+non-secret fixtures. Review the package's documented configuration and
+publishing checklist before changing output paths or release artifacts.
+
+## Troubleshooting
+
+Run `python3 -m pip check` first, then rerun the narrowest failing fixture or
+build command. Do not replace a failing fixture with a live service call just
+to obtain a green result.
