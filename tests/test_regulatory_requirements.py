@@ -35,9 +35,12 @@ class RegulatoryRequirementsTests(unittest.TestCase):
         workflow = (Path(__file__).resolve().parents[1] / ".github/workflows/ci.yml").read_text(
             encoding="utf-8"
         )
+        root = Path(__file__).resolve().parents[1]
         readme = (Path(__file__).resolve().parents[1] / "README.md").read_text(
             encoding="utf-8"
         )
+        ci_input = (root / "requirements-ci.in").read_text(encoding="utf-8")
+        ci_lock = (root / "requirements-ci.txt").read_text(encoding="utf-8")
 
         checkout_count = workflow.count("actions/checkout@")
         self.assertGreater(checkout_count, 0)
@@ -46,7 +49,16 @@ class RegulatoryRequirementsTests(unittest.TestCase):
         self.assertNotIn("runs-on: ubuntu-latest", workflow)
         self.assertNotIn("pip install --upgrade pip", workflow)
         self.assertNotIn("pip install --upgrade pip setuptools wheel", workflow)
-        self.assertIn("pip install --disable-pip-version-check -e . pytest build", workflow)
+        self.assertIn("python-version-file: .python-version", workflow)
+        self.assertIn("python -m pip install --require-hashes -r requirements-ci.txt", workflow)
+        self.assertIn("python -m pip install --no-deps --no-build-isolation -e .", workflow)
+        self.assertIn("python -m pip_audit --progress-spinner off", workflow)
+        self.assertIn("python -m build --wheel --no-isolation", workflow)
+        self.assertEqual((root / ".python-version").read_text().strip(), "3.12")
+        self.assertIn("setuptools==83.0.0", ci_input)
+        self.assertIn("wheel==0.46.2", ci_input)
+        self.assertIn("--hash=sha256:", ci_lock)
+        self.assertIn("requirements-ci.txt", readme)
         self.assertIn("git diff --check", readme)
 
     def test_manifest_loads_unique_sources(self):
