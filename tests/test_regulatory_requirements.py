@@ -30,6 +30,19 @@ from regulatory_requirements.cli import (
 
 
 class RegulatoryRequirementsTests(unittest.TestCase):
+    def test_ci_and_docs_enforce_patch_hygiene(self):
+        workflow = (Path(__file__).resolve().parents[1] / ".github/workflows/ci.yml").read_text(
+            encoding="utf-8"
+        )
+        readme = (Path(__file__).resolve().parents[1] / "README.md").read_text(
+            encoding="utf-8"
+        )
+
+        checkout_count = workflow.count("actions/checkout@")
+        self.assertGreater(checkout_count, 0)
+        self.assertEqual(checkout_count, workflow.count("git diff --check"))
+        self.assertIn("git diff --check", readme)
+
     def test_manifest_loads_unique_sources(self):
         sources = load_sources()
         self.assertGreaterEqual(len(sources), 10)
