@@ -4,6 +4,7 @@ import tempfile
 import unittest
 import zipfile
 from pathlib import Path
+from unittest.mock import patch
 
 from openpyxl import load_workbook
 
@@ -30,6 +31,36 @@ from regulatory_requirements.cli import (
 
 
 class RegulatoryRequirementsTests(unittest.TestCase):
+    def test_ci_and_docs_enforce_patch_hygiene(self):
+        workflow = (Path(__file__).resolve().parents[1] / ".github/workflows/ci.yml").read_text(
+            encoding="utf-8"
+        )
+        root = Path(__file__).resolve().parents[1]
+        readme = (Path(__file__).resolve().parents[1] / "README.md").read_text(
+            encoding="utf-8"
+        )
+        ci_input = (root / "requirements-ci.in").read_text(encoding="utf-8")
+        ci_lock = (root / "requirements-ci.txt").read_text(encoding="utf-8")
+
+        checkout_count = workflow.count("actions/checkout@")
+        self.assertGreater(checkout_count, 0)
+        self.assertEqual(checkout_count, workflow.count("git diff --check"))
+        self.assertIn("runs-on: ubuntu-24.04", workflow)
+        self.assertNotIn("runs-on: ubuntu-latest", workflow)
+        self.assertNotIn("pip install --upgrade pip", workflow)
+        self.assertNotIn("pip install --upgrade pip setuptools wheel", workflow)
+        self.assertIn("python-version-file: .python-version", workflow)
+        self.assertIn("python -m pip install --require-hashes -r requirements-ci.txt", workflow)
+        self.assertIn("python -m pip install --no-deps --no-build-isolation -e .", workflow)
+        self.assertIn("python -m pip_audit --progress-spinner off", workflow)
+        self.assertIn("python -m build --wheel --no-isolation", workflow)
+        self.assertEqual((root / ".python-version").read_text().strip(), "3.12")
+        self.assertIn("setuptools==83.0.0", ci_input)
+        self.assertIn("wheel==0.46.2", ci_input)
+        self.assertIn("--hash=sha256:", ci_lock)
+        self.assertIn("requirements-ci.txt", readme)
+        self.assertIn("git diff --check", readme)
+
     def test_manifest_loads_unique_sources(self):
         sources = load_sources()
         self.assertGreaterEqual(len(sources), 10)
@@ -272,6 +303,41 @@ class RegulatoryRequirementsTests(unittest.TestCase):
             finally:
                 conn.close()
             self.assertEqual(count, summary["requirements"])
+
+    def test_failed_index_rebuild_preserves_existing_database(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            db_path = root / "index.db"
+            with sqlite3.connect(db_path) as conn:
+                conn.execute("CREATE TABLE sentinel (value TEXT NOT NULL)")
+                conn.execute("INSERT INTO sentinel(value) VALUES ('known-good')")
+                conn.commit()
+
+            source = Source(
+                id="fixture-failure",
+                title="Fixture failure",
+                authority="Fixture",
+                framework="FFIEC",
+                jurisdiction="US",
+                source_url="https://example.com/ffiec",
+                download_url=None,
+                local_path=str(root / "fixture.txt"),
+                source_kind="official_text",
+                parser_profile="frb_ffiec",
+                access="public_direct",
+                notes="fixture",
+            )
+            (root / "fixture.txt").write_text("fixture", encoding="utf-8")
+
+            with patch(
+                "regulatory_requirements.cli.document_text_and_record",
+                side_effect=RuntimeError("simulated parser failure"),
+            ):
+                with self.assertRaisesRegex(RuntimeError, "simulated parser failure"):
+                    build_index([source], db_path=db_path, output_dir=root)
+
+            with sqlite3.connect(db_path) as conn:
+                self.assertEqual(conn.execute("SELECT value FROM sentinel").fetchone()[0], "known-good")
 
     def test_export_artifacts_creates_vendor_ready_workbook(self):
         with tempfile.TemporaryDirectory() as tmp:
