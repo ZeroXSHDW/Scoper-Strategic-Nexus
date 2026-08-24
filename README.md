@@ -23,6 +23,9 @@ Broad security frameworks such as OWASP, NIST, ISO, PCI, HIPAA, SOC 2, GDPR, Fed
 
 ## Install
 
+Use Python 3.12, the exact verification runtime in
+[`.python-version`](.python-version).
+
 ```bash
 python3 -m pip install -r requirements.txt
 ```
@@ -78,7 +81,8 @@ python3 -m regulatory_requirements clean
 | `regulatory_requirements/` | Python downloader, indexer, XLSX exporter, and DOCX exporter |
 | `regulatory_requirements/sources.json` | Approved source manifest |
 | `tests/` | Unit and artifact structure tests |
-| `requirements.txt` | Runtime/test dependencies |
+| `requirements.txt` | Runtime dependency ranges for local use |
+| `requirements-ci.in` / `requirements-ci.txt` | Hash-locked Python 3.12 verification graph |
 | `SOURCE_DOCUMENTS.md` | Human-readable source register |
 | `Penetration Testing - Scoping/Compliance Frameworks/` | Cached official source archives required for offline rebuilds |
 | `Penetration Testing - Scoping/Generated/Regulatory/` | Approved latest XLSX and DOCX deliverables |
@@ -95,15 +99,26 @@ python3 -m regulatory_requirements clean
 
 ## Verification
 
-The pull-request gate installs the package in editable mode, checks dependency
-consistency, builds a wheel, and runs the fixture-backed test suite:
+The pull-request gate reads the exact Python version from `.python-version`,
+installs the hash-locked verification graph, checks dependency consistency,
+audits installed dependencies, builds a wheel without a second unpinned build
+environment, and runs the fixture-backed test suite:
 
 ```bash
 git diff --check
-python3 -m pip install -e . pytest build
+python3 -m pip install --require-hashes -r requirements-ci.txt
+python3 -m pip install --no-deps --no-build-isolation -e .
 python3 -m pip check
-python3 -m build --wheel
+python3 -m pip_audit --progress-spinner off
+python3 -m build --wheel --no-isolation
 PYTHONPATH=. python3 -m pytest -q
+```
+
+Refresh the reviewed graph only after checking dependency changes:
+
+```bash
+uv pip compile requirements-ci.in --python-version 3.12 --universal \
+  --generate-hashes --output-file requirements-ci.txt
 ```
 
 ## License
