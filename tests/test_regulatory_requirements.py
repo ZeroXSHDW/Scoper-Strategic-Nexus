@@ -42,6 +42,11 @@ class RegulatoryRequirementsTests(unittest.TestCase):
         checkout_count = workflow.count("actions/checkout@")
         self.assertGreater(checkout_count, 0)
         self.assertEqual(checkout_count, workflow.count("git diff --check"))
+        self.assertIn("runs-on: ubuntu-24.04", workflow)
+        self.assertNotIn("runs-on: ubuntu-latest", workflow)
+        self.assertNotIn("pip install --upgrade pip", workflow)
+        self.assertNotIn("pip install --upgrade pip setuptools wheel", workflow)
+        self.assertIn("pip install --disable-pip-version-check -e . pytest build", workflow)
         self.assertIn("git diff --check", readme)
 
     def test_manifest_loads_unique_sources(self):
