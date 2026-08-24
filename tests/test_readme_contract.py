@@ -27,7 +27,7 @@ def test_readme_defines_the_release_operator_contract():
         "python3 -m regulatory_requirements build-all --refresh",
         "python3 -m regulatory_requirements clean",
         "python3 -m pip install --require-hashes -r requirements-ci.txt",
-        "python -m pip_audit --progress-spinner off",
+        "python3 -m pip_audit --progress-spinner off",
         "git diff --check",
         "No credentials are required for the public-source workflow.",
     ):
