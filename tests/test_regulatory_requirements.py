@@ -4,6 +4,7 @@ import tempfile
 import unittest
 import zipfile
 from pathlib import Path
+from unittest.mock import patch
 
 from openpyxl import load_workbook
 
@@ -285,6 +286,41 @@ class RegulatoryRequirementsTests(unittest.TestCase):
             finally:
                 conn.close()
             self.assertEqual(count, summary["requirements"])
+
+    def test_failed_index_rebuild_preserves_existing_database(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            db_path = root / "index.db"
+            with sqlite3.connect(db_path) as conn:
+                conn.execute("CREATE TABLE sentinel (value TEXT NOT NULL)")
+                conn.execute("INSERT INTO sentinel(value) VALUES ('known-good')")
+                conn.commit()
+
+            source = Source(
+                id="fixture-failure",
+                title="Fixture failure",
+                authority="Fixture",
+                framework="FFIEC",
+                jurisdiction="US",
+                source_url="https://example.com/ffiec",
+                download_url=None,
+                local_path=str(root / "fixture.txt"),
+                source_kind="official_text",
+                parser_profile="frb_ffiec",
+                access="public_direct",
+                notes="fixture",
+            )
+            (root / "fixture.txt").write_text("fixture", encoding="utf-8")
+
+            with patch(
+                "regulatory_requirements.cli.document_text_and_record",
+                side_effect=RuntimeError("simulated parser failure"),
+            ):
+                with self.assertRaisesRegex(RuntimeError, "simulated parser failure"):
+                    build_index([source], db_path=db_path, output_dir=root)
+
+            with sqlite3.connect(db_path) as conn:
+                self.assertEqual(conn.execute("SELECT value FROM sentinel").fetchone()[0], "known-good")
 
     def test_export_artifacts_creates_vendor_ready_workbook(self):
         with tempfile.TemporaryDirectory() as tmp:

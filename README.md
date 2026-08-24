@@ -53,7 +53,7 @@ If installed with `pip install -e .`, the console command is also available:
 regulatory-requirements build-all --refresh
 ```
 
-The build writes a local `index.db`, provenance log, dated outputs, and latest output copies under `Penetration Testing - Scoping/Generated/Regulatory/`. Git tracks only the two latest approved deliverables.
+The build writes a local `index.db`, provenance log, dated outputs, and latest output copies under `Penetration Testing - Scoping/Generated/Regulatory/`. Source archives, provenance logs, and the SQLite index use same-directory atomic replacement; a failed parse does not destroy the previous index. Git tracks only the two latest approved deliverables.
 
 Remove local-only build files while keeping the two approved latest deliverables:
 

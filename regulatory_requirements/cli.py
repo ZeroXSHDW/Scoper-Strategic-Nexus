@@ -12,12 +12,14 @@ import hashlib
 import html
 import ipaddress
 import json
+import os
 import re
 import shutil
 import socket
 import sqlite3
 import ssl
 import sys
+import tempfile
 import textwrap
 import zipfile
 from dataclasses import dataclass
@@ -235,6 +237,33 @@ def sha256_file(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def atomic_write_bytes(path: Path, data: bytes) -> None:
+    """Replace a file atomically without following a destination symlink."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    file_descriptor, temporary_name = tempfile.mkstemp(
+        prefix=f".{path.name}.",
+        suffix=".tmp",
+        dir=path.parent,
+    )
+    try:
+        with os.fdopen(file_descriptor, "wb") as handle:
+            handle.write(data)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary_name, path)
+    except BaseException:
+        try:
+            os.unlink(temporary_name)
+        except FileNotFoundError:
+            pass
+        raise
+
+
+def atomic_write_text(path: Path, text: str) -> None:
+    atomic_write_bytes(path, text.encode("utf-8"))
 
 
 def stable_id(prefix: str, *parts: str) -> str:
@@ -477,8 +506,7 @@ def download_sources(
                 status = "current"
                 message = "Official source checked; local archive is current"
             else:
-                target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_bytes(data)
+                atomic_write_bytes(target, data)
                 if previous_sha:
                     status = "updated"
                     message = "Official source changed; local archive updated"
@@ -524,7 +552,7 @@ def download_sources(
         results.append(result)
 
     log_path = download_log_path(output_dir)
-    log_path.write_text(json.dumps({"generated_at": now_iso(), "results": results}, indent=2), encoding="utf-8")
+    atomic_write_text(log_path, json.dumps({"generated_at": now_iso(), "results": results}, indent=2))
     return results
 
 
@@ -1511,11 +1539,19 @@ def build_index(
     ensure_dependencies("index")
     output_dir.mkdir(parents=True, exist_ok=True)
     db_path.parent.mkdir(parents=True, exist_ok=True)
-    if db_path.exists():
-        db_path.unlink()
-    download_results = load_download_results(output_dir)
-    conn = sqlite3.connect(str(db_path))
+    staged_db: Path | None = None
+    conn: sqlite3.Connection | None = None
     try:
+        file_descriptor, temporary_name = tempfile.mkstemp(
+            prefix=f".{db_path.name}.",
+            suffix=".tmp",
+            dir=db_path.parent,
+        )
+        os.close(file_descriptor)
+        staged_db = Path(temporary_name)
+        staged_db.unlink()
+        download_results = load_download_results(output_dir)
+        conn = sqlite3.connect(str(staged_db))
         create_schema(conn)
         parsed_documents = 0
         extracted_requirements = 0
@@ -1533,6 +1569,10 @@ def build_index(
                 if conn.total_changes > before:
                     extracted_requirements += 1
         conn.commit()
+        conn.close()
+        conn = None
+        os.replace(staged_db, db_path)
+        staged_db = None
         summary = {
             "db_path": rel(db_path),
             "db_sha256": sha256_file(db_path),
@@ -1543,7 +1583,10 @@ def build_index(
         }
         return summary
     finally:
-        conn.close()
+        if conn is not None:
+            conn.close()
+        if staged_db is not None and staged_db.exists():
+            staged_db.unlink()
 
 
 def rows(conn: sqlite3.Connection, query: str, params: tuple[Any, ...] = ()) -> list[sqlite3.Row]:
