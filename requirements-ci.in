@@ -1,0 +1,10 @@
+# Reproducible verification input for Python 3.12.
+# Refresh with:
+#   uv pip compile requirements-ci.in --python-version 3.12 --universal \
+#     --generate-hashes --output-file requirements-ci.txt
+-r requirements.txt
+build==1.5.0
+pip-audit==2.10.1
+pytest==9.1.1
+setuptools==83.0.0
+wheel==0.46.2
