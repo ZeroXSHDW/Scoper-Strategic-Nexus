@@ -21,7 +21,13 @@ The source manifest is intentionally narrow:
 
 Broad security frameworks such as OWASP, NIST, ISO, PCI, HIPAA, SOC 2, GDPR, FedRAMP, and cloud vendor guidance are not part of this generator unless the manifest is deliberately changed.
 
-## Install
+## Prerequisites
+
+Use Python 3.12, the exact interpreter declared in [`.python-version`](.python-version).
+
+A refresh requires network access to the HTTPS sources listed in `regulatory_requirements/sources.json`; offline builds use the reviewed source archives already present in the repository. No credentials are required for the public-source workflow.
+
+## Installation and setup
 
 Use Python 3.12, the exact verification runtime in
 [`.python-version`](.python-version).
@@ -35,6 +41,12 @@ Editable package install is optional:
 ```bash
 python3 -m pip install -e .
 ```
+
+## Data and provenance
+
+The source manifest is the single source of truth for authorities, URLs, local cache paths, parser profiles, and provenance notes. `build-all --offline` is deterministic against the reviewed local cache; `build-all --refresh` may update cached source material only after HTTPS validation and records the resulting source status and hashes.
+
+The SQLite index, provenance logs, dated exports, and intermediate build files are local derived state. `clean` removes those temporary outputs while preserving the two approved `latest` deliverables. Do not commit credentials, private scope material, generated caches, or machine-specific paths.
 
 ## Build
 
@@ -68,7 +80,7 @@ python3 -m regulatory_requirements clean
 
 ```bash
 PYTHONPATH=. python3 -m pytest -q
-# or:
+# Alternative standard-library test command:
 python3 -m unittest tests/test_regulatory_requirements.py
 python3 -m regulatory_requirements clean
 ./scripts/audit-git-tracking.sh --strict-local
